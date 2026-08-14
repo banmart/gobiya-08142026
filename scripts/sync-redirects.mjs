@@ -38,14 +38,18 @@ const config = {
 const next = `${JSON.stringify(config, null, 2)}\n`;
 
 if (check) {
-  let current = '';
+  // Compare parsed content, never the raw text. Git checks this file out with
+  // CRLF on Windows and LF on the Linux build machine, so a string comparison
+  // reports a file that is byte-different but semantically identical — which
+  // failed the deploy on a line ending while the redirects were perfectly fine.
+  let current = null;
   try {
-    current = readFileSync(OUT, 'utf8');
+    current = JSON.parse(readFileSync(OUT, 'utf8'));
   } catch {
-    /* missing counts as out of date */
+    /* missing or unparseable counts as out of date */
   }
 
-  if (current !== next) {
+  if (JSON.stringify(current) !== JSON.stringify(config)) {
     console.error(
       '\nvercel.json is out of date with src/redirects.mjs.\n' +
         'Run `npm run redirects:sync` and commit the result.\n',
