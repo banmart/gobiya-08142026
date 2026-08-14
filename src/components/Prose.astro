@@ -2,15 +2,27 @@
 import Reveal from './Reveal.astro';
 
 /**
- * The authored body of a case study or article: a heading and its paragraphs,
+ * The authored body of a case study or article: a heading and its content,
  * repeated. Shared by /work/[slug] and /insights/[slug] so the reading measure,
  * heading rhythm and anchor behaviour cannot drift between the two.
+ *
+ * `paragraphs` is a mixed array despite the name. Most entries are HTML
+ * strings, but the articles also embed comparison tables and bulleted lists as
+ * tagged objects. Rendering the whole array as <p> printed "[object Object]"
+ * and silently dropped 72 tables and lists across 33 articles, so the type tag
+ * is dispatched on here.
  *
  * Every heading gets a stable id derived from its text, which gives AI answer
  * engines and any linking article a passage-level target to cite.
  */
+type Block = { heading: string; paragraphs: Paragraph[] };
+type Paragraph =
+  | string
+  | { type: 'list'; items: string[] }
+  | { type: 'table'; headers: string[]; rows: string[][] };
+
 interface Props {
-  blocks: { heading: string; paragraphs: string[] }[];
+  blocks: Block[];
 }
 
 const { blocks } = Astro.props;
@@ -29,9 +41,48 @@ const slugify = (value: string) =>
     {blocks.map((block) => (
       <Reveal as="section" class="prose-block">
         <h2 class="prose-heading" id={slugify(block.heading)}>{block.heading}</h2>
-        {block.paragraphs.map((paragraph) => (
-          <p class="prose-p" set:html={paragraph} />
-        ))}
+
+        {block.paragraphs.map((item) => {
+          if (typeof item === 'string') {
+            return <p class="prose-p" set:html={item} />;
+          }
+
+          if (item.type === 'list') {
+            return (
+              <ul class="prose-list">
+                {item.items.map((li) => <li class="prose-li" set:html={li} />)}
+              </ul>
+            );
+          }
+
+          if (item.type === 'table') {
+            return (
+              /* Tables carry three columns of prose and cannot reflow, so the
+                 wrapper scrolls rather than letting them force the page wide.
+                 tabindex makes that scroll reachable from the keyboard. */
+              <div class="prose-table-wrap" tabindex="0" role="region" aria-label="Comparison table">
+                <table class="prose-table">
+                  <thead>
+                    <tr>{item.headers.map((h) => <th scope="col" set:html={h} />)}</tr>
+                  </thead>
+                  <tbody>
+                    {item.rows.map((row) => (
+                      <tr>
+                        {row.map((cell, i) =>
+                          i === 0
+                            ? <th scope="row" set:html={cell} />
+                            : <td set:html={cell} />,
+                        )}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            );
+          }
+
+          return null;
+        })}
       </Reveal>
     ))}
   </div>
@@ -60,13 +111,92 @@ const slugify = (value: string) =>
     color: var(--color-neutral);
   }
 
-  .prose-p :global(a) {
+  .prose-p :global(a),
+  .prose-li :global(a) {
     color: var(--color-ink);
     text-decoration: underline;
     text-underline-offset: 0.25em;
   }
 
-  .prose-p :global(a:hover) {
+  .prose-p :global(a:hover),
+  .prose-li :global(a:hover) {
     color: var(--color-accent-ink);
+  }
+
+  .prose-list {
+    margin-block-start: var(--space-md);
+    max-width: 68ch;
+    display: grid;
+    gap: var(--space-sm);
+  }
+
+  .prose-li {
+    position: relative;
+    padding-inline-start: var(--space-lg);
+    color: var(--color-neutral);
+  }
+
+  /* A drawn rule rather than a list marker, to match the hairline vocabulary
+     the rest of the page uses. */
+  .prose-li::before {
+    content: "";
+    position: absolute;
+    inset-block-start: 0.7em;
+    inset-inline-start: 0;
+    width: 0.6rem;
+    height: 1px;
+    background: var(--color-accent);
+  }
+
+  .prose-li :global(strong) {
+    color: var(--color-ink);
+    font-weight: 500;
+  }
+
+  .prose-table-wrap {
+    margin-block-start: var(--space-lg);
+    overflow-x: auto;
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+  }
+
+  .prose-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    /* Below this the three prose columns become unreadable slivers; the
+       wrapper scrolls instead. */
+    min-width: 34rem;
+  }
+
+  .prose-table th,
+  .prose-table td {
+    padding: var(--space-sm) var(--space-md);
+    text-align: start;
+    vertical-align: top;
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .prose-table thead th {
+    border-block-start: 0;
+    background: var(--color-paper-2);
+    font-weight: 500;
+    color: var(--color-ink);
+    white-space: nowrap;
+  }
+
+  .prose-table tbody th {
+    font-weight: 500;
+    color: var(--color-ink);
+    max-width: 18ch;
+  }
+
+  .prose-table td {
+    color: var(--color-neutral);
+  }
+
+  .prose-table-wrap:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
   }
 </style>
