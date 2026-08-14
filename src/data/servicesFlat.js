@@ -18,7 +18,7 @@ export const SERVICES_FLAT = {
       'Burbank', 'Costa Mesa', 'Culver City', 'North Hollywood', 'Silverlake',
       'Van Nuys', 'Ventura', 'Santa Clarita',
     ],
-    intro: 'Los Angeles technical SEO services fix the underlying code, crawl budget errors, and site architecture issues blocking your business from ranking at the top of Google and AI search engines. For small and medium business owners, a clean technical foundation delivers a steady, predictable pipeline of qualified inbound leads without relying on paid ad spend. For designers and creative teams, it ensures your visual site showcases your brand without JavaScript execution bloat holding back search indexation. For in-house marketing managers, our technical engineering provides transparent Search Console attribution and sustainable ROI data to present proudly to leadership. We audit server logs, resolve rendering bottlenecks, deploy structured JSON-LD schema, and optimize target landing pages for active search intent.',
+    intro: 'Los Angeles technical SEO services fix the underlying code, crawl budget errors, and site architecture issues blocking your business from ranking at the top of Google and AI search engines. For small and medium business owners, a clean technical foundation delivers a steady, predictable pipeline of qualified inbound leads without relying on paid ad spend. For designers and creative teams, it ensures your visual site showcases your brand without JavaScript execution bloat holding back search indexation. For in-house marketing managers, our technical engineering provides transparent Search Console attribution and sustainable ROI data to present proudly to leadership. We analyze server logs, resolve rendering bottlenecks, deploy structured JSON-LD schema, and optimize target landing pages for active search intent.',
     testimonial: {
       quote: 'Moving off WordPress was the part I was most nervous about and it turned out to be the easy part. The bigger deal was the CRM and the drip campaigns — leads used to sit in an inbox until someone remembered them. Now they get followed up whether I’m paying attention or not.',
       name: 'Pete Urueta',
@@ -53,7 +53,7 @@ export const SERVICES_FLAT = {
         title: 'Los Angeles Technical SEO That Ends the Guesswork',
         lede: 'Picture your website quietly bringing in work while you get on with the job.',
         dek: 'That is what a clean technical foundation feels like. We clear the crawl errors, the JavaScript rendering problems, the tangled internal links and the page architecture holding your site back — and the calls start arriving for reasons you can point to. Business owners get a lead pipeline they can plan around. Designers get a site that stays beautiful and still gets indexed. Marketing managers get a Search Console chart they are glad to put in front of leadership. All of it built here in Los Angeles, for businesses across Southern California.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=rankings' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=rankings' },
         image: {
           src: '/assets/img/analytics-dashboard-review.webp',
           alt: 'Reviewing Search Console indexation data for a Los Angeles client',
@@ -62,9 +62,9 @@ export const SERVICES_FLAT = {
       {
         title: 'Every Layer of Your Search Presence, Handled',
         lede: 'Imagine never wondering which part of your site is quietly broken.',
-        dek: 'A site that ranks is a site where the code, the content and the local signals all pull in the same direction. We take every layer of it off your plate — from deep technical SEO audits to AI search optimization — so nothing sits half-finished and nothing is left to chance.',
+        dek: 'A site that ranks is a site where the code, the content and the local signals all pull in the same direction. We take every layer of it off your plate — from deep technical SEO assessments to AI search optimization — so nothing sits half-finished and nothing is left to chance.',
         list: [
-          'Technical SEO audits and code cleanup',
+          'Technical SEO assessments and code cleanup',
           'On-page SEO: title tags, headings, content, and internal links',
           'Site architecture, crawl path, and rendering optimization',
           'Local SEO and Google Business Profile management',
@@ -84,7 +84,7 @@ export const SERVICES_FLAT = {
         lede: 'Picture opening the monthly report already knowing the news is good.',
         dek: [
           'Los Angeles companies stay with Gobiya SEO because the work shows up where it counts — on every page that brings in buyers, not just the homepage. You see what we changed, when we changed it, and what it did.',
-          'Recovering from an algorithm update, keeping a large site healthy month after month, or finally finding out what is really going on with a full search audit: it is the same experience either way. Steady, visible progress, and a team that picks up the phone.',
+          'Recovering from an algorithm update, keeping a large site healthy month after month, or finally finding out what is really going on with a full search assessment: it is the same experience either way. Steady, visible progress, and a team that picks up the phone.',
         ],
         link: { text: 'Reach out at (323) 744-1338', href: '/contact' },
         image: {
@@ -95,20 +95,20 @@ export const SERVICES_FLAT = {
     ],
     capabilities: [
       { tag: 'Performance', title: 'Server-Side Rendering & Core Web Vitals', href: '/glossary/server-side-rendering', desc: 'Deliver pre-rendered HTML on first byte so Googlebot and AI crawlers parse your page content instantly without JavaScript execution delays.' },
-      { tag: 'Crawlability', title: 'Crawlability & Site Architecture Audit', href: '/glossary/core-web-vitals', desc: 'Eliminate 4xx/5xx server errors, canonical conflicts, broken redirects, and crawl budget waste so every key URL gets indexed.' },
+      { tag: 'Crawlability', title: 'Crawlability & Site Architecture Assessment', href: '/glossary/core-web-vitals', desc: 'Eliminate 4xx/5xx server errors, canonical conflicts, broken redirects, and crawl budget waste so every key URL gets indexed.' },
       { tag: 'Schema', title: 'Structured Data & JSON-LD Schema', href: '/glossary/answer-engine-optimization', desc: 'Deploy rich JSON-LD schema markup for LocalBusiness, FAQ, Product, and Article entities so ChatGPT and Perplexity cite your brand.' },
       { tag: 'On-Page', title: 'On-Page Content & Intent Structure', href: '/glossary/keyword-research', desc: 'Refine H1-H4 heading hierarchies, meta titles, internal link distribution, and entity relationships to capture active intent.' },
       { tag: 'Local', title: 'Local Maps & Citation Synchronization', href: '/glossary/google-business-profile', desc: 'Align your Google Business Profile listings with localized landing page architecture to dominate local map pack results.' },
-      { tag: 'Diagnostics', title: 'Penalty Recovery & Algorithmic Diagnostics', href: '/services/technical-seo', desc: 'Isolate traffic drops, audit server log files, and fix technical regressions to recover organic visibility after core algorithm updates.' },
+      { tag: 'Diagnostics', title: 'Penalty Recovery & Algorithmic Diagnostics', href: '/services/technical-seo', desc: 'Isolate traffic drops, analyze server log files, and fix technical regressions to recover organic visibility after core algorithm updates.' },
     ],
     process: [
-      { step: '01', title: 'Deep Technical & Indexation Audit', desc: 'We audit server logs, rendering performance, mobile layout stability, and indexing bottlenecks to build a targeted technical roadmap.' },
+      { step: '01', title: 'Deep Technical & Indexation Assessment', desc: 'We analyze server logs, rendering performance, mobile layout stability, and indexing bottlenecks to build a targeted technical roadmap.' },
       { step: '02', title: 'Code Remediation & Architecture Fixes', desc: 'We fix server-side rendering issues, eliminate redirect chains, resolve duplicate canonical tags, and optimize Core Web Vitals.' },
       { step: '03', title: 'On-Page Optimization & Schema Deployment', desc: 'We refine title tags, structure heading hierarchies, tune internal link authority, and deploy JSON-LD schema across key pages.' },
       { step: '04', title: 'Search Console Monitoring & Performance Tracking', desc: 'We monitor daily keyword rankings, Search Console indexation health, and inbound lead conversions to verify long-term growth.' },
     ],
     faqs: [
-      { q: 'What does a technical SEO audit actually inspect and fix?', a: 'A technical SEO audit reviews everything underneath your design: server response times, server-side rendering output, Core Web Vitals, canonical tags, sitemap accuracy, broken links, 4xx/5xx response errors, and structured JSON-LD schema. We fix the backend bottlenecks holding back search engines from indexing and ranking your pages.' },
+      { q: 'What does a technical SEO assessment actually inspect and fix?', a: 'A technical SEO assessment reviews everything underneath your design: server response times, server-side rendering output, Core Web Vitals, canonical tags, sitemap accuracy, broken links, 4xx/5xx response errors, and structured JSON-LD schema. We fix the backend bottlenecks holding back search engines from indexing and ranking your pages.' },
       { q: 'Why is server-side rendering (SSR) critical for Google and AI search engines?', a: 'While Google can execute JavaScript, client-side rendering introduces rendering queues and crawl delays. Non-Google AI crawlers (like GPTBot or PerplexityBot) often skip JavaScript execution entirely. Server-side rendering delivers full pre-rendered HTML instantly, ensuring all crawlers read your content on first contact.' },
       { q: 'How long does it take to see results after technical SEO fixes?', a: 'Technical improvements like fixing indexation errors, server speed, or canonical bugs often yield Search Console indexation gains within 2 to 4 weeks. Organic ranking improvements and traffic growth compound steadily over 60 to 90 days as Google recrawls and reindexes your site.' },
       { q: 'What is structured JSON-LD schema and how does it help AI search?', a: 'Structured data (JSON-LD) provides search engines and AI models with explicit machine-readable metadata about your business, products, location, and answers. This helps AI answer engines understand entity relationships and cite your brand directly when answering user prompts.' },
@@ -150,7 +150,7 @@ export const SERVICES_FLAT = {
         title: 'Los Angeles GEO That Makes You the Answer',
         lede: 'Picture someone asking ChatGPT who to call, and hearing your name.',
         dek: 'That is what Generative Engine Optimization is for. AI assistants no longer hand back ten blue links — they hand back one answer, and we make sure it is yours. Business owners get a referral engine that runs while they sleep, sending ready-to-buy customers straight to the door. Designers get page layouts that stay beautiful for humans and still read cleanly as structured answer blocks for machines. Marketing managers get to own AI search answers in Los Angeles before the competition notices the ground has moved.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=ai-visibility' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=ai-visibility' },
         image: {
           src: '/assets/img/tech-lab-standup.webp',
           alt: 'Reviewing AI assistant citations for a Los Angeles brand',
@@ -246,7 +246,7 @@ export const SERVICES_FLAT = {
         title: 'Los Angeles PPC Management That Pays You Back',
         lede: 'Picture every ad dollar landing in front of someone who is ready to buy.',
         dek: 'That is the difference between running Google Ads and managing them. We cut the broad-match waste, rebuild the campaigns around cost per booked client, and put the budget where the buyers are. Business owners get a predictable stream of paid inquiries they can turn up or down at will. Designers get landing pages that match the ad and convert the click. Marketing managers get conversion attribution clean enough to prove profitability to leadership without hedging.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=sales' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=sales' },
         image: {
           src: '/assets/img/analytics-dashboard-review.webp',
           alt: 'Reviewing Google Ads conversion data for a Los Angeles client',
@@ -257,7 +257,7 @@ export const SERVICES_FLAT = {
         lede: 'Imagine an ad account you never have to apologize for.',
         dek: 'Paid search hits its peak return when the keywords, the ad copy and the landing page experience all say the same thing. We handle the bidding, prune the negative keywords, wire up the conversion tracking, and keep testing until the numbers stop arguing with each other.',
         list: [
-          'Google Ads audits and campaign rebuilds',
+          'Google Ads assessments and campaign rebuilds',
           'Keyword and negative keyword management',
           'Landing page builds and testing',
           'Conversion tracking and call tracking setup',
@@ -294,7 +294,7 @@ export const SERVICES_FLAT = {
       { tag: 'Agency', title: 'Agency PPC & Strategic Management', href: '/services/ai-consulting', desc: 'Our full-service agency ppc team manages bidding, negative keywords, and multi-channel per click advertising for maximum ROI.' },
     ],
     process: [
-      { step: '01', title: 'Audit Google Pay Per Click Cost', desc: 'We analyze your google adwords pay per click account to eliminate wasted spend on irrelevant searches.' },
+      { step: '01', title: 'Analyze Google Pay Per Click Cost', desc: 'We analyze your google adwords pay per click account to eliminate wasted spend on irrelevant searches.' },
       { step: '02', title: 'Rebuild Google Ads Pay Per Click Campaigns', desc: 'We restructure your google ppc ads around high-intent commercial keywords and exact-match ad groups.' },
       { step: '03', title: 'Optimize Pay For Click Advertising Landing Pages', desc: 'We build dedicated landing pages that match your pay per click ads for seamless user conversion.' },
       { step: '04', title: 'Continuous Pay Per Click Agencies Testing', desc: 'As one of the leading pay per click agencies, we continuously test bids and ad copy to lower cost per lead.' },
@@ -344,7 +344,7 @@ export const SERVICES_FLAT = {
         title: 'Los Angeles Content Marketing That Compounds',
         lede: 'Picture a page you published last year still bringing in customers this morning.',
         dek: 'That is what content built on real search intent does. We map what your buyers are actually typing, then build topic clusters that answer it directly instead of circling it. Business owners watch a blog that used to be a chore turn into a line item that earns. Designers get content shaped into layouts people want to stay inside of. Marketing managers get topical authority that builds month over month, and ROI numbers that hold up in front of leadership.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=traffic' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=traffic' },
         image: {
           src: '/assets/img/open-office-desks.webp',
           alt: 'Planning a search-driven content calendar for a Los Angeles client',
@@ -424,7 +424,7 @@ export const SERVICES_FLAT = {
       'Burbank', 'Costa Mesa', 'Culver City', 'North Hollywood', 'Silverlake',
       'Van Nuys', 'Ventura', 'Santa Clarita',
     ],
-    intro: 'Los Angeles web UX design services eliminate user experience friction, optimize mobile-first interactions, and create intuitive digital interfaces that turn casual website visitors into loyal clients. For small and medium business owners, intuitive UX increases customer retention and conversion rates without increasing your ad budget. For UI/UX designers, our component design systems provide a pristine visual framework that merges aesthetic elegance with high-performance usability. For in-house marketing managers, seamless UX design dramatically lowers bounce rates and delivers measurable user engagement metrics that make leadership take notice. We conduct comprehensive UX audits, build interactive wireframes, and ensure WCAG accessibility compliance across every device.',
+    intro: 'Los Angeles web UX design services eliminate user experience friction, optimize mobile-first interactions, and create intuitive digital interfaces that turn casual website visitors into loyal clients. For small and medium business owners, intuitive UX increases customer retention and conversion rates without increasing your ad budget. For UI/UX designers, our component design systems provide a pristine visual framework that merges aesthetic elegance with high-performance usability. For in-house marketing managers, seamless UX design dramatically lowers bounce rates and delivers measurable user engagement metrics that make leadership take notice. We conduct comprehensive UX assessments, build interactive wireframes, and ensure WCAG accessibility compliance across every device.',
     testimonial: {
       quote: 'The interface redesign completely transformed how clients interact with our portal. Mobile appointment bookings doubled within the first month after launch.',
       name: 'Dr. Armen Gregorian',
@@ -443,18 +443,18 @@ export const SERVICES_FLAT = {
     },
     problem: {
       eyebrow: 'The UX Challenge',
-      statement: 'Visitors abandon sites with confusing navigation, small tap targets, or hidden calls to action within seconds. A specialized web UX audit pinpoints interface friction and optimizes your user journey for maximum clarity.',
+      statement: 'Visitors abandon sites with confusing navigation, small tap targets, or hidden calls to action within seconds. A specialized web UX assessment pinpoints interface friction and optimizes your user journey for maximum clarity.',
     },
     capabilities: [
-      { tag: 'Audits', title: 'Web UX Audits & Behavioral Analysis', href: '/glossary/user-experience', desc: 'Uncover drop-off points, layout clutter, and navigation friction through session replays, click tracking, and usability reviews.' },
+      { tag: 'Assessments', title: 'Web UX Assessments & Behavioral Analysis', href: '/glossary/user-experience', desc: 'Uncover drop-off points, layout clutter, and navigation friction through session replays, click tracking, and usability reviews.' },
       { tag: 'Mobile', title: 'Mobile-First UX & Touch Interface Optimization', href: '/glossary/core-web-vitals', desc: 'Craft responsive mobile layouts with intuitive gesture support, clear tap targets, and streamlined mobile navigation menus.' },
       { tag: 'Wireframes', title: 'Information Architecture & Wireframing', href: '/services/web-dev', desc: 'Organize site structure logically and prototype key screen layouts before writing code to ensure effortless user navigation.' },
-      { tag: 'Accessibility', title: 'WCAG Accessibility & Inclusion Compliance', href: '/glossary/user-experience', desc: 'Audit and update digital interfaces to meet WCAG 2.1 accessibility standards, ensuring full usability for all audience segments.' },
+      { tag: 'Accessibility', title: 'WCAG Accessibility & Inclusion Compliance', href: '/glossary/user-experience', desc: 'Assess and update digital interfaces to meet WCAG 2.1 accessibility standards, ensuring full usability for all audience segments.' },
       { tag: 'Systems', title: 'Component Design Systems & Visual UI', href: '/services/web-ux', desc: 'Establish reusable UI component libraries and design tokens that keep your brand visual language consistent across all screens.' },
       { tag: 'Usability', title: 'User Testing & Friction Removal', href: '/glossary/user-experience', desc: 'Validate layout changes with real user task testing to refine form fields, button placements, and content hierarchy.' },
     ],
     process: [
-      { step: '01', title: 'Discovery & UX Audit', desc: 'We analyze site metrics, user heatmaps, and task flows to pinpoint friction causing high bounce rates.' },
+      { step: '01', title: 'Discovery & UX Assessment', desc: 'We analyze site metrics, user heatmaps, and task flows to pinpoint friction causing high bounce rates.' },
       { step: '02', title: 'User Flow & Wireframe Mapping', desc: 'We sketch and prototype clean user journeys that lead visitors directly to key information and conversion points.' },
       { step: '03', title: 'Interface & Component Design', desc: 'Our designers build beautiful, high-contrast, accessible UI components optimized for desktop and mobile.' },
       { step: '04', title: 'Usability Verification & Polish', desc: 'We test across real devices and screen sizes to ensure smooth micro-interactions and effortless navigation.' },
@@ -463,7 +463,7 @@ export const SERVICES_FLAT = {
       { q: 'What is Web UX design and why is it vital for business growth?', a: 'Web UX (User Experience) design focuses on how visitors interact with your website. Good UX ensures pages are clear, fast, and easy to navigate, reducing bounce rates and helping visitors complete key actions like requesting a quote or making a purchase.' },
       { q: 'How does Web UX design differ from Conversion Rate Optimization (CRO)?', a: 'Web UX focuses on overall user satisfaction, interface clarity, accessibility, and navigation ease. CRO specifically tests and optimizes pages to maximize conversion metrics (sales or lead signups). Excellent Web UX lays the groundwork for high CRO performance.' },
       { q: 'Why is mobile-first UX design so critical today?', a: 'Over 65% of search traffic originates on mobile devices. A mobile-first UX approach ensures buttons, forms, menus, and typography are optimized for small touchscreens first, preventing user frustration.' },
-      { q: 'What happens during a professional Web UX audit?', a: 'A professional Web UX audit evaluates your website against usability standards, accessibility rules, visual hierarchy principles, and real visitor recording data to highlight exact areas causing drop-offs.' },
+      { q: 'What happens during a professional Web UX assessment?', a: 'A professional Web UX assessment evaluates your website against usability standards, accessibility rules, visual hierarchy principles, and real visitor recording data to highlight exact areas causing drop-offs.' },
     ],
     ctaTitle: 'Transform your website into an effortless user experience.',
   },

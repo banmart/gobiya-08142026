@@ -58,7 +58,7 @@ export const redirects = {
   '/services/ai-video-ads': '/services/ppc',
   '/capabilities/authority-building': '/services/link-building',
   '/capabilities/conversion-architecture': '/services/cro',
-  '/performance/technical-seo-audit-agency': '/services/technical-seo',
+  '/performance/technical-seo-assessment-agency': '/services/technical-seo',
   '/relations/authority-building-agency': '/services/link-building',
   '/relations/google-shopping-ads-agency': '/services/ppc',
 

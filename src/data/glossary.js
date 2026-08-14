@@ -87,7 +87,7 @@ export const GLOSSARY = [
     slug: 'semantic-search',
     term: 'Semantic Search',
     category: 'AI',
-    shortDefinition: 'Semantic search matches a question to relevant content based on meaning, not just matching keywords — so a page about "cheap website audits" can still surface for "affordable site reviews."',
+    shortDefinition: 'Semantic search matches a question to relevant content based on meaning, not just matching keywords — so a page about "cheap website assessments" can still surface for "affordable site reviews."',
     body: 'Under the hood, this works by turning both the question and the content into numerical vectors and measuring how close they sit together in meaning. It\'s why modern SEO and GEO writing favors clear, declarative statements of fact over keyword-stuffed phrasing — a model matching on meaning doesn\'t need the exact words repeated.',
     relatedSlugs: ['retrieval-augmented-generation', 'passage-ranking', 'large-language-model'],
   },

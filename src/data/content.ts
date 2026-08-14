@@ -40,7 +40,7 @@ export const positioning = {
   columns: [
     {
       title: 'Evidence first',
-      body: 'Every engagement opens with a reproducible audit: server logs, render diffs, index coverage, citation traces. You get the raw evidence, not a scorecard.',
+      body: 'Every engagement opens with a reproducible assessment: server logs, render diffs, index coverage, citation traces. You get the raw evidence, not a scorecard.',
     },
     {
       title: 'Repair, then compound',
@@ -83,7 +83,7 @@ export const proofPoints = [
 export const capabilities = [
   {
     index: '01',
-    title: 'Forensic audit',
+    title: 'Forensic assessment',
     summary:
       'Log-level crawl reconstruction, render-parity testing, and index-coverage forensics. We show you what the crawler saw, not what the plugin reported.',
     tags: ['Log analysis', 'Render parity', 'Index coverage'],
@@ -112,7 +112,7 @@ export const method = {
     {
       index: '01',
       title: 'Diagnose',
-      body: 'A fixed-scope forensic audit. Two weeks, reproducible, delivered as evidence plus a ranked repair list.',
+      body: 'A fixed-scope forensic assessment. Two weeks, reproducible, delivered as evidence plus a ranked repair list.',
     },
     {
       index: '02',
@@ -139,7 +139,7 @@ export const plans = [
     featured: false,
     summary: 'Local foundation building for a single market.',
     includes: [
-      'Technical SEO audit and repair',
+      'Technical SEO assessment and repair',
       'Google Business Profile management',
       'Local landing page architecture',
       'Core Web Vitals field-data work',

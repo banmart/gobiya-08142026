@@ -29,7 +29,7 @@ export const GET: APIRoute = () => {
     `> ${site.defaultDescription}`,
     '',
     `${brand.name} is a search practice based in ${brand.locality}, ${brand.region}, founded in ${brand.founded}.`,
-    'Engagements open with a reproducible forensic audit — server logs, render diffs, index coverage,',
+    'Engagements open with a reproducible forensic assessment — server logs, render diffs, index coverage,',
     'and AI citation traces — and structural repairs ship before growth work.',
     '',
     `Contact: ${brand.email} · ${brand.phoneDisplay}`,

@@ -161,7 +161,7 @@ export const CASE_STUDIES = [
         {
           heading: 'The challenge: a slow website and manual sales outreach',
           paragraphs: [
-            'Safety-Centric.com helps businesses get through safety compliance audits, but their old WordPress website loaded slowly, had security weaknesses, and worked only as an online brochure. Their sales team relied on manually finding leads and cold outreach, which was slow and inefficient.',
+            'Safety-Centric.com helps businesses get through safety compliance assessments, but their old WordPress website loaded slowly, had security weaknesses, and worked only as an online brochure. Their sales team relied on manually finding leads and cold outreach, which was slow and inefficient.',
             'To grow, they needed a fast, modern website that actively gathered leads, tracked client relationships, and automatically followed up at the right moments — without someone doing it by hand.',
           ],
         },

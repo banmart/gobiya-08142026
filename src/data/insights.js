@@ -93,14 +93,14 @@ export const INSIGHTS = [
           "Many growing companies fall into predictable traps when partnering with full-service marketing agencies for search growth:",
           "1. **Assuming High Retainers Equal Senior Talent:** Generalist agencies often allocate high monthly fees toward account management overhead and executive margins, while delegating actual SEO execution to junior coordinators.",
           "2. **Accepting Vanity Traffic Reports:** Full-service agencies frequently report on non-converting top-of-funnel blog traffic or branded keyword impressions rather than tracking pipeline contribution, commercial lead conversion, and non-brand organic growth.",
-          "3. **Neglecting Technical Architecture:** Generalist agencies rarely perform deep server-side rendering (SSR) audits, vector extraction density reviews, or JSON-LD schema engineering."
+          "3. **Neglecting Technical Architecture:** Generalist agencies rarely perform deep server-side rendering (SSR) assessments, vector extraction density reviews, or JSON-LD schema engineering."
         ]
       },
       {
         "heading": "The 90-Day Transition Playbook: Switching to a Search Specialist",
         "paragraphs": [
           "If your business currently relies on an underperforming full-service retainer, transition smoothly using this 90-day playbook:",
-          "**Days 1–30: Technical Audit & Baseline Isolation.** Conduct a root-and-branch crawl audit to resolve hidden JavaScript indexation bugs, server timeouts, and broken redirects. Establish baseline AI citation share of voice.",
+          "**Days 1–30: Technical Assessment & Baseline Isolation.** Conduct a root-and-branch crawl analysis to resolve hidden JavaScript indexation bugs, server timeouts, and broken redirects. Establish baseline AI citation share of voice.",
           "**Days 31–60: Commercial Landing Page Overhaul.** Redesign key revenue-generating service pages to feature direct 2-sentence answers, high-density bulleted lists, and transparent pricing structures.",
           "**Days 61–90: Digital PR & GEO Citation Scaling.** Launch targeted digital PR outreach to acquire high-authority trade publications and implement `LocalBusiness` or `Organization` schema pipelines."
         ]
@@ -142,7 +142,7 @@ export const INSIGHTS = [
     "dek": "Most SMBs overpay for generic retainer work. Here is the exact subset of SEO services that actually moves the needle for a small business.",
     "metaDescription": "What SEO services for small business actually drive revenue? A breakdown of the essential search engine marketing tasks every SMB needs, and what to skip.",
     "readTime": "9 min read",
-    "answer": "Essential SEO services for small businesses include local Google Business Profile optimization, technical indexation audits, hyper-targeted local service page creation, and structured schema implementation. Small businesses do not need expensive $10k/mo broad retainers or generic blog posting; they require focused local search engine marketing targeting high-intent, bottom-of-funnel customer queries in their specific geographic service area.",
+    "answer": "Essential SEO services for small businesses include local Google Business Profile optimization, technical indexation assessments, hyper-targeted local service page creation, and structured schema implementation. Small businesses do not need expensive $10k/mo broad retainers or generic blog posting; they require focused local search engine marketing targeting high-intent, bottom-of-funnel customer queries in their specific geographic service area.",
     "body": [
       {
         "heading": "The Trap of Generic Monthly SEO Retainers for SMBs",
@@ -224,7 +224,7 @@ export const INSIGHTS = [
         "paragraphs": [
           "Follow this 4-step framework to dominate your local geographic radius:",
           "Step 1: **Fix Technical Indexation & Mobile Speed.** Ensure your website loads in under 1.5 seconds on mobile devices with zero layout shift.",
-          "Step 2: **Clean Up Local Directory Citations.** Audit Apple Maps, Bing Places, Yelp, and local chamber of commerce directories for 100% exact Name, Address, and Phone (NAP) consistency.",
+          "Step 2: **Clean Up Local Directory Citations.** Review Apple Maps, Bing Places, Yelp, and local chamber of commerce directories for 100% exact Name, Address, and Phone (NAP) consistency.",
           "Step 3: **Deploy Hyper-Local Schema.** Add `LocalBusiness` JSON-LD schema containing exact latitude and longitude coordinates, opening hours, and accepted payment types.",
           "Step 4: **Automate Post-Service Review Requests.** Send automated SMS text requests to every customer immediately following service completion."
         ]
@@ -676,7 +676,7 @@ export const INSIGHTS = [
           "<strong>2. Create citeable assets, not just rankable content.</strong> The single biggest differentiator between cited and uncited pages is the presence of original data, proprietary statistics, or first-party research. If your page contains nothing that can’t be found on three other sites, AI has no reason to cite you specifically — this is the core of our <a href=\"/services/geo\">GEO &amp; AI content writing</a> work.",
           "<strong>3. Cite others to be cited.</strong> Pages that substantiate claims with outbound links to authoritative sources are cited significantly more often. This mirrors academic publishing — a well-referenced paper signals rigor. The same logic applies to AI retrieval systems.",
           "<strong>4. Update aggressively.</strong> The freshness window for AI citation is 6–12 months, not the 2–3 years many teams assume for evergreen SEO content. Build a quarterly update cadence into every pillar page — our <a href=\"/content-marketing-services\">content strategy service</a> is built around exactly this cadence.",
-          "<strong>5. Fix your entity data.</strong> For local businesses especially, conflicting information across your website, Google Business Profile, directory listings, and social profiles creates ambiguity that AI models resolve by citing someone else. Audit and align your entity data across every surface, starting with your <a href=\"/work\">Google Business Profile and citations</a>.",
+          "<strong>5. Fix your entity data.</strong> For local businesses especially, conflicting information across your website, Google Business Profile, directory listings, and social profiles creates ambiguity that AI models resolve by citing someone else. Assess and align your entity data across every surface, starting with your <a href=\"/work\">Google Business Profile and citations</a>.",
           "<strong>6. Invest in structured data.</strong> Pages with three or more schema types (FAQ, HowTo, LocalBusiness, Article, etc.) were cited at more than double the rate of pages with minimal or no schema. Structured data helps AI models understand what your page is and when to retrieve it — part of the <a href=\"/services/technical-seo\">technical SEO foundation</a> that makes everything else in this list actually crawlable."
         ]
       },
@@ -797,7 +797,7 @@ export const INSIGHTS = [
     "dek": "A step-by-step way to tell whether a traffic drop is a Google algorithm update, a manual action, or a technical break — and what to check first.",
     "metaDescription": "Website traffic dropped suddenly? Here’s how to diagnose whether it’s a Google algorithm update, a manual action, or a technical issue, and what to do about each.",
     "readTime": "10 min read",
-    "answer": "A sudden drop in website organic traffic is typically caused by one of three core triggers: a technical regression (such as broken redirects, accidental noindex tags, or server errors), a Google core algorithm update reassessing content quality, or an explicit manual action for policy violations. To diagnose the cause, immediately check Google Search Console for manual actions and indexing errors, overlay your traffic drop dates against official Google update rollouts, and run a comprehensive crawl audit to rule out technical breaks.",
+    "answer": "A sudden drop in website organic traffic is typically caused by one of three core triggers: a technical regression (such as broken redirects, accidental noindex tags, or server errors), a Google core algorithm update reassessing content quality, or an explicit manual action for policy violations. To diagnose the cause, immediately check Google Search Console for manual actions and indexing errors, overlay your traffic drop dates against official Google update rollouts, and run a comprehensive crawl assessment to rule out technical breaks.",
     "body": [
       {
         "heading": "Immediate Triage: The 15-Minute Emergency Checklist",
@@ -872,9 +872,9 @@ export const INSIGHTS = [
         "heading": "Step-by-Step Recovery Protocol",
         "paragraphs": [
           "Recovering from a traffic drop requires disciplined execution across four phases:",
-          "<strong>Phase 1: Technical Remediation.</strong> Fix all 4xx/5xx server errors, remove duplicate content tags, resolve canonical conflicts, and fix JavaScript rendering issues. See our <a href=\"/services/technical-seo\">Technical SEO Audit service</a>.",
-          "<strong>Phase 2: Content Audit & Consolidation.</strong> Prune or 301-redirect low-quality, zero-traffic pages. Upgrade thin articles into comprehensive longform resources with expert bylines, original data, and structured tables.",
-          "<strong>Phase 3: Backlink & Entity Clean-up.</strong> Audit your backlink profile in Ahrefs or Semrush. If you suspect algorithmic link devaluation or past negative SEO, review our guide on <a href=\"/insights/toxic-backlinks-disavow-guide\">Toxic Backlinks and Disavow Management</a>.",
+          "<strong>Phase 1: Technical Remediation.</strong> Fix all 4xx/5xx server errors, remove duplicate content tags, resolve canonical conflicts, and fix JavaScript rendering issues. See our <a href=\"/services/technical-seo\">Technical SEO Assessment service</a>.",
+          "<strong>Phase 2: Content Assessment & Consolidation.</strong> Prune or 301-redirect low-quality, zero-traffic pages. Upgrade thin articles into comprehensive longform resources with expert bylines, original data, and structured tables.",
+          "<strong>Phase 3: Backlink & Entity Clean-up.</strong> Analyze your backlink profile in Ahrefs or Semrush. If you suspect algorithmic link devaluation or past negative SEO, review our guide on <a href=\"/insights/toxic-backlinks-disavow-guide\">Toxic Backlinks and Disavow Management</a>.",
           "<strong>Phase 4: Re-indexing & Tracking.</strong> Submit updated XML sitemaps via Google Search Console and monitor IndexNow feeds to accelerate re-crawling."
         ]
       },
@@ -1008,7 +1008,7 @@ export const INSIGHTS = [
         "heading": "Measuring Success in an Era of Zero-Click Search",
         "paragraphs": [
           "As AI Overviews and chat interfaces answer more user queries directly, traditional organic click volume may flatten even as brand influence grows. Measuring GEO success requires updating your analytics stack:",
-          "Track impression share in Google Search Console for AI Overview queries, monitor brand query volume spikes in Google Trends, and conduct monthly manual audits across ChatGPT, Perplexity, and Gemini for your core commercial intent prompts."
+          "Track impression share in Google Search Console for AI Overview queries, monitor brand query volume spikes in Google Trends, and conduct monthly manual assessments across ChatGPT, Perplexity, and Gemini for your core commercial intent prompts."
         ]
       },
       {
@@ -1146,14 +1146,14 @@ export const INSIGHTS = [
               "<strong>Clean Robots.txt Rules:</strong> Verify that <code>GPTBot</code>, <code>PerplexityBot</code>, <code>ClaudeBot</code>, and <code>OAI-SearchBot</code> are not blocked in your robots.txt file unless you explicitly intend to opt out."
             ]
           },
-          "For a complete audit of technical crawlability, explore our <a href=\"/services/technical-seo\">SEO & Discoverability service</a> or review our <a href=\"/work/quickpass-aid\">QuickPass AiD technical case study</a>."
+          "For a complete assessment of technical crawlability, explore our <a href=\"/services/technical-seo\">SEO & Discoverability service</a> or review our <a href=\"/work/quickpass-aid\">QuickPass AiD technical case study</a>."
         ]
       },
       {
         "heading": "Actionable 5-Step AI Citation Framework",
         "paragraphs": [
           "Implement this 5-step framework across your top 20 revenue-generating landing pages:",
-          "<strong>Step 1: Audit AI baseline visibility.</strong> Query ChatGPT, Perplexity, and Gemini with 15 natural buyer questions. Document whether your brand, competitors, or third parties appear.",
+          "<strong>Step 1: Assess AI baseline visibility.</strong> Query ChatGPT, Perplexity, and Gemini with 15 natural buyer questions. Document whether your brand, competitors, or third parties appear.",
           "<strong>Step 2: Add direct Q&A blocks.</strong> Insert a 3-question FAQ section at the bottom of key pages using exact buyer phrasing and 40-word direct answers.",
           "<strong>Step 3: Embed original data points.</strong> Add unique statistics, customer survey results, or internal benchmarks. AI engines cite original data 4.5x more often than generic advice.",
           "<strong>Step 4: Outbound cite authoritative sources.</strong> Add 3–6 external links to recognized industry studies or academic papers. Outbound citations signal research rigor to RAG rankers.",
@@ -1218,7 +1218,7 @@ export const INSIGHTS = [
       {
         "heading": "The 20-Point Local GBP Optimization Checklist",
         "paragraphs": [
-          "Work through this comprehensive checklist to audit and optimize your local profile:",
+          "Work through this comprehensive checklist to assess and optimize your local profile:",
           {
             "type": "table",
             "headers": [
@@ -1310,7 +1310,7 @@ export const INSIGHTS = [
         "heading": "Combating Fake Competitor Map Listings and Spam Redressal",
         "paragraphs": [
           "Unscrupulous local competitors often manipulate Google Maps by stuffing keywords into their business names (e.g., \"Glendale Emergency Plumber Pros\") or creating fake addresses in virtual office spaces.",
-          "Protect your map pack positions by actively auditing your local radius:",
+          "Protect your map pack positions by actively assessing your local radius:",
           "• **Identify Guideline Violations:** Flag competitors using non-legal keyword-stuffed names, P.O. boxes, or unverified residential addresses.",
           "• **Submit Redressal Complaints:** File official Google Business Profile Spam Redressal forms with photographic proof and state business registry records."
         ]
@@ -1436,7 +1436,7 @@ export const INSIGHTS = [
       {
         "heading": "Measuring Real-User Data vs. Lab Data",
         "paragraphs": [
-          "Lighthouse lab audits in Chrome DevTools provide helpful instant diagnostics, but Google’s ranking algorithm relies exclusively on 28-day field data collected from real Chrome users (CrUX dataset). Monitor real-user metrics inside Google Search Console’s Core Web Vitals report."
+          "Lighthouse lab assessments in Chrome DevTools provide helpful instant diagnostics, but Google’s ranking algorithm relies exclusively on 28-day field data collected from real Chrome users (CrUX dataset). Monitor real-user metrics inside Google Search Console’s Core Web Vitals report."
         ]
       },
       {
@@ -1502,7 +1502,7 @@ export const INSIGHTS = [
     "dek": "SEO pricing ranges widely because the work itself varies widely. Here’s what actually drives cost up or down, and how to evaluate an offer that looks too cheap.",
     "metaDescription": "How much does SEO cost? A realistic breakdown of monthly retainer, project-based, and hourly pricing models, what drives cost, and red flags in cheap SEO offers.",
     "readTime": "10 min read",
-    "answer": "Professional SEO services in 2026 typically range from $2,500 to $10,000+ per month for ongoing retainers, $5,000 to $25,000+ for dedicated technical audit and strategy sprints, or $150 to $350 per hour for specialized consulting. Pricing depends on competitive difficulty, site scale, historical technical debt, and whether work includes advanced Generative Engine Optimization (GEO) and digital PR.",
+    "answer": "Professional SEO services in 2026 typically range from $2,500 to $10,000+ per month for ongoing retainers, $5,000 to $25,000+ for dedicated technical assessment and strategy sprints, or $150 to $350 per hour for specialized consulting. Pricing depends on competitive difficulty, site scale, historical technical debt, and whether work includes advanced Generative Engine Optimization (GEO) and digital PR.",
     "body": [
       {
         "heading": "Understanding SEO Pricing Models in 2026",
@@ -1513,7 +1513,7 @@ export const INSIGHTS = [
             "type": "list",
             "items": [
               "<strong>Monthly Retainers ($2,500 – $10,000+/mo):</strong> Comprehensive ongoing strategy, technical monitoring, content creation, link acquisition, and GEO tracking.",
-              "<strong>Project Sprints ($5,000 – $35,000 fixed fee):</strong> Dedicated, scope-bound engagements such as site migration protection, technical audits, or complete content overhauls.",
+              "<strong>Project Sprints ($5,000 – $35,000 fixed fee):</strong> Dedicated, scope-bound engagements such as site migration protection, technical assessments, or complete content overhauls.",
               "<strong>Hourly Consulting ($150 – $400/hr):</strong> High-level strategic advice, executive advisory, or complex technical troubleshooting."
             ]
           }
@@ -1637,7 +1637,7 @@ export const INSIGHTS = [
     "takeaways": [
       "Quality SEO retainers range from $2,500/mo for local SMBs to $10,000+/mo for competitive B2B and enterprise brands.",
       "Avoid cheap $500/mo packages which rely on automated spam and low-quality links that risk Google penalties.",
-      "Project sprints ($5,000–$25,000) are ideal for technical audits, site migrations, and foundational overhauls.",
+      "Project sprints ($5,000–$25,000) are ideal for technical assessments, site migrations, and foundational overhauls.",
       "SEO is a compounding equity asset; initial traction occurs within 90 days with major ROI compounding over 12–24 months.",
       "Ensure your budget includes both traditional organic search and modern AI search visibility (GEO)."
     ],
@@ -1652,7 +1652,7 @@ export const INSIGHTS = [
       },
       {
         "q": "How do I know if an SEO agency is worth the price?",
-        "a": "Ask for verifiable client case studies showing real revenue growth (not just vanity keyword ranks), inspect their technical auditing depth, and ensure they have a clear strategy for AI search engines."
+        "a": "Ask for verifiable client case studies showing real revenue growth (not just vanity keyword ranks), inspect their technical analysis depth, and ensure they have a clear strategy for AI search engines."
       },
       {
         "q": "How does SEO pricing compare for small businesses?",
@@ -1823,9 +1823,9 @@ export const INSIGHTS = [
     "category": "Authority & Links",
     "title": "Toxic Backlinks: How to Identify and Disavow Bad Links",
     "dek": "Not every low-quality link needs to be disavowed. Here’s how to tell which ones are actually a risk, and how to build a disavow file correctly.",
-    "metaDescription": "How to identify toxic backlinks and use Google’s disavow tool correctly: what makes a link risky, how to audit your backlink profile, and when disavowing isn’t necessary.",
+    "metaDescription": "How to identify toxic backlinks and use Google’s disavow tool correctly: what makes a link risky, how to assess your backlink profile, and when disavowing isn’t necessary.",
     "readTime": "9 min read",
-    "answer": "Toxic backlinks are unnatural, spammy, or paid inbound links that violate Google Search Essentials guidelines. While Google’s SpamBrain algorithm automatically neutralizes most low-quality web links, severe manual actions or large-scale malicious negative SEO campaigns require auditing your link profile in tools like Ahrefs/Semrush and submitting a clean disavow file (`disavow.txt`) via Google’s Search Console Disavow Tool.",
+    "answer": "Toxic backlinks are unnatural, spammy, or paid inbound links that violate Google Search Essentials guidelines. While Google’s SpamBrain algorithm automatically neutralizes most low-quality web links, severe manual actions or large-scale malicious negative SEO campaigns require analyzing your link profile in tools like Ahrefs/Semrush and submitting a clean disavow file (`disavow.txt`) via Google’s Search Console Disavow Tool.",
     "body": [
       {
         "heading": "Understanding Toxic Links vs. Normal Web Noise",
@@ -1856,12 +1856,12 @@ export const INSIGHTS = [
             "rows": [
               [
                 "Received a Google Manual Action for Unnatural Links",
-                "Manual audit, outreach removal attempts, file disavow",
+                "Manual assessment, outreach removal attempts, file disavow",
                 "YES (Mandatory)"
               ],
               [
                 "Targeted by Large-Scale Malicious Negative SEO Attack",
-                "Audit link velocity spikes, disavow spam domains",
+                "Analyze link velocity spikes, disavow spam domains",
                 "YES (Recommended)"
               ],
               [
@@ -1880,7 +1880,7 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Step-by-Step Backlink Audit and Disavow Protocol",
+        "heading": "Step-by-Step Backlink Assessment and Disavow Protocol",
         "paragraphs": [
           "If a manual action or confirmed negative SEO attack requires a disavow file, execute this step-by-step protocol:",
           "<strong>Step 1: Export Complete Backlink Data.</strong> Pull raw backlink reports from Ahrefs, Semrush, Moz, and Google Search Console to compile a master URL list.",
@@ -1923,7 +1923,7 @@ export const INSIGHTS = [
           "• File format must be plain text encoded in UTF-8 or 7-bit ASCII.",
           "• To disavow an entire domain, use the syntax `domain:spammersite.com`.",
           "• To disavow a specific single URL, paste the full HTTP address.",
-          "• Add explanatory comment lines starting with `#` documenting your removal efforts for audit history."
+          "• Add explanatory comment lines starting with `#` documenting your removal efforts for record history."
         ]
       },
       {
@@ -2043,7 +2043,7 @@ export const INSIGHTS = [
         "heading": "What We Do When the Number Is Down, Not Up",
         "paragraphs": [
           "The same weekly pull that produced this quarter's 34% also showed one active account, American Livescan, with impressions and clicks both trending down across every window right now, even though its average ranking position improved. We didn't leave that account out of the aggregate to protect the headline number, and we didn't publish a misleading \"win\" card on its case study page either — it currently shows only the one metric that's genuinely favorable.",
-          "A declining trend gets the same diagnostic process as a full penalty recovery: isolate whether the drop is a technical regression or a quality-signal issue, audit server logs and crawl budget, verify server-side rendering is intact, and check that a recent site change didn't strip internal links to core pages. Read the full diagnostic approach in our <a href=\"/services/technical-seo\">Google Penalty Recovery</a> outcome page."
+          "A declining trend gets the same diagnostic process as a full penalty recovery: isolate whether the drop is a technical regression or a quality-signal issue, analyze server logs and crawl budget, verify server-side rendering is intact, and check that a recent site change didn't strip internal links to core pages. Read the full diagnostic approach in our <a href=\"/services/technical-seo\">Google Penalty Recovery</a> outcome page."
         ]
       },
       {
@@ -2111,7 +2111,7 @@ export const INSIGHTS = [
             "rows": [
               [
                 "Trigger",
-                "Human webspam reviewer manual audit",
+                "Human webspam reviewer manual assessment",
                 "Automated machine learning quality systems"
               ],
               [
@@ -2166,8 +2166,8 @@ export const INSIGHTS = [
       {
         "heading": "Step-by-Step Remediation Framework",
         "paragraphs": [
-          "If facing a manual action: audit GSC messages, fix all policy violations, compile outreach records, and submit your reconsideration request.",
-          "If facing an algorithmic drop: audit technical crawling in our <a href=\"/services/technical-seo\">SEO Discoverability service</a>, rewrite thin content via our <a href=\"/services/geo\">GEO Content Writing service</a>, and improve entity signals."
+          "If facing a manual action: review GSC messages, fix all policy violations, compile outreach records, and submit your reconsideration request.",
+          "If facing an algorithmic drop: assess technical crawling in our <a href=\"/services/technical-seo\">SEO Discoverability service</a>, rewrite thin content via our <a href=\"/services/geo\">GEO Content Writing service</a>, and improve entity signals."
         ]
       },
       {
@@ -2181,7 +2181,7 @@ export const INSIGHTS = [
         "paragraphs": [
           "If your domain receives a manual action notice, your Reconsideration Request must be thorough:",
           "• Document every step taken to resolve the violation (e.g., outreach emails sent to webmasters asking for link removal).",
-          "• Provide a link to a shared Google Sheet containing your full backlink audit and disavow file.",
+          "• Provide a link to a shared Google Sheet containing your full backlink assessment and disavow file.",
           "• Maintain a humble, professional tone acknowledging past mistakes and confirming future compliance."
         ]
       },
@@ -2228,7 +2228,7 @@ export const INSIGHTS = [
       },
       {
         "q": "What happens if my reconsideration request is rejected?",
-        "a": "Review Google’s rejection feedback, conduct a deeper audit of your site or link profile, remove remaining violations, and submit a new request with updated documentation."
+        "a": "Review Google’s rejection feedback, conduct a deeper assessment of your site or link profile, remove remaining violations, and submit a new request with updated documentation."
       }
     ],
     "relatedHref": "/services/technical-seo",
@@ -2326,9 +2326,9 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Evaluating Agency Technical Audits During Pitch Presentations",
+        "heading": "Evaluating Agency Technical Assessments During Pitch Presentations",
         "paragraphs": [
-          "When evaluating prospective B2B agencies during pitch presentations, request a live technical audit of your domain. A tier-1 agency will highlight specific JavaScript rendering failures, server-side pre-rendering needs, JSON-LD schema gaps, and vector extraction density metrics rather than delivering generic automated Lighthouse reports."
+          "When evaluating prospective B2B agencies during pitch presentations, request a live technical assessment of your domain. A tier-1 agency will highlight specific JavaScript rendering failures, server-side pre-rendering needs, JSON-LD schema gaps, and vector extraction density metrics rather than delivering generic automated Lighthouse reports."
         ]
       },
       {
@@ -2354,7 +2354,7 @@ export const INSIGHTS = [
         "heading": "Establishing SLA Guarantees and Direct Engineering Access",
         "paragraphs": [
           "Top enterprise B2B brands require service level agreements (SLAs) that extend beyond monthly reporting slides.",
-          "When negotiating agency contracts, demand direct access to senior technical engineers (not junior account managers), guaranteed sub-24-hour response windows for critical site bugs, and quarterly architectural audits to ensure ongoing alignment with evolving search algorithms.",
+          "When negotiating agency contracts, demand direct access to senior technical engineers (not junior account managers), guaranteed sub-24-hour response windows for critical site bugs, and quarterly architectural assessments to ensure ongoing alignment with evolving search algorithms.",
           "Review our client engagement model in <a href=\"/services/technical-seo\">SEO & Discoverability Services</a>."
         ]
       }
@@ -2863,7 +2863,7 @@ export const INSIGHTS = [
               ],
               [
                 "2. Interactive Value Layer",
-                "Audit tools, calculators, instant quote forms, whitepapers",
+                "Assessment tools, calculators, instant quote forms, whitepapers",
                 "Captures contact details in exchange for immediate value"
               ],
               [
@@ -3142,7 +3142,7 @@ export const INSIGHTS = [
     "dek": "Combining organic search signals with outbound sales lets a B2B team prioritize outreach toward accounts already showing real buying intent.",
     "metaDescription": "Outbound SEO prospecting: how B2B sales and marketing teams use organic search signals — keyword research, competitor gaps, and on-site behavior — to prioritize outbound outreach.",
     "readTime": "9 min read",
-    "answer": "Outbound SEO prospecting is the practice of using public search engine data, technical site audits, keyword rankings, and AI visibility gaps to identify high-intent, sales-ready accounts. Instead of sending generic cold outreach, outbound sales teams leverage real-time SEO diagnostic data to deliver hyper-relevant, problem-focused sales pitches that achieve dramatically higher response rates.",
+    "answer": "Outbound SEO prospecting is the practice of using public search engine data, technical site assessments, keyword rankings, and AI visibility gaps to identify high-intent, sales-ready accounts. Instead of sending generic cold outreach, outbound sales teams leverage real-time SEO diagnostic data to deliver hyper-relevant, problem-focused sales pitches that achieve dramatically higher response rates.",
     "body": [
       {
         "heading": "Transforming Raw Search Data into Sales Intelligence",
@@ -3181,7 +3181,7 @@ export const INSIGHTS = [
                 "Identify decision-maker (CMO, VP Growth)"
               ],
               [
-                "Step 2: Technical & Traffic Audit",
+                "Step 2: Technical & Traffic Assessment",
                 "Scan domain for rendering bugs & traffic drops",
                 "Ahrefs, Google Rich Results Test",
                 "Expose hidden technical loss or indexing error"
@@ -3196,15 +3196,15 @@ export const INSIGHTS = [
                 "Step 4: Hyper-Relevant Outreach",
                 "Send 45-second screen recording showing exact bug & fix",
                 "Loom, custom email",
-                "Offer complimentary 15-min strategy audit"
+                "Offer complimentary 15-min strategy assessment"
               ]
             ]
           },
-          "See how technical audits reveal hidden value in our <a href=\"/services/technical-seo\">SEO Discoverability solutions</a>."
+          "See how technical assessments reveal hidden value in our <a href=\"/services/technical-seo\">SEO Discoverability solutions</a>."
         ]
       },
       {
-        "heading": "Framing Technical SEO Audits as Revenue Opportunities",
+        "heading": "Framing Technical SEO Assessments as Revenue Opportunities",
         "paragraphs": [
           "When reaching out to executive decision-makers (CMOs, Founders, VPs), avoid dense technical jargon like \"broken canonical tags\" or \"INP latencies.\"",
           "Translate technical defects into financial pipeline impacts: \"Your recent site redesign created an indexation issue that is currently blocking your sales team from receiving approximately 40 qualified demo requests per month.\"",
@@ -3219,7 +3219,7 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Crafting High-Converting Video Audit Outreach Messages",
+        "heading": "Crafting High-Converting Video Assessment Outreach Messages",
         "paragraphs": [
           "Keep outbound video teardowns under 45 seconds: state the specific technical bug in the first 10 seconds, show the pipeline impact, and offer a 15-minute resolution call."
         ]
@@ -3227,7 +3227,7 @@ export const INSIGHTS = [
       {
         "heading": "Scripting 45-Second Video Teardowns for Outbound Prospects",
         "paragraphs": [
-          "Structure short video audits for maximum response rates: state the target account’s specific technical bug in the first 10 seconds, demonstrate the lost lead volume, show how competitors are capturing the traffic, and offer a 15-minute resolution call."
+          "Structure short video assessments for maximum response rates: state the target account’s specific technical bug in the first 10 seconds, demonstrate the lost lead volume, show how competitors are capturing the traffic, and offer a 15-minute resolution call."
         ]
       },
       {
@@ -3240,7 +3240,7 @@ export const INSIGHTS = [
         "heading": "Scaling Outbound SEO Prospecting Across Your Sales Team",
         "paragraphs": [
           "Systematize outbound SEO prospecting across your business development reps (BDRs):",
-          "1. Create standardized 45-second Loom video audit scripts focusing on technical rendering bugs, traffic drops, and missing AI search citations.",
+          "1. Create standardized 45-second Loom video assessment scripts focusing on technical rendering bugs, traffic drops, and missing AI search citations.",
           "2. Build customized email templates referencing specific GSC or Ahrefs data points.",
           "3. Train reps to translate technical defects into lost financial pipeline metrics during discovery calls."
         ]
@@ -3259,9 +3259,9 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Converting Technical Audit Prospects into Retainer Clients",
+        "heading": "Converting Technical Assessment Prospects into Retainer Clients",
         "paragraphs": [
-          "When an outbound prospect responds to a technical video audit, structure the follow-up meeting around solutions rather than problems. Present a clear 90-day remediation roadmap showing how fixing JavaScript rendering bugs or schema gaps will capture lost commercial pipeline.",
+          "When an outbound prospect responds to a technical video assessment, structure the follow-up meeting around solutions rather than problems. Present a clear 90-day remediation roadmap showing how fixing JavaScript rendering bugs or schema gaps will capture lost commercial pipeline.",
           "Review our turnaround methodologies in <a href=\"/work/quickpass-aid\">QuickPass AiD</a> and <a href=\"/work/safetycentric\">SafetyCentric</a>."
         ]
       }
@@ -3270,7 +3270,7 @@ export const INSIGHTS = [
       "Outbound SEO prospecting uses real-time search data and technical gaps to power hyper-relevant sales outreach.",
       "Identify triggers like algorithm traffic drops, JS rendering bugs, high PPC ad spend, or missing AI search citations.",
       "Always translate technical SEO findings into financial pipeline metrics (lost leads, lost ARR).",
-      "Use short 45-second video audits to demonstrate proof before asking for a sales call.",
+      "Use short 45-second video assessments to demonstrate proof before asking for a sales call.",
       "Ensure your own agency domain exhibits flawless E-E-A-T and GEO authority to validate your outbound outreach."
     ],
     "faqs": [
@@ -3422,7 +3422,7 @@ export const INSIGHTS = [
       {
         "heading": "Sustaining Enterprise Search Authority Over Multi-Year Horizions",
         "paragraphs": [
-          "Sustaining B2B search market share requires balancing technical architecture with high-density editorial assets. Conduct quarterly technical audits, update top revenue pages with fresh research data, and expand Generative Engine Optimization (GEO) coverage as AI search platforms evolve."
+          "Sustaining B2B search market share requires balancing technical architecture with high-density editorial assets. Conduct quarterly technical assessments, update top revenue pages with fresh research data, and expand Generative Engine Optimization (GEO) coverage as AI search platforms evolve."
         ]
       },
       {
@@ -3667,7 +3667,7 @@ export const INSIGHTS = [
         "heading": "Step-by-Step Entity SEO Remediation Workflow",
         "paragraphs": [
           "Execute this step-by-step remediation workflow following an algorithm drop:",
-          "<strong>Step 1: Audit existing JSON-LD schema.</strong> Ensure your site implements <code>Organization</code>, <code>Person</code>, <code>Article</code>, and <code>LocalBusiness</code> schema using strict schema.org vocabulary.",
+          "<strong>Step 1: Assess existing JSON-LD schema.</strong> Ensure your site implements <code>Organization</code>, <code>Person</code>, <code>Article</code>, and <code>LocalBusiness</code> schema using strict schema.org vocabulary.",
           "<strong>Step 2: Add `sameAs` array properties.</strong> Link your entity schema directly to your official Wikipedia, Wikidata, Crunchbase, LinkedIn, and major industry association directory profiles.",
           "<strong>Step 3: Establish explicit author bylines.</strong> Replace generic \"Admin\" or \"Staff\" bylines with detailed expert author pages featuring professional credentials and links to personal publications.",
           "<strong>Step 4: Clean up external citation conflicts.</strong> Resolve conflicting business names, addresses, or phone numbers across third-party business directories."
@@ -3693,9 +3693,9 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Auditing and Cleaning Up Conflicting Brand Citations",
+        "heading": "Assessing and Cleaning Up Conflicting Brand Citations",
         "paragraphs": [
-          "Audit your brand across major data aggregators (Localeze, Neustar, Factual) to resolve conflicting business names, addresses, or phone numbers that create entity ambiguity in Google Knowledge Graph."
+          "Assess your brand across major data aggregators (Localeze, Neustar, Factual) to resolve conflicting business names, addresses, or phone numbers that create entity ambiguity in Google Knowledge Graph."
         ]
       },
       {
@@ -3730,9 +3730,9 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Maintaining Real-Time Knowledge Graph Entity Audits",
+        "heading": "Maintaining Real-Time Knowledge Graph Entity Assessments",
         "paragraphs": [
-          "Perform bi-annual audits of your brand entity using Google’s Knowledge Graph Search API. Verify that official social profiles, executive author bylines, primary industry categories, and corporate press mentions remain correctly linked in Google’s structured databases."
+          "Perform bi-annual assessments of your brand entity using Google’s Knowledge Graph Search API. Verify that official social profiles, executive author bylines, primary industry categories, and corporate press mentions remain correctly linked in Google’s structured databases."
         ]
       }
     ],
@@ -4028,7 +4028,7 @@ export const INSIGHTS = [
       {
         "heading": "Monitoring AI Retrieval Performance Across New LLM Models",
         "paragraphs": [
-          "AI models evolve rapidly. Establish a monthly prompt auditing workflow to test how your domain is retrieved and cited across newly released LLM versions (GPT-4o, Claude 3.5, Gemini 1.5, Perplexity Pro)."
+          "AI models evolve rapidly. Establish a monthly prompt analysis workflow to test how your domain is retrieved and cited across newly released LLM versions (GPT-4o, Claude 3.5, Gemini 1.5, Perplexity Pro)."
         ]
       },
       {
@@ -4201,7 +4201,7 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Evaluating Agency Technical Audits and Schema Pipelines",
+        "heading": "Evaluating Agency Technical Assessments and Schema Pipelines",
         "paragraphs": [
           "Insist on inspecting an agency’s technical engineering workflow. Legitimate search partners demonstrate deep expertise in server-side rendering, `LocalBusiness` and `Article` JSON-LD schema, and AI citation tracking."
         ]
@@ -4213,7 +4213,7 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Demanding Transparent Auditing and Measurable Citation Growth",
+        "heading": "Demanding Transparent Assessment and Measurable Citation Growth",
         "paragraphs": [
           "Protect your brand against low-quality agency practices by demanding clear technical engineering deliverables: verified server-side HTML rendering, complete JSON-LD schema pipelines, original first-party data assets, and monthly AI citation share of voice reporting."
         ]
@@ -4257,7 +4257,7 @@ export const INSIGHTS = [
         "heading": "The three categories hiding under “AI SEO tools”",
         "paragraphs": [
           "“AI SEO tool” gets applied to three genuinely different products, and most of the disagreement about whether they’re worth it comes from comparing across categories without realizing it. Content optimizers — Surfer, Clearscope, Frase, NeuronWriter — score a draft against what’s already ranking and suggest terms, structure, and length to add. AI writing tools generate or expand drafts outright. AI-citation trackers are the newest category: they run real prompts against ChatGPT, Perplexity, and Google AI Overviews and report whether a brand gets mentioned, which is closer to <a href=\"/insights/get-cited-by-chatgpt-perplexity-ai-overviews\">the citation-tracking work covered in our GEO measurement guide</a> than to traditional rank tracking.",
-          "Keyword research and technical-audit tools (Ahrefs, Semrush, Screaming Frog) sometimes get lumped into “AI SEO” too, mostly because they’ve bolted AI features onto an existing product. Worth noting because it means the honest first question isn’t “is AI SEO worth it” — it’s “which of these jobs am I actually trying to solve,” since the value case is completely different for each."
+          "Keyword research and technical-analysis tools (Ahrefs, Semrush, Screaming Frog) sometimes get lumped into “AI SEO” too, mostly because they’ve bolted AI features onto an existing product. Worth noting because it means the honest first question isn’t “is AI SEO worth it” — it’s “which of these jobs am I actually trying to solve,” since the value case is completely different for each."
         ]
       },
       {
@@ -4864,7 +4864,7 @@ export const INSIGHTS = [
               [
                 "1. Citation Rate (%)",
                 "% of core industry prompts where your domain is cited",
-                "Manual AI prompt auditing & GEO trackers",
+                "Manual AI prompt analysis & GEO trackers",
                 "> 40% of target commercial prompts"
               ],
               [
@@ -4891,9 +4891,9 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Setting Up an AI Search Audit Workflow",
+        "heading": "Setting Up an AI Search Assessment Workflow",
         "paragraphs": [
-          "Follow this 4-step workflow to audit your brand’s AI visibility monthly:",
+          "Follow this 4-step workflow to assess your brand’s AI visibility monthly:",
           "<strong>Step 1: Compile 20 Commercial Buyer Prompts:</strong> Identify the top 20 questions your prospective buyers ask when searching for your services (e.g., \"Best B2B SEO agencies in Los Angeles\").",
           "<strong>Step 2: Run Prompts Across 5 AI Models:</strong> Submit identical prompts in fresh sessions to ChatGPT, Perplexity, Gemini, Claude, and Copilot.",
           "<strong>Step 3: Record Citation Links & Positions:</strong> Log whether your URL, competitor URLs, or third-party directories were cited.",
@@ -4901,7 +4901,7 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Actionable Optimization Based on Audit Results",
+        "heading": "Actionable Optimization Based on Assessment Results",
         "paragraphs": [
           "If your brand is uncited in AI search: implement server-side pre-rendering (SSR), add direct Q&A blocks, publish original research data, and deploy JSON-LD schema. Explore our <a href=\"/services/technical-seo\">SEO Discoverability services</a> and <a href=\"/services/geo\">GEO Content Writing solutions</a>."
         ]
@@ -4955,9 +4955,9 @@ export const INSIGHTS = [
         ]
       },
       {
-        "heading": "Establishing Systematic Monthly Prompt Auditing Workflows",
+        "heading": "Establishing Systematic Monthly Prompt Assessment Workflows",
         "paragraphs": [
-          "Establish a disciplined monthly prompt audit: query ChatGPT, Perplexity, Gemini, Claude, and Copilot with 20 core commercial buyer questions. Log citation rates and sentiment scores to track your Generative Engine Optimization progress."
+          "Establish a disciplined monthly prompt assessment: query ChatGPT, Perplexity, Gemini, Claude, and Copilot with 20 core commercial buyer questions. Log citation rates and sentiment scores to track your Generative Engine Optimization progress."
         ]
       },
       {
@@ -4970,7 +4970,7 @@ export const INSIGHTS = [
     "takeaways": [
       "Traditional rank trackers cannot measure dynamic, synthesized AI search recommendations.",
       "Track Citation Rate, Share of Voice, AI Referral Traffic, and Brand Sentiment.",
-      "Conduct monthly prompt audits across ChatGPT, Perplexity, Gemini, Claude, and Copilot.",
+      "Conduct monthly prompt assessments across ChatGPT, Perplexity, Gemini, Claude, and Copilot.",
       "Create a custom AI referral traffic segment in GA4 to measure real session volume.",
       "Use original research and structured schema to fix low AI citation performance."
     ],

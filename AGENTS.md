@@ -40,7 +40,7 @@ This site carries three generations of accumulated ranking signal.
   title, a description and a canonical; it enforces that by construction.
 - `robots.txt` and `llms.txt` are generated from the same data the pages use.
 
-Before claiming SEO work is done, build and re-run the audit: one `<h1>` per
+Before claiming SEO work is done, build and re-run the assessment: one `<h1>` per
 page, unique canonicals, valid JSON-LD, no thin pages.
 
 ## Commands

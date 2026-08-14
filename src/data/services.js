@@ -17,7 +17,7 @@ export const SERVICES = {
         title: 'Los Angeles Link Building That Earns Its Place',
         lede: 'Picture an editor linking to you because the story was genuinely worth it.',
         dek: 'That is the only kind of backlink worth having, and it is the only kind we go after. Real outreach, real publications, real coverage. Business owners end up with a moat around their local rankings that a competitor cannot simply buy their way past. Creative leaders get press mentions that say more about the brand than any ad could. Marketing managers get clean, high-authority links that lift the whole domain instead of a spreadsheet of placements nobody would want to show Google.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=traffic' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=traffic' },
         image: {
           src: '/assets/img/office-lounge-meeting.webp',
           alt: 'Planning a digital PR campaign for a Los Angeles brand',
@@ -26,11 +26,11 @@ export const SERVICES = {
       {
         title: 'A Backlink Profile You Would Be Happy to Show Google',
         lede: 'Imagine never wondering whether an old link is about to cost you.',
-        dek: 'Lasting domain authority starts with a clean profile. We audit every inbound link you already have, clear out the spam somebody left behind, and then go earn the mentions that actually move trust — from media sources with real readers.',
+        dek: 'Lasting domain authority starts with a clean profile. We assess every inbound link you already have, clear out the spam somebody left behind, and then go earn the mentions that actually move trust — from media sources with real readers.',
         list: [
           'Editorial link building and outreach',
           'Digital PR and story placement',
-          'Backlink profile audits',
+          'Backlink profile assessments',
           'Toxic link cleanup and disavow',
           'Penalty and manual action recovery',
           'Competitor link gap analysis',
@@ -39,7 +39,7 @@ export const SERVICES = {
         ],
         image: {
           src: '/assets/img/corporate-atrium-walking.webp',
-          alt: 'Auditing an inbound backlink profile',
+          alt: 'Assessing an inbound backlink profile',
         },
       },
       {
@@ -62,10 +62,10 @@ export const SERVICES = {
       { tag: 'Cleanup', title: 'White Hat Backlinks & Penalty Recovery', href: '/glossary/domain-authority', desc: 'Clean up toxic spam and build white hat backlinks that follow official search engine webmaster guidelines.' },
       { tag: 'Strategy', title: 'Strategic Link Building SEO', href: '/glossary/search-entity', desc: 'Align your link building seo campaigns with target keyword hubs to maximize search rankings and page authority.' },
       { tag: 'Digital PR', title: 'Digital PR & Backlink Builder Outreach', href: '/glossary/eeat', desc: 'Our backlink builder specialists pitch data-driven stories and original surveys to journalists for high-authority press coverage.' },
-      { tag: 'Audit', title: 'Technical Backlink Service & Audit', href: '/glossary/domain-authority', desc: 'Analyze every inbound link with a comprehensive backlink service audit to disavow spam and protect your site authority.' },
+      { tag: 'Analysis', title: 'Technical Backlink Service & Analysis', href: '/glossary/domain-authority', desc: 'Analyze every inbound link with a comprehensive backlink service assessment to disavow spam and protect your site authority.' },
     ],
     process: [
-      { step: '01', title: 'Backlink Service Audit', desc: 'We review your existing link profile to determine how to get backlinks for my website safely without penalty risks.' },
+      { step: '01', title: 'Backlink Service Assessment', desc: 'We review your existing link profile to determine how to get backlinks for my website safely without penalty risks.' },
       { step: '02', title: 'Link Builder Services Strategy', desc: 'We build a tailored roadmap for seo link building services matching relevant media outlets and industry publications.' },
       { step: '03', title: 'White Hat Backlinks Outreach', desc: 'Our backlink building service team pitches original content to real editors to secure high quality backlinks.' },
       { step: '04', title: 'Link Building SEO Verification', desc: 'We track new mentions, verify indexing, and measure how high quality backlinks service campaigns boost search authority.' },
@@ -99,7 +99,7 @@ export const SERVICES = {
         title: 'Los Angeles Web Design & Development Done Right the First Time',
         lede: 'Picture a launch day with no ranking drop and nothing to fix afterwards.',
         dek: 'That is what happens when speed, mobile responsiveness and technical SEO go into the build instead of getting bolted on later. We work in Next.js and React, and the search work starts on day one. Business owners get a secure, search-ready site that brings in leads without constant maintenance. Designers get component architecture that renders their work exactly as drawn, with no performance tax. Marketing managers get a clean handoff and load times fast enough that the first campaign out the door actually lands.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=rankings' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=rankings' },
         image: {
           src: '/assets/img/hallway-code-review.webp',
           alt: 'Reviewing a Next.js build before launch',
@@ -176,7 +176,7 @@ export const SERVICES = {
         title: 'Los Angeles CRO That Unlocks Traffic You Already Paid For',
         lede: 'Picture the same number of visitors, and twice as many of them calling.',
         dek: 'That is conversion rate optimization, and it is the cheapest growth available to most businesses. We watch where people hesitate using heatmaps and session recordings, then test the fix instead of guessing at it. Business owners lift revenue without raising the ad budget a dollar. Designers get real visitor data backing the layout decisions they already believed in. Marketing managers get a clean conversion lift number that makes every other campaign look better overnight.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=sales' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=sales' },
         image: {
           src: '/assets/img/developer-dashboard-review.webp',
           alt: 'Reviewing funnel and session data for a Los Angeles client',
@@ -187,7 +187,7 @@ export const SERVICES = {
         lede: 'Imagine knowing exactly where people give up — and having already fixed it.',
         dek: 'Real CRO runs on behavioral data, continuous testing and user experience design, not on opinions about button color. We work every step between the first click and the finished sale, and we keep the version that wins.',
         list: [
-          'Conversion audits and funnel analysis',
+          'Conversion assessments and funnel analysis',
           'A/B and multivariate testing',
           'Landing page and form optimization',
           'Checkout and lead flow repair',
@@ -219,12 +219,12 @@ export const SERVICES = {
       { tag: 'Services', title: 'Conversion Rate Optimization Services', href: '/glossary/conversion-rate-optimization', desc: 'Comprehensive conversion rate optimization services analyzing visitor recordings and click maps to eliminate conversion bottlenecks.' },
       { tag: 'AI CRO', title: 'AI Conversion Rate Optimization & Testing', href: '/glossary/user-experience', desc: 'Deploy automated AI conversion rate optimization tools and multivariate A/B testing to continuously improve landing page performance.' },
       { tag: 'Ecommerce', title: 'Ecommerce Conversion Rate Optimization Agency', href: '/glossary/conversion-rate-optimization', desc: 'Our specialized ecommerce conversion rate optimization agency team streamlines checkout funnels, reduces cart abandonment, and boosts AOV.' },
-      { tag: 'Audit', title: 'Conversion Optimization Specialist Audits', href: '/glossary/user-experience', desc: 'Every audit is conducted by a conversion optimization specialist or conversion rate optimization specialist to fix user friction points.' },
+      { tag: 'Assessment', title: 'Conversion Optimization Specialist Assessments', href: '/glossary/user-experience', desc: 'Every assessment is conducted by a conversion optimization specialist or conversion rate optimization specialist to fix user friction points.' },
       { tag: 'Experts', title: 'Conversion Rate Optimization Experts & Funnels', href: '/glossary/conversion-rate-optimization', desc: 'Work directly with conversion rate experts and conversion rate optimization experts to shorten your form fills and boost qualified lead volume.' },
       { tag: 'UX Design', title: 'Conversion Rate Optimisation & UX Design', href: '/glossary/user-experience', desc: 'Combine world-class conversion rate optimisation and conversion optimisation design to deliver seamless mobile and desktop experiences.' },
     ],
     process: [
-      { step: '01', title: 'Audit by Conversion Optimization Specialist', desc: 'Our conversion rate optimization specialist team reviews session recordings and heatmap data to pinpoint exact drop-off points.' },
+      { step: '01', title: 'Assessment by Conversion Optimization Specialist', desc: 'Our conversion rate optimization specialist team reviews session recordings and heatmap data to pinpoint exact drop-off points.' },
       { step: '02', title: 'Strategic Conversion Optimization Services Plan', desc: 'We prioritize high-friction pages and design hypotheses to maximize return on ad spend and organic traffic conversion.' },
       { step: '03', title: 'Conversion Rate Optimization Agency A/B Testing', desc: 'Our conversion optimization agency executes strict split testing on headlines, CTAs, and checkout flows.' },
       { step: '04', title: 'Continuous Conversion Optimisation', desc: 'Our conversion rate agency monitors long-term performance to ensure wins hold up across seasonal shifts.' },
@@ -250,14 +250,14 @@ export const SERVICES = {
     lede: 'With our Web UX & Interface Design, you get an effortless user experience that keeps visitors engaged and buying. We craft intuitive, accessible visual interfaces that guide visitors effortlessly from initial click to completed booking—eliminating mobile friction and elevating brand perception. For business owners, seamless user experience keeps visitors engaged and dramatically boosts sales conversions. For UI/UX designers, our design systems and interactive wireframes bring visual elegance into harmony with strict accessibility (WCAG) standards.',
     problem: {
       eyebrow: 'The User Experience Challenge',
-      statement: 'Cluttered menus, slow micro-interactions, and confusing page layouts cause high bounce rates and lost leads. A dedicated web UX audit isolates usability friction and restores user confidence.',
+      statement: 'Cluttered menus, slow micro-interactions, and confusing page layouts cause high bounce rates and lost leads. A dedicated web UX assessment isolates usability friction and restores user confidence.',
     },
     featureRows: [
       {
         title: 'Los Angeles Web UX Design People Never Have to Think About',
         lede: 'Picture a visitor finding exactly what they came for without noticing how.',
         dek: 'That is what good user experience feels like from the inside — invisible. We pair behavioral psychology with modern interface design to build responsive, accessible sites where nothing gets in the way. Business owners keep more of the people who arrive and turn more of them into customers. Designers get a design system with a clean visual language and WCAG accessibility built in from the start. Marketing managers watch bounce rates fall and every brand metric quietly improve alongside them.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=ux' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=ux' },
         image: {
           src: '/assets/img/tech-lab-standup.webp',
           alt: 'Reviewing mobile-first interface designs for a Los Angeles client',
@@ -266,9 +266,9 @@ export const SERVICES = {
       {
         title: 'From First Wireframe to Final Tap Target',
         lede: 'Imagine a site that feels obvious on a phone, not just tolerable.',
-        dek: 'Great user experience sits where visual craft meets things that simply work. We audit the interface, map the real user flows, prototype in wireframe before anything gets expensive, and tune every touch target until the whole thing feels effortless in the hand.',
+        dek: 'Great user experience sits where visual craft meets things that simply work. We assess the interface, map the real user flows, prototype in wireframe before anything gets expensive, and tune every touch target until the whole thing feels effortless in the hand.',
         list: [
-          'Web UX audits and behavioral analysis',
+          'Web UX assessments and behavioral analysis',
           'Mobile-first UX and touch interface design',
           'Information architecture and wireframing',
           'WCAG accessibility and inclusion compliance',
@@ -297,7 +297,7 @@ export const SERVICES = {
       },
     ],
     capabilities: [
-      { tag: 'Audit', title: 'Comprehensive Web UX Audits', href: '/glossary/user-experience', desc: 'Identify navigation hurdles, visual clutter, and layout confusion through user session recordings and task completion analysis.' },
+      { tag: 'Assessment', title: 'Comprehensive Web UX Assessments', href: '/glossary/user-experience', desc: 'Identify navigation hurdles, visual clutter, and layout confusion through user session recordings and task completion analysis.' },
       { tag: 'Mobile', title: 'Mobile-First UX & Touch Interface Design', href: '/glossary/core-web-vitals', desc: 'Optimize touch targets, mobile menus, and viewport responsiveness so smartphone visitors get a seamless desktop-grade experience.' },
       { tag: 'Wireframes', title: 'Interactive Wireframing & Prototyping', href: '/services/web-dev', desc: 'Map complete user journeys and test interactive prototypes before writing production code, saving valuable development time.' },
       { tag: 'Accessibility', title: 'Accessibility (a11y) & WCAG Compliance', href: '/glossary/user-experience', desc: 'Ensure your interface is fully accessible to all users, adhering to WCAG 2.1 guidelines and screen-reader standards.' },
@@ -305,7 +305,7 @@ export const SERVICES = {
       { tag: 'Design', title: 'Modern Interface & System UI Design', href: '/services/web-ux', desc: 'Craft cohesive design systems, micro-animations, and visual components that reinforce brand trust across every device.' },
     ],
     process: [
-      { step: '01', title: 'UX Audit & Behavioral Analysis', desc: 'We review your site analytics, heatmap data, and user flows to uncover where visitors get stuck or lost.' },
+      { step: '01', title: 'UX Assessment & Behavioral Analysis', desc: 'We review your site analytics, heatmap data, and user flows to uncover where visitors get stuck or lost.' },
       { step: '02', title: 'User Journey & Wireframe Mapping', desc: 'Our UX architects map frictionless pathways and prototype clean layout structures focused on key conversion goals.' },
       { step: '03', title: 'Interface Design & Accessibility Testing', desc: 'We build responsive UI components with clean typography, high contrast, and accessible interactive states.' },
       { step: '04', title: 'Usability Validation & Iteration', desc: 'We test real user interactions on mobile and desktop, refining micro-copy and visual hierarchy for maximum clarity.' },
@@ -314,7 +314,7 @@ export const SERVICES = {
       { q: 'What is Web UX design and why is it vital for business growth?', a: 'Web UX (User Experience) design focuses on how visitors interact with your website. Good UX ensures pages are clear, fast, and easy to navigate, reducing bounce rates and helping visitors complete key actions like requesting a quote or making a purchase.' },
       { q: 'How does Web UX design differ from Conversion Rate Optimization (CRO)?', a: 'Web UX focuses on overall user satisfaction, interface clarity, accessibility, and navigation ease. CRO specifically tests and optimizes pages to maximize conversion metrics (sales or lead signups). Excellent Web UX lays the groundwork for high CRO performance.' },
       { q: 'Why is mobile-first UX design so critical today?', a: 'Over 65% of search traffic originates on mobile devices. A mobile-first UX approach ensures buttons, forms, menus, and typography are optimized for small touchscreens first, preventing user frustration.' },
-      { q: 'What happens during a professional Web UX audit?', a: 'A professional Web UX audit evaluates your website against usability standards, accessibility rules, visual hierarchy principles, and real visitor recording data to highlight exact areas causing drop-offs.' },
+      { q: 'What happens during a professional Web UX assessment?', a: 'A professional Web UX assessment evaluates your website against usability standards, accessibility rules, visual hierarchy principles, and real visitor recording data to highlight exact areas causing drop-offs.' },
     ],
     ctaTitle: 'Create an interface your customers love using.',
   },
@@ -337,7 +337,7 @@ export const SERVICES = {
         title: 'Los Angeles AI Consulting That Gives You Your Week Back',
         lede: 'Picture the repetitive part of your day happening without you.',
         dek: 'That is the whole promise, and it is a smaller and more practical one than most AI pitches. We look for the tasks that eat real hours — intake, follow-up, reporting, AI search setup — and automate those. Business owners get customer support and lead management that runs itself, freeing them for the work only they can do. Designers get research and asset gathering sped up without anything creative handed over to a machine. Marketing managers get bottlenecks cleared and a team producing more without adding headcount.',
-        link: { text: 'Get a FREE Site Audit', href: '/free-site-scan?goal=ai-visibility' },
+        link: { text: 'Get a FREE Site Assessment', href: '/free-site-scan?goal=ai-visibility' },
         image: {
           src: '/assets/img/tech-lab-standup.webp',
           alt: 'Scoping an AI automation workflow for a Los Angeles business',
