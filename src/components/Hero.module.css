@@ -108,7 +108,16 @@
   min-width: 0;
 }
 
+/* Shown only at 80rem and up.
+ *
+ * The field art is decoration — a labelled figure carrying no information.
+ * It only reads as anything at a decent size, and below 80rem it never gets
+ * one: stacked on mobile it is a tall box whose hairlines are too faint to
+ * see, and in the 64–80rem row layout the panel wins the space and leaves it
+ * a ~150px sliver. Both render as an empty card with a caption on it, so it
+ * sits out until the column layout returns and gives it a proper 5:4 frame. */
 .art {
+  display: none;
   position: relative;
   overflow: hidden;
   border: var(--rule-hairline) solid var(--color-void-rule);
@@ -187,14 +196,9 @@
     align-items: stretch;
   }
 
-  .art,
   .panel {
     flex: 1 1 0;
     min-width: 0;
-  }
-
-  .art {
-    aspect-ratio: auto;
   }
 }
 
@@ -203,7 +207,12 @@
     flex-direction: column;
   }
 
+  /* `flex: 0 0 auto` matters here: in this column layout a flex-basis of 0
+   * would size the HEIGHT and out-rank aspect-ratio, collapsing the figure to
+   * its two border pixels with the caption floating on nothing. */
   .art {
+    display: block;
+    flex: 0 0 auto;
     aspect-ratio: 5 / 4;
   }
 }
