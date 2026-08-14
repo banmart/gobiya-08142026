@@ -7,26 +7,40 @@ import Method from '../components/Method.astro';
 import Testimonials from '../components/Testimonials.astro';
 import { brand, site } from '../data/site';
 
-const principles = [
+const commitments = [
   {
     index: '01',
-    title: 'Evidence before opinion',
-    body: 'Every engagement opens with a reproducible audit — server logs, render diffs, index coverage, citation traces. You get the raw evidence, not a scorecard with a colour on it. If we cannot show you where a claim came from, we do not make it.',
+    title: 'Purpose-Driven Search',
+    body: 'Rebuilding visibility that solves real retrieval challenges. We start with evidence, log files, and crawl behavior to map exactly where the algorithm lost trust.',
   },
   {
     index: '02',
-    title: 'Repair before growth',
-    body: 'There is no point publishing into a site the crawler cannot read. Structural faults get closed first; content and authority work lands on a foundation that will hold it. This order is not negotiable, and it is why the first month rarely looks like marketing.',
+    title: 'Forward Thinking',
+    body: 'Staying ahead of algorithmic trends and AI citations. AI models have changed the search surface; we optimize pages to ensure they are easily parsed by both LLMs and search engines.',
   },
   {
     index: '03',
-    title: 'Numbers with a source',
-    body: 'Every figure we publish traces back to a client-approved case study or a Search Console export. We do not print round numbers we cannot defend, and we would rather leave a gap than fill it with something plausible.',
+    title: 'Client Partnership',
+    body: 'Restoring authority and building long-term search value. We align technical schema and semantic consolidation with commercial goals to deliver compounding organic growth.',
+  },
+];
+
+const pillars = [
+  {
+    title: 'Systematic Search',
+    body: "Search is more than ranking links—it's about solving real retrieval challenges. Our process ensures every technical schema structure and structural decision has purpose.",
   },
   {
-    index: '04',
-    title: 'Month to month',
-    body: 'No long-term lock-in contracts. If the work stops being worth it, you should be able to stop buying it — an agency that needs a twelve-month contract to keep a client is telling you something.',
+    title: 'Compounded Recovery',
+    body: 'We believe in systematic diagnosis over quick fixes. Each project is an opportunity to recover lost organic traffic and build long-term authority through strategic content pruning and compression.',
+  },
+  {
+    title: 'Entity and Indexing Control',
+    body: 'Success comes from indexing, entity mapping, and execution. We turn complex algorithmic drops into clear, recovered growth across both Google rankings and AI Overview systems.',
+  },
+  {
+    title: 'Transparency and Audits',
+    body: 'Every project begins with a deep log and crawl audit. Our collaborative process ensures clear technical reporting, focused indexing attention, and consistent delivery by search architects who own the work.',
   },
 ];
 
@@ -34,66 +48,106 @@ const schema = [
   {
     '@type': 'AboutPage',
     name: `About ${brand.name}`,
+    description: 'Los Angeles search transformation studio, founded 2010.',
     mainEntity: { '@id': `${site.url}/#organization` },
+  },
+  {
+    '@type': 'Person',
+    name: 'Steve Martin',
+    jobTitle: 'Founder & Principal Search Engineer',
+    worksFor: { '@id': `${site.url}/#organization` },
+    sameAs: [
+      'https://www.linkedin.com/in/stevemartingobiya/',
+      'https://x.com/SteveMarti66556',
+    ],
   },
 ];
 ---
 
 <Base
-  title="About — A Los Angeles Search Practice"
-  description="Gobiya is a Los Angeles search practice working from primary evidence — logs, headers, render output — rather than dashboard summaries. Here is how we work and why."
+  title="Behind the 16-Year Recovery Formula | About Gobiya Studio"
+  description="Meet the search practitioners who build what they sell. Discover our history of algorithmic restoration and engineering sustainable RAG citations."
   breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'About', href: '/about' }]}
   schema={schema}
 >
   <PageIntro
     variant="warp"
-    eyebrow={`Est. ${brand.founded} · ${brand.locality}, ${brand.region}`}
-    title="Evidence beats opinion, every time."
-    lede="Gobiya exists because most search advice is asserted rather than demonstrated. We work from logs, headers, and render output instead — and we show you the working."
+    eyebrow={`Est. 2010 · ${brand.locality}, ${brand.region}`}
+    title="Search engineering for what comes next."
+    lede="We believe in the power of purposeful search engineering. Every page serves a function, every crawl has meaning. By staying ahead of algorithm changes and retrieval-augmented generation (RAG) trends, we ensure our clients receive solutions that are both current and future-ready."
   />
 
   <section class="intro">
     <div class="shell">
       <Reveal>
-        <p class="intro-text">
-          Most of what gets sold as SEO is a summary of a summary: a tool reads
-          your site, a dashboard reads the tool, and a report reads the
-          dashboard. By the time it reaches you, the thing that actually
-          happened — a crawler got a 500, a render dropped the main content, a
-          canonical pointed at a redirect — has been averaged away into a score.
-        </p>
-        <p class="intro-text">
-          We start at the other end. Server logs show what was actually
-          requested and what actually came back. A render diff shows what the
-          crawler saw against what a browser sees. Index coverage history shows
-          when a page stopped being eligible and what changed that week. From
-          there the repair list writes itself, in priority order, with an
-          estimate against each line.
-        </p>
-        <p class="intro-text">
-          It is unglamorous work and it does not photograph well. It is also the
-          only kind that survives an algorithm update.
-        </p>
+        <div class="founder-card">
+          <div class="founder-media">
+            <img
+              src="/assets/img/steve-portrait.webp"
+              alt="Steve Martin — Founder of Gobiya"
+              class="founder-photo"
+              width="280"
+              height="350"
+              loading="eager"
+            />
+            <div class="founder-badge">
+              <span>Built for search recovery. Since 2010.</span>
+            </div>
+          </div>
+          <div class="founder-bio">
+            <span class="founder-eyebrow">Founder Note</span>
+            <h2 class="founder-name">Search stopped being a list of links. We rebuilt for what came next.</h2>
+            <p class="founder-role">Steve Martin · 16+ years in search</p>
+            <p class="intro-text">
+              The brands that get found in 2026 are not the ones that produced the most content. They are the ones whose pages can be parsed by a model, weighed against a citation graph, and surfaced inside an answer.
+            </p>
+            <blockquote class="founder-quote">
+              “After sixteen years inside the algorithm, the work I do today is not the work I started with. We diagnose what broke, we engineer for retrieval, and we build for what comes after the blue link.”
+            </blockquote>
+            <p class="intro-text">
+              Our collective brings together practitioners united by a passion for technical search integrity. From crawl analysis to content engineering, schema architecture to RAG citation modeling, every project is handled directly by experienced search engineers.
+            </p>
+          </div>
+        </div>
       </Reveal>
     </div>
   </section>
 
-  <section class="principles band-void">
+  <section class="commitments band-void">
     <div class="grain" aria-hidden="true"></div>
     <div class="shell">
       <Reveal>
-        <h2 class="principles-title">How we work</h2>
+        <span class="section-eyebrow">Commitments</span>
+        <h2 class="section-title">Three core values, <span class="title-accent">held without exception.</span></h2>
       </Reveal>
 
-      <ol class="principles-grid">
-        {principles.map((principle, i) => (
-          <Reveal as="li" delay={i * 70} class="principle">
-            <span class="principle-index tnum">{principle.index}</span>
-            <h3 class="principle-name">{principle.title}</h3>
-            <p class="principle-body">{principle.body}</p>
+      <ol class="commitments-grid">
+        {commitments.map((item, i) => (
+          <Reveal as="li" delay={i * 70} class="commitment-card">
+            <span class="commitment-index tnum">{item.index} — 03</span>
+            <h3 class="commitment-name">{item.title}</h3>
+            <p class="commitment-body">{item.body}</p>
           </Reveal>
         ))}
       </ol>
+    </div>
+  </section>
+
+  <section class="pillars">
+    <div class="shell">
+      <Reveal>
+        <span class="section-eyebrow">Our Approach</span>
+        <h2 class="section-title">The way we work — <span class="title-accent">simple steps, remarkable results.</span></h2>
+      </Reveal>
+
+      <div class="pillars-grid">
+        {pillars.map((pillar, i) => (
+          <Reveal delay={i * 60} class="pillar-card">
+            <h3 class="pillar-name">{pillar.title}</h3>
+            <p class="pillar-body">{pillar.body}</p>
+          </Reveal>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -106,7 +160,7 @@ const schema = [
       <Reveal class="about-foot-inner">
         <div>
           <h2 class="about-foot-title">Where to find us</h2>
-          <p class="about-foot-line">{brand.location}</p>
+          <p class="about-foot-line">3580 Wilshire Blvd, Ste 132 · Los Angeles, CA 90010</p>
           <p class="about-foot-line">{brand.hours}</p>
           <p class="about-foot-line">
             <a href={`mailto:${brand.email}`}>{brand.email}</a>
@@ -125,53 +179,181 @@ const schema = [
     padding-block: var(--space-3xl);
   }
 
+  .founder-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: start;
+  }
+
+  .founder-media {
+    position: relative;
+    max-width: 280px;
+    border: var(--rule-hairline) solid var(--color-rule);
+    background: var(--color-paper-sunken);
+  }
+
+  .founder-photo {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+
+  .founder-badge {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--color-navy);
+    color: var(--color-paper);
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-align: center;
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .founder-eyebrow {
+    display: block;
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-carmine);
+    margin-block-end: var(--space-xs);
+  }
+
+  .founder-name {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--color-navy);
+  }
+
+  .founder-role {
+    font-size: var(--text-sm);
+    color: var(--color-neutral-muted);
+    margin-block-start: 0.5rem;
+    margin-block-end: var(--space-md);
+  }
+
   .intro-text {
     max-width: 68ch;
     color: var(--color-neutral);
+    font-size: var(--text-base);
+    line-height: 1.6;
   }
 
   .intro-text + .intro-text {
     margin-block-start: var(--space-md);
   }
 
-  .principles {
+  .founder-quote {
+    margin-block: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    border-inline-start: 3px solid var(--color-navy);
+    background: var(--color-paper-sunken);
+    font-size: var(--text-base);
+    font-style: italic;
+    color: var(--color-navy);
+    max-width: 68ch;
+    line-height: 1.6;
+  }
+
+  .commitments {
     position: relative;
     isolation: isolate;
     padding-block: var(--space-3xl);
   }
 
-  .principles-title {
-    font-size: var(--text-lg);
-    font-weight: 500;
-    letter-spacing: -0.03em;
+  .section-eyebrow {
+    display: block;
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-carmine);
+    margin-block-end: var(--space-xs);
   }
 
-  .principles-grid {
+  .section-title {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    max-width: 32ch;
+  }
+
+  .title-accent {
+    font-weight: 300;
+    color: var(--color-neutral-muted);
+    font-style: italic;
+  }
+
+  .commitments-grid {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-xl);
     margin-block-start: var(--space-xl);
   }
 
-  .principle-index {
+  .commitment-card {
+    border: var(--rule-hairline) solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+    padding: var(--space-xl);
+  }
+
+  .commitment-index {
     font-family: var(--font-outlier);
     font-size: var(--text-xs);
     letter-spacing: 0.12em;
     color: var(--color-void-muted);
   }
 
-  .principle-name {
+  .commitment-name {
     margin-block-start: var(--space-sm);
     font-size: var(--text-md);
     font-weight: 500;
     letter-spacing: -0.02em;
+    color: var(--color-void-ink);
   }
 
-  .principle-body {
+  .commitment-body {
     margin-block-start: var(--space-sm);
     font-size: var(--text-sm);
     color: var(--color-void-neutral);
     max-width: 46ch;
+    line-height: 1.5;
+  }
+
+  .pillars {
+    padding-block: var(--space-3xl);
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    margin-block-start: var(--space-xl);
+  }
+
+  .pillar-card {
+    border: var(--rule-hairline) solid var(--color-rule);
+    background: var(--color-paper-elevated);
+    padding: var(--space-xl);
+  }
+
+  .pillar-name {
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-navy);
+  }
+
+  .pillar-body {
+    margin-block-start: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+    line-height: 1.5;
   }
 
   .about-foot {
@@ -205,14 +387,17 @@ const schema = [
   }
 
   @media (width >= 48rem) {
-    .principles-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .founder-card {
+      grid-template-columns: 280px 1fr;
+      gap: var(--space-2xl);
     }
-  }
 
-  @media (width >= 72rem) {
-    .principles-grid {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .commitments-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .pillars-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
 </style>
