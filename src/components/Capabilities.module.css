@@ -1,0 +1,106 @@
+/* F6 · Card grid — ratio=4/3 landscape art, density=3-up, micro-action=View →
+ *
+ * NOT the icon-tile feature card: no icon square, no uniform two-line heading,
+ * and the cards carry different art rather than the same shape three times.
+ */
+
+.section {
+  padding-block: var(--space-3xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-lg);
+  margin-block-start: var(--space-2xl);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.art {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--radius-lg);
+  background: var(--color-void);
+  color: var(--color-void-rule);
+}
+
+.art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.artIndex {
+  position: absolute;
+  inset-block-start: var(--space-md);
+  inset-inline-start: var(--space-md);
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  color: var(--color-void-muted);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-block-start: var(--space-md);
+}
+
+.title {
+  font-size: var(--text-lg);
+  letter-spacing: -0.03em;
+}
+
+.summary {
+  color: var(--color-neutral);
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  max-width: 42ch;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs) var(--space-xs);
+  padding-block-start: var(--space-2xs);
+}
+
+.tag {
+  padding: 0.2rem 0.6rem;
+  border: var(--rule-hairline) solid var(--color-rule);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  color: var(--color-neutral);
+  white-space: nowrap;
+}
+
+.foot {
+  display: flex;
+  justify-content: flex-start;
+  margin-block-start: var(--space-2xl);
+}
+
+@media (width >= 48rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 68rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+  }
+
+  .foot {
+    justify-content: flex-end;
+  }
+}

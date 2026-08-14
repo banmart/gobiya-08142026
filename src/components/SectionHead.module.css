@@ -1,0 +1,52 @@
+/* Right-biased section head.
+ *
+ * The DNA move worth keeping from the reference: the heading occupies the
+ * right half, with a large deliberate void at the left. The move NOT kept:
+ * a label in that void. Gate 54 — when an eyebrow is used at all it stacks
+ * directly above the heading in the SAME column, never beside it.
+ */
+
+.head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--text-2xl);
+  max-width: 22ch;
+}
+
+.lede {
+  color: var(--color-neutral);
+  font-size: var(--text-md);
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+:global(.band-void) .lede {
+  color: var(--color-void-neutral);
+}
+
+/* gate 52 — collapses to one column on mobile across every variant */
+@media (width >= 60rem) {
+  .head {
+    grid-template-columns: 5fr 7fr;
+  }
+
+  /* the void */
+  .head::before {
+    content: "";
+  }
+
+  .title {
+    font-size: var(--text-3xl);
+  }
+}

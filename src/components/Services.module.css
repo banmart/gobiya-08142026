@@ -1,0 +1,152 @@
+/* Motion primitive 3 of 3 — `service-scrub`.
+ *
+ * The reference's strongest idea: a list of services on a dark field where the
+ * one crossing the viewport's centre line inverts into a full-bleed light bar.
+ * Presentation only — every service name and body is in the DOM at all times,
+ * so screen readers and no-JS users get the full list regardless.
+ */
+
+.section {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: var(--space-3xl) var(--space-4xl);
+}
+
+.field {
+  position: absolute;
+  inset-block-start: -20%;
+  inset-inline: -10%;
+  height: 90%;
+  z-index: -1;
+  opacity: 0.5;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.field svg {
+  width: 100%;
+  height: 100%;
+}
+
+.list {
+  margin-block-start: var(--space-2xl);
+  border-block-start: var(--rule-hairline) solid var(--color-void-rule);
+}
+
+/* full-bleed row; the inner block is what respects the shell */
+.item {
+  border-block-end: var(--rule-hairline) solid var(--color-void-rule);
+  transition:
+    background-color var(--dur-mid) var(--ease-out),
+    color var(--dur-mid) var(--ease-out);
+}
+
+.item[data-active="true"] {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  border-block-end-color: var(--color-paper);
+}
+
+.inner {
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding: var(--space-lg) var(--gutter);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm);
+  align-items: start;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.index {
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  color: var(--color-void-muted);
+  flex: none;
+  transition: color var(--dur-mid) var(--ease-out);
+}
+
+.title {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  color: var(--color-void-muted);
+  transition: color var(--dur-mid) var(--ease-out);
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.item[data-open="true"] .title {
+  color: var(--color-void-ink);
+}
+
+.item[data-active="true"] .title {
+  color: var(--color-ink);
+}
+
+/* collapse via grid rows — animates without touching layout height props */
+.bodyWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--dur-mid) var(--ease-out),
+    opacity var(--dur-mid) var(--ease-out);
+}
+
+.item[data-open="true"] .bodyWrap {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.body {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.body p {
+  font-size: var(--text-sm);
+  line-height: 1.6;
+  color: var(--color-void-neutral);
+  max-width: 48ch;
+}
+
+.item[data-active="true"] .body p {
+  color: var(--color-neutral);
+}
+
+.item[data-open="true"] .index {
+  color: var(--color-accent);
+}
+
+.item[data-active="true"] .index {
+  color: var(--color-accent-ink);
+}
+
+@media (width >= 60rem) {
+  .inner {
+    grid-template-columns: minmax(0, 6fr) minmax(0, 6fr);
+    gap: var(--space-2xl);
+    padding-block: var(--space-xl);
+  }
+
+  .title {
+    font-size: var(--text-2xl);
+  }
+}
+
+/* Reduced motion: the component never enables scrubbing, so no row is ever
+ * `data-active`. All that's left is to drop the open/close transition. */
+@media (prefers-reduced-motion: reduce) {
+  .bodyWrap {
+    transition: none;
+  }
+}

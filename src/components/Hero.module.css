@@ -1,0 +1,209 @@
+/* H2 · Split diptych — ratio=7/5, right=proof column, divider=negative space */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  padding-block: calc(var(--space-4xl) + 3rem) var(--space-3xl);
+}
+
+/* the drawn field, bled off the right edge */
+.field {
+  position: absolute;
+  inset-block: -12% -18%;
+  inset-inline-start: 12%;
+  inset-inline-end: -22%;
+  z-index: -2;
+  color: var(--color-void-rule);
+  opacity: 0.85;
+  mask-image: radial-gradient(
+    72% 78% at 62% 46%,
+    rgb(0 0 0 / 100%) 0%,
+    rgb(0 0 0 / 55%) 52%,
+    transparent 82%
+  );
+}
+
+.field svg {
+  width: 100%;
+  height: 100%;
+}
+
+.wash {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  /* two stops only — never three */
+  background: linear-gradient(
+    100deg,
+    var(--color-void) 34%,
+    color-mix(in oklab, var(--color-void) 40%, transparent) 100%
+  );
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-2xl);
+  align-items: end;
+}
+
+/* --- left half ------------------------------------------------ */
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  min-width: 0;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  align-self: flex-start;
+  padding: 0.4rem 0.9rem 0.4rem 0.6rem;
+  border: var(--rule-hairline) solid var(--color-void-rule);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  color: var(--color-void-neutral);
+}
+
+.dot {
+  width: 0.4rem;
+  height: 0.4rem;
+  flex: none;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.headline {
+  font-size: var(--text-display);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+  max-width: 15ch;
+}
+
+.lede {
+  color: var(--color-void-neutral);
+  font-size: var(--text-md);
+  line-height: 1.55;
+  max-width: 46ch;
+}
+
+.ctas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-xs);
+}
+
+/* --- right half — proof column -------------------------------- */
+
+.proof {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.art {
+  position: relative;
+  overflow: hidden;
+  border: var(--rule-hairline) solid var(--color-void-rule);
+  border-radius: var(--radius-lg);
+  background: var(--color-void-2);
+  aspect-ratio: 5 / 4;
+  color: var(--color-void-neutral);
+}
+
+.art svg {
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.artCaption {
+  position: absolute;
+  inset-block-end: var(--space-md);
+  inset-inline: var(--space-md);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+}
+
+.panel {
+  border: var(--rule-hairline) solid var(--color-void-rule);
+  border-radius: var(--radius-lg);
+  background: var(--color-void-2);
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+.panelHead {
+  padding-block-end: var(--space-sm);
+}
+
+.row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-md);
+  padding-block: 0.7rem;
+  border-block-start: var(--rule-hairline) solid var(--color-void-rule);
+  font-size: var(--text-sm);
+  color: var(--color-void-ink);
+}
+
+.rowIndex {
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+  color: var(--color-void-muted);
+  flex: none;
+}
+
+.rowNote {
+  margin-inline-start: auto;
+  color: var(--color-void-muted);
+  font-size: var(--text-xs);
+  text-align: right;
+}
+
+/* --- desktop --------------------------------------------------- */
+
+@media (width >= 64rem) {
+  .hero {
+    padding-block: calc(var(--space-4xl) + 4.5rem) var(--space-4xl);
+  }
+
+  /* gate 50 — image-bearing tracks use minmax(0, Nfr), never bare Nfr */
+  .grid {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--space-3xl);
+  }
+
+  .proof {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .art,
+  .panel {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .art {
+    aspect-ratio: auto;
+  }
+}
+
+@media (width >= 80rem) {
+  .proof {
+    flex-direction: column;
+  }
+
+  .art {
+    aspect-ratio: 5 / 4;
+  }
+}

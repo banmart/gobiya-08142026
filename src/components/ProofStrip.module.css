@@ -1,0 +1,109 @@
+/* T4 · Numbered stat strip — layout=4-up, number weight=display, qualifier=under
+ *
+ * Cards alternate paper/void the way the reference alternates image and stat
+ * blocks, so the row has rhythm without four identical boxes.
+ */
+
+.strip {
+  padding-block-end: var(--space-3xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-sm);
+}
+
+.cell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  min-height: 13rem;
+  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  border: var(--rule-hairline) solid var(--color-rule);
+  background: var(--color-paper-2);
+}
+
+.cell.inverted {
+  background: var(--color-void);
+  border-color: var(--color-void);
+  color: var(--color-void-ink);
+}
+
+.art {
+  position: absolute;
+  inset-block-start: -30%;
+  inset-inline: -10%;
+  height: 150%;
+  z-index: -1;
+  opacity: 0.5;
+  color: var(--color-rule);
+}
+
+.inverted .art {
+  color: var(--color-void-rule);
+  opacity: 0.75;
+}
+
+.art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+  color: var(--color-muted);
+}
+
+.inverted .value {
+  color: var(--color-void-muted);
+}
+
+.foot {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  line-height: 1.35;
+  max-width: 18ch;
+}
+
+.note {
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+}
+
+.inverted .note {
+  color: var(--color-void-muted);
+}
+
+@media (width >= 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 64rem) {
+  .grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .cell {
+    min-height: 16rem;
+  }
+}

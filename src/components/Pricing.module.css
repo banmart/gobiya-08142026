@@ -1,0 +1,161 @@
+.section {
+  padding-block: var(--space-3xl) var(--space-4xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--space-md);
+  margin-block-start: var(--space-2xl);
+  align-items: start;
+}
+
+.plan {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  border: var(--rule-hairline) solid var(--color-rule);
+  border-radius: var(--radius-lg);
+  background: var(--color-paper-2);
+  min-width: 0;
+}
+
+.plan.featured {
+  background: var(--color-void);
+  border-color: var(--color-void);
+  color: var(--color-void-ink);
+}
+
+.art {
+  position: absolute;
+  inset-block-start: -25%;
+  inset-inline: -15%;
+  height: 130%;
+  z-index: -1;
+  opacity: 0.6;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+}
+
+.art svg {
+  width: 100%;
+  height: 100%;
+}
+
+.top {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.name {
+  font-size: var(--text-md);
+  letter-spacing: -0.025em;
+}
+
+.summary {
+  color: var(--color-neutral);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  max-width: 34ch;
+}
+
+.featured .summary {
+  color: var(--color-void-neutral);
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+  padding-block: var(--space-md);
+  border-block: var(--rule-hairline) solid var(--color-rule);
+}
+
+.featured .priceRow {
+  border-color: var(--color-void-rule);
+}
+
+.price {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1;
+}
+
+.cadence {
+  font-size: var(--text-sm);
+  color: var(--color-neutral);
+}
+
+.featured .cadence {
+  color: var(--color-void-neutral);
+}
+
+.includes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.include {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.tick {
+  flex: none;
+  width: 0.85rem;
+  height: 0.85rem;
+  margin-block-start: 0.28rem;
+  color: var(--color-accent-ink);
+}
+
+.featured .tick {
+  color: var(--color-accent);
+}
+
+.action {
+  margin-block-start: auto;
+  padding-block-start: var(--space-xs);
+}
+
+.note {
+  margin-block-start: var(--space-lg);
+  font-family: var(--font-outlier);
+  font-size: var(--text-xs);
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
+  text-align: center;
+}
+
+@media (width >= 52rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 72rem) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .plan {
+    padding: var(--space-xl);
+    min-height: 34rem;
+  }
+
+  /* the featured tier lifts by lightness and scale, never by a coloured glow */
+  .plan.featured {
+    margin-block: calc(var(--space-lg) * -1);
+    min-height: 37rem;
+  }
+}
