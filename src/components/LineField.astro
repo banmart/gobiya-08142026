@@ -1,0 +1,57 @@
+---
+import { accentPath, W, H, type LineFieldVariant } from '../lib/lineField';
+
+/**
+ * LineField — Tier-B hand-built SVG.
+ *
+ * A ruled field of hairlines displaced by one or two smooth Gaussian wells,
+ * the way a contour map bends around a depression or an interference pattern
+ * bends around a source. Deterministic, computed at build time, and drawn from
+ * the shared <symbol> set in LineFieldDefs so the geometry ships once.
+ *
+ * This is the page's only imagery. It is drawn, not generated, and it carries
+ * meaning for a forensic practice: a regular field with a measurable anomaly
+ * in it. Explicitly NOT a mesh-gradient blob.
+ */
+export type { LineFieldVariant };
+
+interface Props {
+  variant?: LineFieldVariant;
+  class?: string;
+  /** stroke colour token — pass a var() reference, never a raw value */
+  stroke?: string;
+  /** index of the single line drawn in accent, if any */
+  accentAt?: number;
+}
+
+const {
+  variant = 'warp',
+  class: className,
+  stroke = 'var(--color-void-rule)',
+  accentAt,
+} = Astro.props;
+
+// One extra path, drawn over the shared field, rather than a second full copy
+// of it just to recolour a single line.
+const accent = accentAt === undefined ? undefined : accentPath(variant, accentAt);
+---
+
+<svg
+  class={className}
+  viewBox={`0 0 ${W} ${H}`}
+  preserveAspectRatio="xMidYMid slice"
+  aria-hidden="true"
+  focusable="false"
+  style={`color:${stroke}`}
+>
+  <use href={`#lf-${variant}`} />
+  {accent && (
+    <path
+      d={accent}
+      fill="none"
+      stroke="var(--color-accent)"
+      stroke-width="1"
+      vector-effect="non-scaling-stroke"
+    />
+  )}
+</svg>

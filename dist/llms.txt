@@ -1,0 +1,77 @@
+# Gobiya
+
+> Los Angeles SEO agency for technical SEO, AI search (GEO), content and paid media. We fix what stops Google and AI assistants finding you — and prove it in GSC.
+
+Gobiya is a search practice based in Los Angeles, CA, founded in 2019.
+Engagements open with a reproducible forensic audit — server logs, render diffs, index coverage,
+and AI citation traces — and structural repairs ship before growth work.
+
+Contact: hello@gobiya.com · (323) 744-1338
+
+## Services
+
+- [Local & Technical SEO](https://www.gobiya.com/services/technical-seo): Picture your site showing up first and staying there. Los Angeles technical SEO that clears the crawl errors, speed and schema gaps holding you back.
+- [AI & GEO Search](https://www.gobiya.com/services/geo): Picture ChatGPT naming your business first. Los Angeles GEO that structures your pages so AI assistants can quote you and credit you by name.
+- [Content Strategy](https://www.gobiya.com/services/content-marketing): Picture a page you published last year still bringing in customers today. Los Angeles content marketing built on real search intent, not filler.
+- [Digital PR & Link Building](https://www.gobiya.com/services/link-building): Expert Digital PR & Link Building services for dominating search results with backlinks your competitors can't buy. Real editorial coverage that builds true authority.
+- [PPC & Lead Generation](https://www.gobiya.com/services/ppc): Picture every ad dollar landing on someone ready to buy. Los Angeles PPC management that cuts the wasted spend and tracks real cost per lead.
+- [CRO & Optimization](https://www.gobiya.com/services/cro): Data-driven CRO & UX Analysis for converting your existing traffic into a predictable revenue stream. Find the friction, test the fix and lift conversions.
+- [Web UX & Interface Design](https://www.gobiya.com/services/web-ux): Expert Web UX & Interface Design creating an effortless user experience that keeps visitors engaged and buying. Mobile-first, accessible and effortless.
+- [Web Design & Development](https://www.gobiya.com/services/web-dev): Professional Web & App Development delivering a website that ranks on day one and turns traffic into revenue. Fast, search-ready and built to bring in leads.
+- [AI Systems & Consulting](https://www.gobiya.com/services/ai-consulting): Strategic AI & LLM Systems Consulting focused on putting your business busywork on autopilot to free up your team. Automate real work efficiently.
+
+## Case studies
+
+- [SmileCenter.com](https://www.gobiya.com/work/smile-center-dentistry): 5x patient inquiry increase
+- [American Livescan](https://www.gobiya.com/work/american-livescan): 3x increase in online bookings
+- [Safety-Centric.com](https://www.gobiya.com/work/safetycentric): React/Vite redesign + CRM and scraper
+- [QuickPassAiD.Com](https://www.gobiya.com/work/quickpass-aid): Custom verification app & Square gateway
+- [RemodelMePros.com](https://www.gobiya.com/work/remodel-me-pros): React/Vite marketplace & CRM build
+- [The Healing Metta](https://www.gobiya.com/work/the-healing-metta): Structured for AI-answer citation
+- [TotalCapitalInc.Com](https://www.gobiya.com/work/total-capital): Custom property search engine & Admin CRM
+- [DGPlumbingandRooter.com](https://www.gobiya.com/work/dg-plumbing): Custom CRM & Dispatcher system
+- [MyTrustWills.Com](https://www.gobiya.com/work/mtw): AI document generation & Stripe payment
+
+## Insights
+
+- [Is AI Visibility Actually Measurable, or Is It a Guess?](https://www.gobiya.com/insights/is-ai-visibility-measurable): We queried Google's own APIs to find out what your reports can and can't see about AI search. Some of it is countable. Some of it is sampling. One part is genuinely a guess — and most tools sell you that part without saying so.
+- [Our Strategy to Grow Search Visibility 34% Across Every Client We Run](https://www.gobiya.com/insights/seo-case-study-traffic-recovery): Every week we pull the real Google Search Console numbers across every account we manage, blended together — no cherry-picking, no vanity metrics. Here’s the actual system behind a 34% jump in blended organic impressions this quarter, and the real client stories inside that number.
+- [SEO vs. Full-Service Digital Marketing Agency: What's the Difference?](https://www.gobiya.com/insights/seo-vs-digital-marketing-agency): Why specializing in search engine marketing often beats the all-in-one agency model when organic visibility is your primary growth lever.
+- [What SEO Services Do Small Businesses Actually Need?](https://www.gobiya.com/insights/seo-services-for-small-business): Most SMBs overpay for generic retainer work. Here is the exact subset of SEO services that actually moves the needle for a small business.
+- [Ecommerce SEO Services: What to Look for in an Agency](https://www.gobiya.com/insights/ecommerce-seo-services): Scaling organic traffic for a large catalog requires different technical and strategic muscles than lead-gen SEO. Here's how to evaluate a partner.
+- [The AI Citation Study: We Asked 5 AI Assistants the Same 200 Questions. Here’s Who They Cite, and Why.](https://www.gobiya.com/insights/ai-citation-study): A Gobiya original study: 200 buying-intent questions, five AI assistants, 3,217 citations analyzed. Here’s what separates the pages AI cites from the pages it ignores.
+- [B2B Organic Traffic Growth: Why Traffic and Pipeline Decoupled in 2026](https://www.gobiya.com/insights/b2b-organic-traffic-growth): The old B2B SEO math was simple: more organic traffic, more pipeline. That link is breaking — and the fix isn’t chasing more traffic, it’s measuring a different set of signals.
+- [AI SEO Tools Compared: Which Ones Are Actually Worth Paying For](https://www.gobiya.com/insights/ai-seo-tools-compared): SEO communities agree on surprisingly little about AI tools — except this: nobody thinks there’s one best tool, and almost everyone says don’t buy one until you know what it’s supposed to replace. Here’s a practical way to sort content optimizers, AI writers, and citation trackers before you spend a dollar.
+- [Outbound SEO Prospecting: Using Search Data to Find Sales-Ready Accounts](https://www.gobiya.com/insights/outbound-seo-prospecting): Combining organic search signals with outbound sales lets a B2B team prioritize outreach toward accounts already showing real buying intent.
+- [How AI Is Transforming Social Media Content Creation](https://www.gobiya.com/insights/ai-transforming-social-media-content-creation): AI video and content tools have shifted the cost and speed of producing paid social creative dramatically — but the businesses winning with it treat it as a production tool, not a replacement for strategy.
+- [Algorithmic Update Recovery Through Entity SEO](https://www.gobiya.com/insights/algorithmic-update-recovery-entity-seo): Some algorithmic drops respond less to content tweaks and more to strengthening how clearly search engines understand who and what you actually are.
+- [Map Pack vs. AI Overview: What Actually Wins Searches for an LA Remodeling Business](https://www.gobiya.com/insights/map-pack-vs-ai-overview-la-remodeling): A remodeling search in Los Angeles can surface a map pack, an AI Overview, or both — and each rewards a slightly different set of signals.
+- [How Does AI SEO Work? Is It Real or Just a Gimmick?](https://www.gobiya.com/insights/how-does-ai-seo-work): AI SEO isn’t hype and it isn’t magic — it’s real, measurable work layered on the same technical and authority foundation SEO has always needed. Here’s what actually happens under the hood, and how to spot the difference between the real practice and a sales pitch wearing its name.
+- [Is “AI SEO” a Scam? What to Watch For Before You Buy It](https://www.gobiya.com/insights/is-ai-seo-a-scam): The market for “AI SEO” is flooded with urgent-sounding pitches and brand-new acronyms. Here’s the specific pattern scammers use, and how to tell it apart from the real work.
+- [AEO vs. GEO vs. AIO vs. LLMO: Same Thing, Different Buzzword?](https://www.gobiya.com/insights/aeo-vs-geo-vs-aio-vs-llmo): Answer Engine Optimization, Generative Engine Optimization, AI Optimization, LLM Optimization — four acronyms describing almost the same thing. Here’s what, if anything, actually distinguishes them.
+- [Does llms.txt Actually Help SEO? What Google Says](https://www.gobiya.com/insights/does-llms-txt-help-seo): llms.txt has been pitched as the next robots.txt for the AI era. Google says it does nothing for rankings or AI Overviews — here’s what the file actually is, and the narrow case where it’s still worth adding.
+- [Zero-Click Search: What AI Overviews Mean for Small Business](https://www.gobiya.com/insights/zero-click-search-ai-overviews-small-business): A majority of searches now end without a single click. Here’s what’s actually driving that, why it hits small businesses differently, and what still works despite it.
+- [How to Measure AI Search Visibility (Without Guessing)](https://www.gobiya.com/insights/how-to-measure-ai-search-visibility): Rank trackers don’t see AI-generated answers at all. Here’s an actual methodology for measuring whether your brand is being cited — and why a single spot-check is close to meaningless.
+- [Why Reddit Dominates AI Citations, and What That Means for Your Content](https://www.gobiya.com/insights/why-reddit-dominates-ai-citations): Reddit is now cited by AI systems more than any other single source, Wikipedia included. Here’s why, and what it actually implies for how you build content and community presence.
+- [Multi-Location SEO for Franchises: Structure, Duplication, and Local Signals](https://www.gobiya.com/insights/multi-location-websites-for-franchises): Franchises face a version of the multi-location problem with an added twist: individual franchisees competing against their own brand instead of just each other.
+- [Can SEO Actually Automate Lead Generation?](https://www.gobiya.com/insights/automated-lead-generation-seo): “Automated” oversells it — but a properly built organic system does generate leads with minimal ongoing manual effort per lead, once the foundation is in place.
+- [How B2B Companies Use SEO to Generate Predictable Revenue](https://www.gobiya.com/insights/how-do-b2b-companies-use-seo-to-generate-predictable-revenue): B2B SEO’s real value isn’t traffic volume — it’s a forecastable, compounding pipeline source that gets cheaper per lead the longer it runs.
+- [How to Choose the Best SEO Agency for a B2B Brand](https://www.gobiya.com/insights/best-seo-agency-for-b2b-brands): B2B SEO runs on longer sales cycles and different buyer research patterns than local or e-commerce SEO. Here’s what to actually check before hiring an agency for it.
+- [The Best Website Structure for a Multi-Location Business](https://www.gobiya.com/insights/best-website-structure-multiple-locations-different-cities): One page per city sounds simple until half of them are thin duplicates competing with each other. Here’s how to structure it so each location actually ranks.
+- [Local SEO in Los Angeles: What It Actually Takes to Rank](https://www.gobiya.com/insights/local-seo-los-angeles): LA is a uniquely fragmented, competitive local market — dozens of distinct neighborhoods and cities inside one metro. Here’s what ranking here actually requires.
+- [Manual Action vs. Algorithmic Penalty: What’s Actually the Difference](https://www.gobiya.com/insights/what-is-the-difference-between-a-manual-action-and-an-algorithmic-penalty): One is a direct human decision with a stated reason; the other is your site being reassessed by an automated system. The distinction changes exactly how you respond.
+- [What Is Generative Engine Optimization (GEO)? The Complete Guide](https://www.gobiya.com/insights/what-is-generative-engine-optimization): GEO is the practice of structuring content so ChatGPT, Perplexity, and Google AI Overviews cite it directly. Here’s what it actually involves, how AI engines find your content in the first place, and how it differs from a Knowledge Graph entry.
+- [Why Did My Website Traffic Drop? A Google Algorithm Update Diagnostic](https://www.gobiya.com/insights/why-did-my-website-traffic-drop): A step-by-step way to tell whether a traffic drop is a Google algorithm update, a manual action, or a technical break — and what to check first.
+- [SEO vs. GEO: What Generative Engine Optimization Actually Means](https://www.gobiya.com/insights/seo-vs-geo): GEO isn’t a replacement for SEO — it’s the layer on top of it that determines whether AI systems quote you directly instead of just linking to you.
+- [How to Get Cited by ChatGPT, Perplexity, and Google AI Overviews](https://www.gobiya.com/insights/get-cited-by-chatgpt-perplexity-ai-overviews): Each AI platform sources answers differently. Here’s what each one actually checks before it cites a page — and the content formats that earn citations most reliably.
+- [Google Business Profile SEO: The Complete Local Ranking Checklist](https://www.gobiya.com/insights/google-business-profile-seo-checklist): Map pack visibility comes down to a specific, checkable set of factors — category selection, review signals, and citation consistency chief among them.
+- [Core Web Vitals in 2026: What Actually Affects Rankings](https://www.gobiya.com/insights/core-web-vitals-2026): LCP, INP, and CLS are the three metrics Google measures — here’s what each one means, what commonly breaks them, and how much they really move rankings.
+- [How Much Does SEO Cost? A Realistic Pricing Breakdown](https://www.gobiya.com/insights/how-much-does-seo-cost): SEO pricing ranges widely because the work itself varies widely. Here’s what actually drives cost up or down, and how to evaluate an offer that looks too cheap.
+- [Dental SEO: How to Rank Your Practice on Google](https://www.gobiya.com/insights/dental-seo-rank-your-practice): Dental SEO runs on the same fundamentals as local SEO, plus a trust layer patients specifically look for before booking a provider.
+- [Toxic Backlinks: How to Identify and Disavow Bad Links](https://www.gobiya.com/insights/toxic-backlinks-disavow-guide): Not every low-quality link needs to be disavowed. Here’s how to tell which ones are actually a risk, and how to build a disavow file correctly.
+
+## Key pages
+
+- [About](https://www.gobiya.com/about): How the practice works and the principles behind it.
+- [Areas we serve](https://www.gobiya.com/areas-we-serve): Los Angeles and Southern California coverage.
+- [Contact](https://www.gobiya.com/contact): Send a URL and what changed for a free first opinion.

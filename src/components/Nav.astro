@@ -1,0 +1,142 @@
+---
+import Chip from './Chip.astro';
+import { brand, nav } from '../data/site';
+import styles from './Nav.module.css';
+
+const allLinks = [...nav.primary, ...nav.secondary];
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<header class={styles.nav} data-frosted="false" data-nav>
+  <div class:list={['shell', styles.inner]}>
+    <a href="/" class={styles.wordmark} aria-label={`${brand.name} — home`}>
+      <svg class={styles.mark} viewBox="0 0 16 16" aria-hidden="true">
+        <rect width="16" height="16" rx="4" fill="currentColor" opacity="0.16" />
+        <circle cx="8" cy="8" r="3.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <circle cx="8" cy="8" r="0.9" fill="var(--color-accent)" />
+      </svg>
+      {brand.name}
+    </a>
+
+    <nav class={styles.cluster} aria-label="Primary">
+      <div class={styles.column}>
+        {nav.primary.map((item) => (
+          <a
+            href={item.href}
+            class={styles.link}
+            aria-current={current === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+      <div class={styles.column}>
+        {nav.secondary.map((item) => (
+          <a
+            href={item.href}
+            class={styles.link}
+            aria-current={current === item.href ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <div class={styles.actions}>
+      <button
+        type="button"
+        class={styles.menuButton}
+        aria-expanded="false"
+        aria-controls="nav-sheet"
+        data-nav-open
+      >
+        Menu
+      </button>
+      <span class={styles.desktopCta}>
+        <Chip href={nav.cta.href} variant="onVoidSolid">{nav.cta.label}</Chip>
+      </span>
+    </div>
+  </div>
+</header>
+
+<div
+  class={styles.sheet}
+  id="nav-sheet"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu"
+  hidden
+  data-nav-sheet
+>
+  <div class={styles.sheetTop}>
+    <span class={styles.wordmark}>
+      <svg class={styles.mark} viewBox="0 0 16 16" aria-hidden="true">
+        <rect width="16" height="16" rx="4" fill="currentColor" opacity="0.16" />
+        <circle cx="8" cy="8" r="3.25" fill="none" stroke="currentColor" stroke-width="1.5" />
+        <circle cx="8" cy="8" r="0.9" fill="var(--color-accent)" />
+      </svg>
+      {brand.name}
+    </span>
+    <button type="button" class={styles.menuButton} data-nav-close>Close</button>
+  </div>
+
+  <div class={styles.sheetLinks}>
+    {allLinks.map((item) => (
+      <a href={item.href} class={styles.sheetLink}>{item.label}</a>
+    ))}
+  </div>
+
+  <div class={styles.sheetFoot}>
+    <span class="label">Start here</span>
+    <a href={`mailto:${brand.email}`} class={styles.sheetEmail}>{brand.email}</a>
+    <Chip href={nav.cta.href} variant="onVoidSolid">{nav.cta.label}</Chip>
+  </div>
+</div>
+
+<script>
+  // Replaces two React effects and a hydrated component with ~30 lines that
+  // run once. The sheet is in the DOM from the start and toggled with [hidden]
+  // rather than mounted on demand, so its links are in the static HTML where a
+  // crawler can follow them.
+  const header = document.querySelector<HTMLElement>('[data-nav]');
+  const sheet = document.querySelector<HTMLElement>('[data-nav-sheet]');
+  const openBtn = document.querySelector<HTMLButtonElement>('[data-nav-open]');
+  const closeBtn = document.querySelector<HTMLButtonElement>('[data-nav-close]');
+
+  if (header) {
+    const onScroll = () => {
+      header.dataset.frosted = window.scrollY > 24 ? 'true' : 'false';
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  if (sheet && openBtn && closeBtn) {
+    let previousOverflow = '';
+
+    const setOpen = (open: boolean) => {
+      sheet.hidden = !open;
+      openBtn.setAttribute('aria-expanded', String(open));
+      if (open) {
+        previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+      } else {
+        document.body.style.overflow = previousOverflow;
+        openBtn.focus();
+      }
+    };
+
+    openBtn.addEventListener('click', () => setOpen(true));
+    closeBtn.addEventListener('click', () => setOpen(false));
+    // Navigating away from a full-screen sheet should close it first, so the
+    // scroll lock is never left behind on a page that has no sheet open.
+    for (const link of sheet.querySelectorAll('a')) {
+      link.addEventListener('click', () => setOpen(false));
+    }
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !sheet.hidden) setOpen(false);
+    });
+  }
+</script>

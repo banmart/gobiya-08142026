@@ -1,0 +1,197 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Reveal from '../components/Reveal.astro';
+import { brand, site } from '../data/site';
+
+/**
+ * No form.
+ *
+ * A static build has nowhere to post one, and a form that silently drops
+ * submissions is worse than no form at all — the previous build made the same
+ * call for the same reason. Email and phone are the working paths, so they are
+ * the ones given prominence. Wiring a real handler is a deployment decision
+ * (Netlify Forms, Formspree, or the existing Supabase app), not a markup one.
+ */
+const expectations = [
+  {
+    index: '01',
+    title: 'Send the URL and what changed',
+    body: 'The page or the site, plus roughly when it started and anything that shipped around then — a migration, a redesign, a CMS change, a plugin update.',
+  },
+  {
+    index: '02',
+    title: 'We look before we quote',
+    body: 'We run a first pass ourselves. No form, no discovery call required to get an opinion. If it is something you can fix yourself in an afternoon, we will tell you that.',
+  },
+  {
+    index: '03',
+    title: 'You get a straight answer',
+    body: 'Either it is worth a diagnostic and we will say what we would look at, or it is not and we will say why. Both answers arrive within two working days.',
+  },
+];
+
+const schema = [
+  {
+    '@type': 'ContactPage',
+    name: `Contact ${brand.name}`,
+    mainEntity: { '@id': `${site.url}/#organization` },
+  },
+];
+---
+
+<Base
+  title="Contact — Send the URL and What Changed"
+  description="Send the URL and what changed. We'll tell you whether it's worth a diagnostic before you pay for one — and if it isn't, we'll say so."
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Contact', href: '/contact' }]}
+  schema={schema}
+>
+  <PageIntro
+    variant="trough"
+    eyebrow="Two diagnostic slots open this quarter"
+    title="Send the URL and what changed."
+    lede="We'll tell you whether it's worth a diagnostic before you pay for one. If it isn't, we'll say so — that answer is free and it is the one we give most often."
+  />
+
+  <section class="contact">
+    <div class="shell contact-grid">
+      <Reveal class="contact-direct">
+        <h2 class="contact-title">Talk to us</h2>
+
+        <a class="contact-primary" href={`mailto:${brand.email}`}>{brand.email}</a>
+        <a class="contact-primary" href={`tel:${brand.phone}`}>{brand.phoneDisplay}</a>
+
+        <dl class="contact-meta">
+          <div>
+            <dt class="label">Hours</dt>
+            <dd>{brand.hours}</dd>
+          </div>
+          <div>
+            <dt class="label">Based in</dt>
+            <dd>{brand.locality}, {brand.region} {brand.postalCode}</dd>
+          </div>
+          <div>
+            <dt class="label">Working with</dt>
+            <dd>
+              Southern California and remote —
+              <a href="/areas-we-serve">see areas</a>
+            </dd>
+          </div>
+        </dl>
+      </Reveal>
+
+      <Reveal delay={80} class="contact-expect">
+        <h2 class="contact-title">What happens next</h2>
+        <ol class="expect-list">
+          {expectations.map((step) => (
+            <li class="expect">
+              <span class="expect-index tnum">{step.index}</span>
+              <div>
+                <h3 class="expect-title">{step.title}</h3>
+                <p class="expect-body">{step.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .contact {
+    padding-block: var(--space-3xl);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-3xl);
+  }
+
+  .contact-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-block-end: var(--space-lg);
+  }
+
+  .contact-primary {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+    overflow-wrap: anywhere;
+  }
+
+  .contact-primary + .contact-primary {
+    margin-block-start: var(--space-sm);
+  }
+
+  .contact-primary:hover {
+    color: var(--color-accent-ink);
+  }
+
+  .contact-meta {
+    display: grid;
+    gap: var(--space-md);
+    margin-block-start: var(--space-2xl);
+    padding-block-start: var(--space-lg);
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .contact-meta dd {
+    margin: 0;
+    margin-block-start: var(--space-2xs);
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .contact-meta a {
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .expect-list {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .expect {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-md);
+    align-items: start;
+  }
+
+  .expect-index {
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+    padding-block-start: 0.35em;
+  }
+
+  .expect-title {
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .expect-body {
+    margin-block-start: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+    max-width: 52ch;
+  }
+
+  @media (width >= 60rem) {
+    .contact-grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: var(--space-4xl);
+    }
+  }
+</style>

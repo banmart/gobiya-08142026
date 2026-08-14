@@ -1,0 +1,51 @@
+---
+import LineField from './LineField.astro';
+import Reveal from './Reveal.astro';
+import { brand, footerLinks } from '../data/site';
+import styles from './Footer.module.css';
+
+const year = new Date().getFullYear();
+---
+
+<footer class:list={['band-void', styles.footer]}>
+  <div class={styles.field} aria-hidden="true">
+    <LineField variant="ridge" />
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <div class={styles.top}>
+      <Reveal class={styles.statement}>
+        <p class={styles.prompt}>
+          Send the URL and what changed. We&rsquo;ll tell you whether it&rsquo;s worth a
+          diagnostic before you pay for one.
+        </p>
+        <a class={styles.email} href={`mailto:${brand.email}`}>{brand.email}</a>
+      </Reveal>
+
+      <div class={styles.columns}>
+        {footerLinks.map((group) => (
+          <nav class={styles.column} aria-label={group.heading}>
+            <h2 class={styles.columnHead}>{group.heading}</h2>
+            {group.links.map((link) => (
+              <a href={link.href} class={styles.link}>{link.label}</a>
+            ))}
+          </nav>
+        ))}
+      </div>
+    </div>
+
+    <div class={styles.meta}>
+      <span>{brand.hours}</span>
+      <span>{brand.location}</span>
+      <a href={`tel:${brand.phone}`} class={styles.link}>{brand.phoneDisplay}</a>
+    </div>
+
+    <p class={styles.wordmark} aria-hidden="true">{brand.name}</p>
+
+    <div class={styles.legal}>
+      <span>&copy; {year} {brand.name}. All rights reserved.</span>
+      <span><a href="/privacy" class={styles.link}>Privacy</a></span>
+    </div>
+  </div>
+</footer>

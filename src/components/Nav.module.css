@@ -124,6 +124,13 @@
 
 /* --- mobile sheet -------------------------------------------- */
 
+/* The sheet now ships in the HTML and toggles with [hidden] instead of being
+ * mounted on open, so its links are crawlable. `display: flex` below would
+ * out-specify the UA's [hidden] rule, hence the explicit override. */
+.sheet[hidden] {
+  display: none;
+}
+
 .sheet {
   position: fixed;
   inset: 0;

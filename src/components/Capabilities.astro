@@ -1,0 +1,46 @@
+---
+import Chip from './Chip.astro';
+import LineField from './LineField.astro';
+import type { LineFieldVariant } from '../lib/lineField';
+import Reveal from './Reveal.astro';
+import SectionHead from './SectionHead.astro';
+import { capabilities } from '../data/content';
+import styles from './Capabilities.module.css';
+
+const ART: LineFieldVariant[] = ['trough', 'crest', 'ridge'];
+---
+
+<section class={styles.section} aria-labelledby="capabilities-title">
+  <div class="shell">
+    <SectionHead
+      id="capabilities-title"
+      lead="Three places we go deeper than an audit tool can."
+      trail="Each one starts from primary evidence."
+    />
+
+    <div class={styles.grid}>
+      {capabilities.map((item, i) => (
+        <Reveal delay={i * 90} class={styles.card}>
+          <div class={styles.art}>
+            <LineField variant={ART[i]} accentAt={i === 1 ? 13 : undefined} />
+            <span class={styles.artIndex}>{item.index}</span>
+          </div>
+
+          <div class={styles.body}>
+            <h3 class={styles.title}>
+              <a href={item.href}>{item.title}</a>
+            </h3>
+            <p class={styles.summary}>{item.summary}</p>
+            <ul class={styles.tags}>
+              {item.tags.map((tag) => <li class={styles.tag}>{tag}</li>)}
+            </ul>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+
+    <Reveal class={styles.foot}>
+      <Chip href="/services">All services</Chip>
+    </Reveal>
+  </div>
+</section>

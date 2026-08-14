@@ -1,0 +1,33 @@
+---
+import { buildField, VARIANT_NAMES, W, H } from '../lib/lineField';
+
+/**
+ * Every LineField variant, emitted once per document. Instances reference
+ * these with <use>, so the path data appears in the HTML a single time
+ * regardless of how many fields a page draws.
+ *
+ * Strokes are `currentColor`, which lets each instance pick its own token by
+ * setting `color` — the same way the CSS modules already tint the art slots.
+ */
+---
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" class="lf-defs">
+  <defs>
+    {VARIANT_NAMES.map((variant) => (
+      <symbol id={`lf-${variant}`} viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid slice">
+        <g fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke">
+          {buildField(variant).map((line) => <path d={line.d} opacity={line.opacity} />)}
+        </g>
+      </symbol>
+    ))}
+  </defs>
+</svg>
+
+<style is:global>
+  .lf-defs {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+import SectionHead from './SectionHead.astro';
+import Reveal from './Reveal.astro';
+import { TESTIMONIALS } from '../data/testimonials.js';
+import styles from './Testimonials.module.css';
+
+/**
+ * Verbatim Google reviews — published words from real reviewers, run exactly
+ * as written and never reworded.
+ *
+ * The carousel this replaces showed one quote and hid the rest behind two
+ * buttons. Every quote now ships in the HTML: better for anything reading the
+ * page without executing scripts, and it removes the carousel from the
+ * accessibility surface entirely rather than making it operable.
+ */
+const quotes = TESTIMONIALS as { name: string; company: string; quote: string }[];
+---
+
+{quotes.length > 0 && (
+  <section class={styles.section} aria-labelledby="testimonials-title">
+    <div class="shell">
+      <SectionHead
+        id="testimonials-title"
+        lead="What the work looks like from the other side."
+        trail="In their words, not ours."
+      />
+
+      <div class={styles.grid}>
+        {quotes.map((item, i) => (
+          <Reveal as="figure" delay={i * 80} class={styles.quote}>
+            <blockquote class={styles.quoteText}>&ldquo;{item.quote}&rdquo;</blockquote>
+            <figcaption class={styles.attribution}>
+              <span class={styles.name}>{item.name}</span>
+              <span class={styles.role}>{item.company}</span>
+            </figcaption>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </section>
+)}

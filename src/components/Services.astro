@@ -1,0 +1,99 @@
+---
+import LineField from './LineField.astro';
+import SectionHead from './SectionHead.astro';
+import { SERVICE_LINKS } from '../data/serviceIndex.js';
+import styles from './Services.module.css';
+
+/**
+ * The canonical service list, read straight from the same index the /services
+ * pages walk — the homepage cannot drift out of sync with them.
+ *
+ * `desc` is the service's meta description, which is written to sell the page
+ * in a SERP; it is the right length and register for this list too.
+ */
+const entries = SERVICE_LINKS as {
+  slug: string;
+  href: string;
+  title: string;
+  desc: string;
+}[];
+---
+
+<section class:list={['band-void', styles.section]} aria-labelledby="services-title">
+  <div class={styles.field} aria-hidden="true">
+    <LineField variant="trough" />
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="shell">
+    <SectionHead
+      id="services-title"
+      lead={`${entries.length} disciplines.`}
+      trail="One evidence trail running through all of them."
+      lede="We do not sell these separately because they are not separate problems. A render fault is a crawl problem is a citation problem."
+    />
+  </div>
+
+  <ul class={styles.list} data-scrub>
+    {entries.map((service, i) => (
+      <li
+        class={styles.item}
+        data-index={i}
+        data-active="false"
+        data-open="true"
+      >
+        <a class={styles.inner} href={service.href}>
+          <div class={styles.head}>
+            <span class:list={[styles.index, 'tnum']}>{String(i + 1).padStart(2, '0')}</span>
+            <h3 class={styles.title}>{service.title}</h3>
+          </div>
+          <div class={styles.bodyWrap}>
+            <div class={styles.body}>
+              <p>{service.desc}</p>
+            </div>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<script>
+  // Motion primitive 3 — service-scrub. Scroll-linked state, not an animation
+  // library: the row nearest the viewport's centre line inverts.
+  //
+  // `data-open` starts "true" on every row so the list is fully readable with
+  // scripting off, on mobile, and under reduced motion. Only when the scrub is
+  // actually taking over do the closed rows collapse.
+  const list = document.querySelector<HTMLElement>('[data-scrub]');
+  const desktop = window.matchMedia('(min-width: 60rem)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (list && desktop.matches && !reduced.matches) {
+    const items = [...list.querySelectorAll<HTMLElement>('[data-index]')];
+
+    const setActive = (index: number) => {
+      for (const item of items) {
+        const isActive = Number(item.dataset.index) === index;
+        item.dataset.active = String(isActive);
+        item.dataset.open = String(isActive);
+      }
+    };
+
+    setActive(0);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const index = Number((entry.target as HTMLElement).dataset.index);
+          if (!Number.isNaN(index)) setActive(index);
+        }
+      },
+      // a thin band across the viewport's centre line
+      { rootMargin: '-48% 0px -48% 0px', threshold: 0 },
+    );
+
+    for (const item of items) observer.observe(item);
+  }
+</script>

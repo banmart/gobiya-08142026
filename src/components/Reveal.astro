@@ -1,0 +1,29 @@
+---
+/**
+ * Motion primitive 1 of 3 — `reveal`.
+ *
+ * One orchestrated entrance per section, then the content is simply there.
+ *
+ * The React version shipped an IntersectionObserver *per instance*. Here the
+ * element only declares its intent; a single shared observer in Base.astro
+ * drives every [data-reveal] on the page. Same behaviour, one observer, and no
+ * component runtime at all.
+ */
+interface Props {
+  as?: string;
+  /** stagger, in ms — keep under 240 total across a group */
+  delay?: number;
+  class?: string;
+}
+
+const { as: Tag = 'div', delay = 0, class: className } = Astro.props;
+---
+
+<Tag
+  class={className}
+  data-reveal
+  data-shown="false"
+  style={delay ? `--reveal-delay: ${delay}ms` : undefined}
+>
+  <slot />
+</Tag>

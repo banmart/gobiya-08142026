@@ -1,0 +1,171 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import { CASE_STUDIES } from '../../data/work.js';
+import { site } from '../../data/site';
+
+type Study = {
+  slug: string;
+  client: string;
+  tag: string;
+  result: string;
+  desc: string;
+  serviceHref?: string;
+  serviceLabel?: string;
+  study?: unknown;
+};
+
+const studies = CASE_STUDIES as Study[];
+
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    name: 'Work',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: studies.map((item, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: item.client,
+        ...(item.study ? { url: new URL(`/work/${item.slug}`, site.url).href } : {}),
+      })),
+    },
+  },
+];
+---
+
+<Base
+  title="Work — Client Results & Case Studies"
+  description="Selected engagements: the fault we found, the repair we shipped, and the measured result. Every figure is client-approved and traceable to its source."
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Work', href: '/work' }]}
+  schema={schema}
+>
+  <PageIntro
+    variant="crest"
+    eyebrow="Selected engagements"
+    title="The fault, the repair, the evidence."
+    lede="Case studies are published only where the client has approved it and the numbers can be traced to a source. Anything unverifiable is marketing, not evidence — so it is not here."
+  />
+
+  <section class="work">
+    <div class="shell">
+      <div class="work-grid">
+        {studies.map((item, i) => {
+          const Wrapper = item.study ? 'a' : 'div';
+          return (
+            <Reveal delay={Math.min(i, 5) * 60} class="work-card">
+              <Wrapper
+                {...(item.study ? { href: `/work/${item.slug}` } : {})}
+                class="work-inner"
+              >
+                <span class="label">{item.tag}</span>
+                <h2 class="work-client">{item.client}</h2>
+                <p class="work-result">{item.result}</p>
+                <p class="work-desc">{item.desc}</p>
+                <span class="work-foot">
+                  {item.study
+                    ? <span class="work-more">Read the case study</span>
+                    : item.serviceLabel && <span class="work-service">{item.serviceLabel}</span>}
+                </span>
+              </Wrapper>
+            </Reveal>
+          );
+        })}
+      </div>
+
+      <Reveal class="work-cta">
+        <Chip href="/contact" variant="solid">Book a diagnostic</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .work {
+    padding-block: var(--space-3xl);
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .work-card {
+    min-width: 0;
+  }
+
+  .work-inner {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    height: 100%;
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+    transition:
+      border-color var(--dur-short) var(--ease-out),
+      transform var(--dur-short) var(--ease-out);
+  }
+
+  a.work-inner:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+
+  .work-client {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .work-result {
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    color: var(--color-accent-ink);
+  }
+
+  .work-desc {
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .work-foot {
+    margin-block-start: auto;
+    padding-block-start: var(--space-md);
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  a.work-inner:hover .work-more {
+    color: var(--color-accent-ink);
+  }
+
+  .work-cta {
+    margin-block-start: var(--space-2xl);
+  }
+
+  @media (width >= 48rem) {
+    .work-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >= 72rem) {
+    .work-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a.work-inner:hover {
+      transform: none;
+    }
+  }
+</style>

@@ -1,0 +1,205 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Reveal from '../components/Reveal.astro';
+import Chip from '../components/Chip.astro';
+import { AREAS, AREA_SERVICES } from '../data/areas.js';
+import { brand, site } from '../data/site';
+
+type Area = { slug: string; name: string; excerpt: string };
+type AreaService = { tag: string; title: string; href: string; desc: string };
+
+const areas = AREAS as Area[];
+const services = AREA_SERVICES as AreaService[];
+
+/**
+ * One page covering every area, rather than a page per city.
+ *
+ * The ~26 individual city URLs from three previous site generations all 301
+ * here. Reviving them would mean publishing two dozen near-identical pages,
+ * which is the doorway-page pattern Google devalues — one honest page with a
+ * real `areaServed` block is the version that holds up.
+ */
+const schema = [
+  {
+    '@type': 'Service',
+    name: 'SEO and AI search services across Southern California',
+    provider: { '@id': `${site.url}/#organization` },
+    areaServed: areas.map((area) => ({ '@type': 'City', name: area.name })),
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Local services',
+      itemListElement: services.map((service) => ({
+        '@type': 'Offer',
+        itemOffered: { '@type': 'Service', name: service.title },
+        url: new URL(service.href, site.url).href,
+      })),
+    },
+  },
+];
+---
+
+<Base
+  title="Areas We Serve — Los Angeles SEO"
+  description="SEO and AI search for businesses across Los Angeles and Southern California: Glendale, Burbank, Studio City, Sherman Oaks, Silver Lake, Hollywood and beyond."
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Areas we serve', href: '/areas-we-serve' }]}
+  schema={schema}
+>
+  <PageIntro
+    variant="warp"
+    eyebrow={`${brand.locality}, ${brand.region}`}
+    title="Where we work."
+    lede="We are based in Los Angeles and work with businesses across Southern California. The work is the same wherever you are — what changes is the competitive set and the map pack you are fighting for."
+  />
+
+  <section class="areas">
+    <div class="shell">
+      <Reveal>
+        <h2 class="areas-title">Areas we serve</h2>
+      </Reveal>
+
+      <ul class="area-grid">
+        {areas.map((area, i) => (
+          <Reveal as="li" delay={Math.min(i, 6) * 50} class="area">
+            <h3 class="area-name">{area.name}</h3>
+            <p class="area-excerpt">{area.excerpt}</p>
+          </Reveal>
+        ))}
+      </ul>
+
+      <Reveal class="areas-note">
+        <p>
+          Not on the list? We work remotely with clients across the country. The
+          local advantage matters most for map-pack work — everything else
+          travels.
+        </p>
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="local-services band-void">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="shell">
+      <Reveal>
+        <h2 class="local-title">What local work looks like</h2>
+      </Reveal>
+
+      <ul class="local-grid">
+        {services.map((service, i) => (
+          <Reveal as="li" delay={i * 70} class="local">
+            <span class="label">{service.tag}</span>
+            <h3 class="local-name">
+              <a href={service.href}>{service.title}</a>
+            </h3>
+            <p class="local-desc">{service.desc}</p>
+          </Reveal>
+        ))}
+      </ul>
+
+      <Reveal delay={80} class="local-cta">
+        <Chip href="/contact" variant="onVoidSolid">Book a diagnostic</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .areas {
+    padding-block: var(--space-3xl);
+  }
+
+  .areas-title,
+  .local-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .area-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+    margin-block-start: var(--space-xl);
+  }
+
+  .area {
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+  }
+
+  .area-name {
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .area-excerpt {
+    margin-block-start: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .areas-note {
+    margin-block-start: var(--space-xl);
+    max-width: 60ch;
+    color: var(--color-neutral);
+    font-size: var(--text-sm);
+  }
+
+  .local-services {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-3xl);
+  }
+
+  .local-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    margin-block-start: var(--space-xl);
+  }
+
+  .local-name {
+    margin-block-start: var(--space-xs);
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .local-name a:hover {
+    color: var(--color-accent);
+  }
+
+  .local-desc {
+    margin-block-start: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-void-neutral);
+    max-width: 44ch;
+  }
+
+  .local-cta {
+    margin-block-start: var(--space-2xl);
+  }
+
+  @media (width >= 48rem) {
+    .area-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .local-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >= 72rem) {
+    .area-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .local-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+</style>

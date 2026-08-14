@@ -55,17 +55,39 @@
   height: 100%;
 }
 
+/* The whole cell is the hit target, but only the text is the link, so the
+ * decorative field behind it stays out of the accessibility tree. */
+.cellLink {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+}
+
+.cellLink::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
 .value {
   font-family: var(--font-display);
   font-size: var(--text-3xl);
   font-weight: 500;
   letter-spacing: -0.035em;
   line-height: 1;
-  color: var(--color-muted);
+  /* Full ink: these are verified figures now, not the placeholder em-dash the
+   * muted treatment was there to play down. */
+  color: inherit;
 }
 
-.inverted .value {
-  color: var(--color-void-muted);
+.cellLink:hover .note {
+  color: var(--color-accent-ink);
+}
+
+.inverted .cellLink:hover .note {
+  color: var(--color-accent);
 }
 
 .foot {

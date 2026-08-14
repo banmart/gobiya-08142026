@@ -1,0 +1,26 @@
+---
+import Reveal from './Reveal.astro';
+import SectionHead from './SectionHead.astro';
+import { method } from '../data/content';
+import styles from './Method.module.css';
+---
+
+<section class={styles.section} id="method" aria-labelledby="method-title">
+  <div class="shell">
+    <SectionHead
+      id="method-title"
+      lead="Every engagement runs the same three stages."
+      trail="In that order, without exception."
+    />
+
+    <ol class={styles.grid}>
+      {method.steps.map((step, i) => (
+        <Reveal as="li" delay={i * 90} class={styles.step}>
+          <span class:list={[styles.index, 'tnum']}>{step.index}</span>
+          <h3 class={styles.title}>{step.title}</h3>
+          <p class={styles.body}>{step.body}</p>
+        </Reveal>
+      ))}
+    </ol>
+  </div>
+</section>

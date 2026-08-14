@@ -1,0 +1,72 @@
+---
+import Reveal from './Reveal.astro';
+
+/**
+ * The authored body of a case study or article: a heading and its paragraphs,
+ * repeated. Shared by /work/[slug] and /insights/[slug] so the reading measure,
+ * heading rhythm and anchor behaviour cannot drift between the two.
+ *
+ * Every heading gets a stable id derived from its text, which gives AI answer
+ * engines and any linking article a passage-level target to cite.
+ */
+interface Props {
+  blocks: { heading: string; paragraphs: string[] }[];
+}
+
+const { blocks } = Astro.props;
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .slice(0, 60);
+---
+
+<div class="prose">
+  <div class="shell">
+    {blocks.map((block) => (
+      <Reveal as="section" class="prose-block">
+        <h2 class="prose-heading" id={slugify(block.heading)}>{block.heading}</h2>
+        {block.paragraphs.map((paragraph) => (
+          <p class="prose-p" set:html={paragraph} />
+        ))}
+      </Reveal>
+    ))}
+  </div>
+</div>
+
+<style>
+  .prose {
+    padding-block-end: var(--space-3xl);
+  }
+
+  .prose-block + .prose-block {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .prose-heading {
+    max-width: 34ch;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    scroll-margin-block-start: var(--space-3xl);
+  }
+
+  .prose-p {
+    margin-block-start: var(--space-md);
+    max-width: 68ch;
+    color: var(--color-neutral);
+  }
+
+  .prose-p :global(a) {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.25em;
+  }
+
+  .prose-p :global(a:hover) {
+    color: var(--color-accent-ink);
+  }
+</style>

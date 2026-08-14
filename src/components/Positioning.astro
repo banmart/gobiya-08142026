@@ -1,0 +1,29 @@
+---
+import Reveal from './Reveal.astro';
+import { positioning } from '../data/content';
+import styles from './Positioning.module.css';
+---
+
+<section class={styles.section} aria-labelledby="positioning-title">
+  {/* gate 54 — the left column is empty void, NOT a label gutter. The
+      reference puts an eyebrow here; that hanging-header pattern is the
+      templated-editorial tell, so the space stays silent. */}
+  <div class:list={['shell', styles.grid]}>
+    <div>
+      <Reveal>
+        <h2 class={styles.statement} id="positioning-title">
+          {positioning.lead}<span class="dim">{positioning.trail}</span>
+        </h2>
+      </Reveal>
+
+      <div class={styles.columns}>
+        {positioning.columns.map((column, i) => (
+          <Reveal delay={80 + i * 80} class={styles.column}>
+            <h3 class={styles.columnTitle}>{column.title}</h3>
+            <p class={styles.columnBody}>{column.body}</p>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

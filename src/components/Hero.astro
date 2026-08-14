@@ -1,0 +1,74 @@
+---
+import Chip from './Chip.astro';
+import LineField from './LineField.astro';
+import Reveal from './Reveal.astro';
+import { hero } from '../data/content';
+import styles from './Hero.module.css';
+
+/** The four primary sources a forensic engagement reads. Not metrics — surfaces. */
+const SURFACES = [
+  { index: '01', name: 'Server logs', note: 'raw requests' },
+  { index: '02', name: 'Render output', note: 'parity diff' },
+  { index: '03', name: 'Index coverage', note: 'state history' },
+  { index: '04', name: 'AI citations', note: 'answer surfaces' },
+];
+---
+
+<section class:list={['band-void', styles.hero]}>
+  <div class={styles.wash} aria-hidden="true"></div>
+  <div class={styles.field} aria-hidden="true">
+    <LineField variant="warp" accentAt={17} />
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class:list={['shell', styles.grid]}>
+    <div class={styles.copy}>
+      <Reveal>
+        <span class={styles.status}>
+          <span class={styles.dot} aria-hidden="true"></span>
+          {hero.status}
+        </span>
+      </Reveal>
+
+      <Reveal delay={60}>
+        <h1 class={styles.headline}>
+          {hero.headlineLead} <span class="dim">{hero.headlineTrail}</span>
+        </h1>
+      </Reveal>
+
+      <Reveal delay={120}>
+        <p class={styles.lede}>{hero.lede}</p>
+      </Reveal>
+
+      <Reveal delay={180} class={styles.ctas}>
+        <Chip href={hero.primaryCta.href} variant="onVoidSolid">{hero.primaryCta.label}</Chip>
+        <Chip href={hero.secondaryCta.href} variant="onVoid">{hero.secondaryCta.label}</Chip>
+      </Reveal>
+    </div>
+
+    <Reveal delay={240} class={styles.proof}>
+      <figure class={styles.art}>
+        <LineField variant="crest" accentAt={12} />
+        <figcaption class={styles.artCaption}>
+          <span class="label">Displacement field</span>
+          <span class="label tnum">{hero.stamp}</span>
+        </figcaption>
+      </figure>
+
+      <div class={styles.panel}>
+        <div class={styles.panelHead}>
+          <span class="label">What we read</span>
+        </div>
+        <ul>
+          {SURFACES.map((surface) => (
+            <li class={styles.row}>
+              <span class:list={[styles.rowIndex, 'tnum']}>{surface.index}</span>
+              <span>{surface.name}</span>
+              <span class={styles.rowNote}>{surface.note}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </Reveal>
+  </div>
+</section>

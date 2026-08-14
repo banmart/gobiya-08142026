@@ -1,0 +1,66 @@
+---
+import Chip from './Chip.astro';
+import LineField from './LineField.astro';
+import Reveal from './Reveal.astro';
+import SectionHead from './SectionHead.astro';
+import { plans } from '../data/content';
+import styles from './Pricing.module.css';
+---
+
+<section class={styles.section} aria-labelledby="pricing-title">
+  <div class="shell">
+    <SectionHead
+      id="pricing-title"
+      lead="Three ways in, priced up front."
+      trail="No discovery call required to see a number."
+    />
+
+    <div class={styles.grid}>
+      {plans.map((plan, i) => (
+        <Reveal delay={i * 80} class:list={[styles.plan, plan.featured && styles.featured]}>
+          {plan.featured && (
+            <div class={styles.art} aria-hidden="true">
+              <LineField variant="crest" accentAt={11} />
+            </div>
+          )}
+
+          <div class={styles.top}>
+            <h3 class={styles.name}>{plan.name}</h3>
+            <p class={styles.summary}>{plan.summary}</p>
+          </div>
+
+          <p class={styles.priceRow}>
+            <span class:list={[styles.price, 'tnum']}>${plan.price}</span>
+            <span class={styles.cadence}>{plan.cadence}</span>
+          </p>
+
+          <ul class={styles.includes}>
+            {plan.includes.map((item) => (
+              <li class={styles.include}>
+                <svg
+                  class={styles.tick}
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  aria-hidden="true"
+                >
+                  <path d="M2 6.4 4.7 9 10 3.2" stroke-linecap="square" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class={styles.action}>
+            <Chip href="/contact" variant={plan.featured ? 'onVoidSolid' : 'outline'}>
+              {plan.cta}
+            </Chip>
+          </div>
+        </Reveal>
+      ))}
+    </div>
+
+    <p class={styles.note}>Month to month. No long-term lock-in contracts.</p>
+  </div>
+</section>

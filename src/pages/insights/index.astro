@@ -1,0 +1,154 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Reveal from '../../components/Reveal.astro';
+import { INSIGHTS } from '../../data/insights.js';
+import { site } from '../../data/site';
+
+type Insight = {
+  slug: string;
+  date: string;
+  category: string;
+  title: string;
+  dek: string;
+  readTime: string;
+};
+
+// Newest first. The data file is grouped by topic rather than ordered by date,
+// so the index sorts rather than trusting array order.
+const posts = ([...(INSIGHTS as Insight[])]).sort((a, b) => b.date.localeCompare(a.date));
+
+const categories = [...new Set(posts.map((post) => post.category))].sort();
+
+const formatDate = (value: string) =>
+  new Date(`${value}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+const schema = [
+  {
+    '@type': 'Blog',
+    name: 'Insights',
+    publisher: { '@id': `${site.url}/#organization` },
+    blogPost: posts.slice(0, 20).map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title,
+      datePublished: post.date,
+      url: new URL(`/insights/${post.slug}`, site.url).href,
+    })),
+  },
+];
+---
+
+<Base
+  title="Insights — Field Notes on Search & AI Citation"
+  description="Field notes on crawl behaviour, algorithm recovery, AI search citation, Core Web Vitals, and local search. What we found, how we found it, and what it means."
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Insights', href: '/insights' }]}
+  schema={schema}
+>
+  <PageIntro
+    variant="ridge"
+    eyebrow={`${posts.length} articles`}
+    title="Field notes, not thought leadership."
+    lede="What we found, how we found it, and what it means for anyone running a site at scale. Every article leads with the answer, because that is what you came for."
+  />
+
+  <section class="insights">
+    <div class="shell">
+      <ul class="cats" aria-label="Topics covered">
+        {categories.map((category) => <li class="cat">{category}</li>)}
+      </ul>
+
+      <ol class="post-list">
+        {posts.map((post, i) => (
+          <Reveal as="li" delay={Math.min(i, 5) * 50} class="post">
+            <a href={`/insights/${post.slug}`} class="post-link">
+              <span class="post-meta">
+                <span class="label">{post.category}</span>
+                <time datetime={post.date}>{formatDate(post.date)}</time>
+                <span>{post.readTime}</span>
+              </span>
+              <h2 class="post-title">{post.title}</h2>
+              <p class="post-dek">{post.dek}</p>
+            </a>
+          </Reveal>
+        ))}
+      </ol>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .insights {
+    padding-block: var(--space-3xl);
+  }
+
+  .cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-end: var(--space-2xl);
+  }
+
+  .cat {
+    padding: var(--space-2xs) var(--space-sm);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-neutral);
+  }
+
+  .post-list {
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .post {
+    border-block-end: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .post-link {
+    display: block;
+    padding-block: var(--space-lg);
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+
+  .post-link:hover {
+    background: var(--color-paper-2);
+  }
+
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    align-items: baseline;
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  .post-title {
+    margin-block-start: var(--space-sm);
+    max-width: 44ch;
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .post-link:hover .post-title {
+    color: var(--color-accent-ink);
+  }
+
+  .post-dek {
+    margin-block-start: var(--space-xs);
+    max-width: 72ch;
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+</style>

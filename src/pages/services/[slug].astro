@@ -1,0 +1,371 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import FeatureRows from '../../components/FeatureRows.astro';
+import Faq from '../../components/Faq.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import type { LineFieldVariant } from '../../lib/lineField';
+import { SERVICE_SLUGS, getService, SERVICE_LINKS } from '../../data/serviceIndex.js';
+import { brand, site } from '../../data/site';
+
+export function getStaticPaths() {
+  return (SERVICE_SLUGS as string[]).map((slug) => ({ params: { slug } }));
+}
+
+const { slug } = Astro.params;
+const service = getService(slug);
+
+if (!service) {
+  throw new Error(`No service content for slug "${slug}" — check serviceIndex.js`);
+}
+
+// The field art rotates with the service's position so two pages in the
+// sidebar never open on the same figure.
+const FIELDS: LineFieldVariant[] = ['warp', 'trough', 'crest', 'ridge'];
+const position = (SERVICE_SLUGS as string[]).indexOf(slug!);
+const field = FIELDS[position % FIELDS.length];
+
+const faqs = (service.faqs ?? []) as { q: string; a: string }[];
+const others = (SERVICE_LINKS as { slug: string; href: string; title: string }[]).filter(
+  (s) => s.slug !== slug,
+);
+
+const schema: Record<string, unknown>[] = [
+  {
+    '@type': 'Service',
+    name: service.navTitle,
+    serviceType: service.navTitle,
+    description: service.metaDescription,
+    provider: { '@id': `${site.url}/#organization` },
+    areaServed: (service.serviceAreas ?? ['Los Angeles']).map((area: string) => ({
+      '@type': 'City',
+      name: area,
+    })),
+    url: new URL(`/services/${slug}`, site.url).href,
+  },
+];
+
+if (faqs.length > 0) {
+  schema.push({
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  });
+}
+---
+
+<Base
+  title={service.metaTitle}
+  description={service.metaDescription}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Services', href: '/services' },
+    { name: service.navTitle, href: `/services/${slug}` },
+  ]}
+  schema={schema}
+>
+  <PageIntro
+    variant={field}
+    eyebrow={service.eyebrow}
+    title={service.headline}
+    lede={service.hero?.excerpt ?? service.metaDescription}
+  />
+
+  {service.standfirst && (
+    <section class="standfirst">
+      <div class="shell">
+        <Reveal>
+          <p set:html={service.standfirst} />
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  {service.problem && (
+    <section class="problem band-void">
+      <div class="grain" aria-hidden="true"></div>
+      <div class="shell">
+        <Reveal>
+          <span class="label">{service.problem.eyebrow}</span>
+          <p class="problem-statement">{service.problem.statement}</p>
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  {service.featureRows && <FeatureRows rows={service.featureRows} />}
+
+  {service.datapoint && (
+    <section class="datapoint">
+      <div class="shell">
+        <Reveal class="datapoint-inner">
+          <p class="datapoint-value tnum">
+            {service.datapoint.value}{service.datapoint.suffix}
+          </p>
+          <div>
+            <p class="datapoint-label">{service.datapoint.label}</p>
+            {service.datapoint.sourceNote && (
+              <p class="datapoint-source">{service.datapoint.sourceNote}</p>
+            )}
+          </div>
+          {service.datapoint.href && (
+            <Chip href={service.datapoint.href} variant="outline">See the case study</Chip>
+          )}
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  {service.testimonial && (
+    <section class="quote">
+      <div class="shell">
+        <Reveal as="figure" class="quote-figure">
+          <blockquote class="quote-text">&ldquo;{service.testimonial.quote}&rdquo;</blockquote>
+          <figcaption class="quote-by">
+            <span class="quote-name">{service.testimonial.name}</span>
+            <span class="quote-role">
+              {[service.testimonial.role, service.testimonial.company]
+                .filter(Boolean)
+                .join(' · ')}
+            </span>
+            {service.testimonial.href && (
+              <a class="quote-link" href={service.testimonial.href}>Read the case study</a>
+            )}
+          </figcaption>
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  {service.serviceAreas && (
+    <section class="areas">
+      <div class="shell">
+        <Reveal>
+          <h2 class="areas-title">Where we work</h2>
+          <p class="areas-lede">
+            {brand.name} is based in {brand.locality} and works across Southern
+            California, including:
+          </p>
+          <ul class="areas-list">
+            {service.serviceAreas.map((area: string) => <li class="areas-item">{area}</li>)}
+          </ul>
+          <p class="areas-more">
+            <a href="/areas-we-serve">See every area we serve</a>
+          </p>
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  {faqs.length > 0 && (
+    <Faq
+      items={faqs}
+      lead={`${service.navTitle}, answered.`}
+      trail="The questions that come up before the first call."
+    />
+  )}
+
+  <section class="next band-void">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="shell">
+      <Reveal>
+        <h2 class="next-title">Other disciplines</h2>
+        <ul class="next-list">
+          {others.map((other) => (
+            <li><a href={other.href}>{other.title}</a></li>
+          ))}
+        </ul>
+      </Reveal>
+      <Reveal delay={80} class="next-cta">
+        <Chip href="/contact" variant="onVoidSolid">Book a diagnostic</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .standfirst {
+    padding-block: var(--space-2xl);
+  }
+
+  .standfirst p {
+    max-width: 72ch;
+    font-size: var(--text-md);
+    color: var(--color-neutral);
+  }
+
+  .problem {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-2xl);
+  }
+
+  .problem-statement {
+    margin-block-start: var(--space-md);
+    max-width: 64ch;
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+  }
+
+  .datapoint {
+    padding-block: var(--space-2xl);
+  }
+
+  .datapoint-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+  }
+
+  .datapoint-value {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+
+  .datapoint-label {
+    font-weight: 500;
+    max-width: 40ch;
+  }
+
+  .datapoint-source {
+    margin-block-start: var(--space-2xs);
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    color: var(--color-muted);
+    max-width: 56ch;
+  }
+
+  .quote {
+    padding-block: var(--space-2xl);
+  }
+
+  .quote-figure {
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+  }
+
+  .quote-by {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    margin-block-start: var(--space-lg);
+    padding-block-start: var(--space-md);
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .quote-name {
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+
+  .quote-role,
+  .quote-link {
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .quote-link {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    align-self: flex-start;
+  }
+
+  .areas {
+    padding-block: var(--space-2xl);
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .areas-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .areas-lede {
+    margin-block-start: var(--space-sm);
+    color: var(--color-neutral);
+    max-width: 56ch;
+  }
+
+  .areas-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-block-start: var(--space-lg);
+  }
+
+  .areas-item {
+    padding: var(--space-2xs) var(--space-sm);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-pill);
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .areas-more {
+    margin-block-start: var(--space-lg);
+    font-size: var(--text-sm);
+  }
+
+  .areas-more a {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .next {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-3xl);
+  }
+
+  .next-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .next-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md) var(--space-lg);
+    margin-block-start: var(--space-lg);
+  }
+
+  .next-list a {
+    font-size: var(--text-sm);
+    color: var(--color-void-neutral);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .next-list a:hover {
+    color: var(--color-void-ink);
+  }
+
+  .next-cta {
+    margin-block-start: var(--space-xl);
+  }
+</style>

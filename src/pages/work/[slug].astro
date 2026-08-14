@@ -1,0 +1,197 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Prose from '../../components/Prose.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import type { LineFieldVariant } from '../../lib/lineField';
+import { CASE_STUDIES } from '../../data/work.js';
+import { site } from '../../data/site';
+
+type Study = {
+  slug: string;
+  client: string;
+  tag: string;
+  result: string;
+  desc: string;
+  url?: string;
+  serviceHref?: string;
+  serviceLabel?: string;
+  study?: {
+    dek: string;
+    metaDescription: string;
+    answer: string;
+    metrics?: { value: string; label: string }[];
+    body: { heading: string; paragraphs: string[] }[];
+  };
+};
+
+export function getStaticPaths() {
+  // Only entries with an authored `study` get a page — the rest stay as cards
+  // on /work rather than becoming thin pages with nothing on them.
+  return (CASE_STUDIES as Study[])
+    .filter((item) => item.study)
+    .map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+const { item } = Astro.props as { item: Study };
+const study = item.study!;
+
+const FIELDS: LineFieldVariant[] = ['crest', 'ridge', 'trough', 'warp'];
+const field = FIELDS[item.slug.length % FIELDS.length];
+
+const schema = [
+  {
+    '@type': 'Article',
+    headline: `${item.client} — ${item.result}`,
+    description: study.metaDescription,
+    about: item.tag,
+    author: { '@id': `${site.url}/#organization` },
+    publisher: { '@id': `${site.url}/#organization` },
+    mainEntityOfPage: new URL(`/work/${item.slug}`, site.url).href,
+  },
+];
+---
+
+<Base
+  title={`${item.client} Case Study — ${item.result}`}
+  description={study.metaDescription}
+  type="article"
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Work', href: '/work' },
+    { name: item.client, href: `/work/${item.slug}` },
+  ]}
+  schema={schema}
+>
+  <PageIntro variant={field} eyebrow={item.tag} title={item.client} lede={study.dek} />
+
+  {/* The answer paragraph leads, because it is the passage an AI answer engine
+      is most likely to lift — and the one a skim-reader needs first. */}
+  <section class="answer">
+    <div class="shell">
+      <Reveal>
+        <p class="answer-text">{study.answer}</p>
+      </Reveal>
+    </div>
+  </section>
+
+  {study.metrics && study.metrics.length > 0 && (
+    <section class="metrics">
+      <div class="shell">
+        <ul class="metrics-grid">
+          {study.metrics.map((metric, i) => (
+            <Reveal as="li" delay={i * 70} class="metric">
+              <span class="metric-value tnum">{metric.value}</span>
+              <span class="metric-label">{metric.label}</span>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <Prose blocks={study.body} />
+
+  <section class="study-foot band-void">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="shell">
+      <Reveal>
+        <h2 class="study-foot-title">Same fault on your site?</h2>
+        <p class="study-foot-lede">
+          Send the URL and what changed. We&rsquo;ll tell you whether it&rsquo;s worth a
+          diagnostic before you pay for one.
+        </p>
+      </Reveal>
+      <Reveal delay={80} class="study-foot-ctas">
+        <Chip href="/contact" variant="onVoidSolid">Book a diagnostic</Chip>
+        {item.serviceHref && (
+          <Chip href={item.serviceHref} variant="onVoid">
+            {item.serviceLabel ?? 'The service behind this'}
+          </Chip>
+        )}
+        <Chip href="/work" variant="onVoid">All case studies</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .answer {
+    padding-block: var(--space-2xl);
+  }
+
+  .answer-text {
+    max-width: 68ch;
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+  }
+
+  .metrics {
+    padding-block-end: var(--space-2xl);
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+  }
+
+  .metric-value {
+    font-family: var(--font-display);
+    font-size: var(--text-3xl);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.035em;
+  }
+
+  .metric-label {
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+    max-width: 28ch;
+  }
+
+  .study-foot {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-3xl);
+  }
+
+  .study-foot-title {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .study-foot-lede {
+    margin-block-start: var(--space-md);
+    max-width: 52ch;
+    color: var(--color-void-neutral);
+  }
+
+  .study-foot-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-xl);
+  }
+
+  @media (width >= 48rem) {
+    .metrics-grid {
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    }
+  }
+</style>

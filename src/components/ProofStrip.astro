@@ -1,0 +1,36 @@
+---
+import LineField from './LineField.astro';
+import type { LineFieldVariant } from '../lib/lineField';
+import Reveal from './Reveal.astro';
+import { proofPoints } from '../data/content';
+import styles from './ProofStrip.module.css';
+
+const ART: LineFieldVariant[] = ['ridge', 'trough', 'crest', 'ridge'];
+---
+
+{/* Every cell links to the case study the figure came from. A number with no
+    route back to its source is the thing this section used to be a hole to
+    avoid — the link is what makes the claim checkable. */}
+<section class={styles.strip} aria-label="Client results">
+  <div class:list={['shell', styles.grid]}>
+    {proofPoints.map((point, i) => (
+      <Reveal delay={i * 70} class:list={[styles.cell, i % 2 === 1 && styles.inverted]}>
+        <div class={styles.art} aria-hidden="true">
+          <LineField
+            variant={ART[i]}
+            stroke={i % 2 === 1 ? 'var(--color-void-rule)' : 'var(--color-rule)'}
+          />
+        </div>
+
+        <a class={styles.cellLink} href={point.href}>
+          <p class:list={[styles.value, 'tnum']}>{point.value}</p>
+
+          <span class={styles.foot}>
+            <span class={styles.label}>{point.label}</span>
+            <span class={styles.note}>{point.note}</span>
+          </span>
+        </a>
+      </Reveal>
+    ))}
+  </div>
+</section>

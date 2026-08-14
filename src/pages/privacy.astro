@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Reveal from '../components/Reveal.astro';
+import { brand } from '../data/site';
+
+/**
+ * This describes what the site as built actually does — a static build with no
+ * forms, no cookies and no analytics — so every statement below is true today.
+ *
+ * It is deliberately NOT a generic template policy. If analytics, a form
+ * handler, or any third-party embed is added later, the matching section here
+ * has to be updated in the same change, and counsel should review the final
+ * wording against the jurisdictions the business operates in.
+ */
+const updated = '2026-08-14';
+
+const sections = [
+  {
+    heading: 'What this site collects',
+    paragraphs: [
+      'This website is a set of static files. It runs no forms, sets no cookies, and loads no analytics or advertising scripts. Visiting a page here does not create an account, a profile, or a tracking identifier.',
+      'The one third-party request a page makes is to Fontshare, which serves the display typeface. Like any request to any server, that discloses your IP address and browser user-agent to them. Everything else — fonts, images, styles, scripts — is served from this domain.',
+    ],
+  },
+  {
+    heading: 'Server logs',
+    paragraphs: [
+      'Our hosting provider keeps standard access logs: IP address, timestamp, the URL requested, response status, referrer, and user-agent. These are used to keep the site up and to investigate abuse, and they are retained for a limited period by the provider under their own policy.',
+    ],
+  },
+  {
+    heading: 'When you contact us',
+    paragraphs: [
+      `If you email ${brand.email} or call ${brand.phoneDisplay}, we hold what you send us — your name, contact details, and whatever you tell us about your site — so we can reply and, if we work together, deliver the engagement.`,
+      'We use it for that and nothing else. We do not sell it, rent it, or pass it to advertisers. We do not add you to a mailing list because you asked a question.',
+    ],
+  },
+  {
+    heading: 'Client data during an engagement',
+    paragraphs: [
+      'Engagements typically involve access to your analytics, Search Console, server logs, or CMS. That access is used only to do the work you have engaged us for, is limited to the people doing it, and is revoked at the end of the engagement or whenever you ask.',
+      'We do not use one client’s data to benefit another, and we do not publish anything identifiable about your site without written approval. That is why case studies here name a client only where they have signed off.',
+    ],
+  },
+  {
+    heading: 'Your rights',
+    paragraphs: [
+      `You can ask what we hold about you, ask for a copy, ask us to correct it, or ask us to delete it. Email ${brand.email} and we will action it. If you are in California, the CCPA gives you these rights explicitly, and we do not sell personal information as that law defines it.`,
+    ],
+  },
+  {
+    heading: 'Changes',
+    paragraphs: [
+      'If the site starts collecting something it does not collect today — analytics, a contact form, an embedded widget — this page changes in the same release. The date below is the last time it did.',
+    ],
+  },
+];
+---
+
+<Base
+  title="Privacy"
+  description={`How ${brand.name} handles data collected through this site. Short version: the site collects almost nothing, and we do not sell any of it.`}
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Privacy', href: '/privacy' }]}
+>
+  <PageIntro
+    variant="ridge"
+    eyebrow={`Last updated ${updated}`}
+    title="How we handle your data."
+    lede="Short version: this site collects almost nothing, we hold what you send us only to reply to it, and we do not sell any of it."
+  />
+
+  <section class="policy">
+    <div class="shell">
+      {sections.map((section) => (
+        <Reveal as="section" class="policy-block">
+          <h2 class="policy-heading">{section.heading}</h2>
+          {section.paragraphs.map((paragraph) => <p class="policy-p">{paragraph}</p>)}
+        </Reveal>
+      ))}
+
+      <Reveal>
+        <p class="policy-contact">
+          Questions about any of this: <a href={`mailto:${brand.email}`}>{brand.email}</a>
+        </p>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .policy {
+    padding-block: var(--space-3xl);
+  }
+
+  .policy-block + .policy-block {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .policy-heading {
+    max-width: 34ch;
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .policy-p {
+    margin-block-start: var(--space-md);
+    max-width: 68ch;
+    color: var(--color-neutral);
+  }
+
+  .policy-contact {
+    margin-block-start: var(--space-2xl);
+    padding-block-start: var(--space-lg);
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+    font-size: var(--text-sm);
+  }
+
+  .policy-contact a {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+</style>

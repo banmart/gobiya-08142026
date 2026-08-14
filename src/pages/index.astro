@@ -1,0 +1,45 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import Positioning from '../components/Positioning.astro';
+import ProofStrip from '../components/ProofStrip.astro';
+import Capabilities from '../components/Capabilities.astro';
+import Services from '../components/Services.astro';
+import Method from '../components/Method.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Pricing from '../components/Pricing.astro';
+import Faq from '../components/Faq.astro';
+import { HOMEPAGE_FAQ } from '../data/homepageFaq.js';
+import { site } from '../data/site';
+
+const faq = HOMEPAGE_FAQ as { q: string; a: string }[];
+
+const schema = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  },
+];
+---
+
+<Base
+  title={site.defaultTitle}
+  description={site.defaultDescription}
+  schema={schema}
+>
+  <Hero />
+  <LogoMarquee />
+  <Positioning />
+  <ProofStrip />
+  <Capabilities />
+  <Services />
+  <Method />
+  <Testimonials />
+  <Pricing />
+  <Faq items={faq} />
+</Base>

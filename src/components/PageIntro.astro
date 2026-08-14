@@ -1,0 +1,40 @@
+---
+import LineField from './LineField.astro';
+import type { LineFieldVariant } from '../lib/lineField';
+import Reveal from './Reveal.astro';
+import styles from './PageIntro.module.css';
+
+/**
+ * The void-band page header. Was a whole placeholder page in the previous
+ * build; now it is just the masthead, and the page's real content follows it
+ * through the default slot.
+ */
+interface Props {
+  title: string;
+  lede: string;
+  eyebrow?: string;
+  variant?: LineFieldVariant;
+}
+
+const { title, lede, eyebrow, variant = 'warp' } = Astro.props;
+---
+
+<section class:list={['band-void', styles.intro]}>
+  <div class={styles.wash} aria-hidden="true"></div>
+  <div class={styles.field} aria-hidden="true">
+    <LineField variant={variant} accentAt={14} />
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class:list={['shell', styles.grid]}>
+    {eyebrow && (
+      <Reveal><span class="label">{eyebrow}</span></Reveal>
+    )}
+    <Reveal delay={eyebrow ? 40 : 0}>
+      <h1 class={styles.title}>{title}</h1>
+    </Reveal>
+    <Reveal delay={80}>
+      <p class={styles.lede}>{lede}</p>
+    </Reveal>
+  </div>
+</section>

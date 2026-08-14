@@ -1,0 +1,168 @@
+---
+import Reveal from './Reveal.astro';
+import Chip from './Chip.astro';
+
+/**
+ * Alternating copy/image bands — the authored body of every service page.
+ *
+ * Rows alternate sides on their own, so order is the only layout decision.
+ * Images carry explicit dimensions and `loading="lazy"` below the first row:
+ * the first row sits in the viewport on load and must not be deferred, the
+ * rest must, and both decisions are what keep LCP and CLS honest.
+ */
+interface Row {
+  title: string;
+  lede?: string;
+  dek?: string;
+  list?: string[];
+  link?: { text: string; href: string };
+  image?: { src: string; alt: string };
+}
+
+interface Props {
+  rows: Row[];
+}
+
+const { rows } = Astro.props;
+---
+
+<div class="rows">
+  {rows.map((row, i) => (
+    <section class="row" data-flip={i % 2 === 1 ? 'true' : 'false'}>
+      <div class:list={['shell', 'row-grid']}>
+        <Reveal class="row-copy">
+          <h2 class="row-title">{row.title}</h2>
+          {row.lede && <p class="row-lede">{row.lede}</p>}
+          {row.dek && <p class="row-dek">{row.dek}</p>}
+
+          {row.list && (
+            <ul class="row-list">
+              {row.list.map((item) => (
+                <li class="row-item">
+                  <svg
+                    class="row-tick"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    aria-hidden="true"
+                  >
+                    <path d="M2 6.4 4.7 9 10 3.2" stroke-linecap="square" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {row.link && (
+            <p class="row-cta">
+              <Chip href={row.link.href} variant="outline">{row.link.text}</Chip>
+            </p>
+          )}
+        </Reveal>
+
+        {row.image && (
+          <Reveal delay={80} class="row-media">
+            <img
+              src={row.image.src}
+              alt={row.image.alt}
+              width="1376"
+              height="768"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              decoding="async"
+            />
+          </Reveal>
+        )}
+      </div>
+    </section>
+  ))}
+</div>
+
+<style>
+  .row {
+    padding-block: var(--space-2xl);
+  }
+
+  .row:nth-child(even) {
+    background: var(--color-paper-2);
+  }
+
+  .row-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    align-items: center;
+  }
+
+  .row-title {
+    font-size: var(--text-xl);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    max-width: 24ch;
+  }
+
+  .row-lede {
+    margin-block-start: var(--space-md);
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    color: var(--color-ink);
+    max-width: 46ch;
+  }
+
+  .row-dek {
+    margin-block-start: var(--space-md);
+    color: var(--color-neutral);
+    max-width: 62ch;
+  }
+
+  .row-list {
+    display: grid;
+    gap: var(--space-xs);
+    margin-block-start: var(--space-lg);
+  }
+
+  .row-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-sm);
+    align-items: start;
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .row-tick {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-block-start: 0.45em;
+    color: var(--color-accent-ink);
+  }
+
+  .row-cta {
+    margin-block-start: var(--space-lg);
+  }
+
+  .row-media img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  @media (width >= 60rem) {
+    .row {
+      padding-block: var(--space-3xl);
+    }
+
+    .row-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-3xl);
+    }
+
+    /* The flip is a source-order swap rather than a second markup branch, so
+       the copy always precedes the image for anything reading linearly. */
+    .row[data-flip='true'] .row-copy {
+      order: 2;
+    }
+  }
+</style>

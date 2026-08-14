@@ -1,0 +1,146 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import { SERVICE_LINKS } from '../../data/serviceIndex.js';
+import { site } from '../../data/site';
+
+const services = SERVICE_LINKS as {
+  slug: string;
+  href: string;
+  title: string;
+  desc: string;
+}[];
+
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    name: 'Services',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: services.map((service, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: service.title,
+        url: new URL(service.href, site.url).href,
+      })),
+    },
+  },
+];
+---
+
+<Base
+  title="Services — Los Angeles SEO & AI Search"
+  description="Nine disciplines on one evidence trail: technical SEO, AI search (GEO), content, digital PR, PPC, CRO, UX, web development, and AI systems consulting."
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Services', href: '/services' }]}
+  schema={schema}
+>
+  <PageIntro
+    variant="trough"
+    eyebrow="Capabilities"
+    title="Nine disciplines, one evidence trail."
+    lede="We do not sell these separately because they are not separate problems. A render fault is a crawl problem is a citation problem — so the work is scoped against the fault, not the service menu."
+  />
+
+  <section class="services-index">
+    <div class="shell">
+      <ol class="service-list">
+        {services.map((service, i) => (
+          <Reveal as="li" delay={Math.min(i, 4) * 60} class="service-row">
+            <a href={service.href} class="service-link">
+              <span class="service-index tnum">{String(i + 1).padStart(2, '0')}</span>
+              <span class="service-copy">
+                <h2 class="service-title">{service.title}</h2>
+                <p class="service-desc">{service.desc}</p>
+              </span>
+              <span class="service-arrow" aria-hidden="true">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M2.5 6h7M6.5 3l3 3-3 3" stroke-linecap="square" />
+                </svg>
+              </span>
+            </a>
+          </Reveal>
+        ))}
+      </ol>
+
+      <Reveal class="services-foot">
+        <Chip href="/contact" variant="solid">Book a diagnostic</Chip>
+        <Chip href="/work">See the work</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .services-index {
+    padding-block: var(--space-3xl);
+  }
+
+  .service-list {
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .service-row {
+    border-block-end: var(--rule-hairline) solid var(--color-rule);
+  }
+
+  .service-link {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
+    gap: var(--space-md);
+    padding-block: var(--space-lg);
+    transition: background-color var(--dur-short) var(--ease-out);
+  }
+
+  .service-link:hover {
+    background: var(--color-paper-2);
+  }
+
+  .service-index {
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--color-muted);
+    padding-block-start: 0.45em;
+  }
+
+  .service-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .service-desc {
+    margin-block-start: var(--space-xs);
+    max-width: 68ch;
+    color: var(--color-neutral);
+    font-size: var(--text-sm);
+  }
+
+  .service-arrow {
+    width: 0.9rem;
+    color: var(--color-muted);
+    padding-block-start: 0.55em;
+    transition: transform var(--dur-short) var(--ease-out);
+  }
+
+  .service-link:hover .service-arrow {
+    transform: translateX(0.25rem);
+    color: var(--color-accent-ink);
+  }
+
+  .services-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-2xl);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .service-arrow {
+      transition: none;
+    }
+  }
+</style>

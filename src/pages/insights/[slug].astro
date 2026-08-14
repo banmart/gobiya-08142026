@@ -1,0 +1,297 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Prose from '../../components/Prose.astro';
+import Faq from '../../components/Faq.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import type { LineFieldVariant } from '../../lib/lineField';
+import { INSIGHTS } from '../../data/insights.js';
+import { brand, site } from '../../data/site';
+
+type Insight = {
+  slug: string;
+  date: string;
+  category: string;
+  title: string;
+  dek: string;
+  metaDescription: string;
+  readTime: string;
+  answer: string;
+  body: { heading: string; paragraphs: string[] }[];
+  takeaways?: string[];
+  faqs?: { q: string; a: string }[];
+  relatedHref?: string;
+  relatedLabel?: string;
+};
+
+export function getStaticPaths() {
+  return (INSIGHTS as Insight[]).map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: Insight };
+
+const FIELDS: LineFieldVariant[] = ['ridge', 'warp', 'trough', 'crest'];
+const field = FIELDS[post.slug.length % FIELDS.length];
+
+const all = INSIGHTS as Insight[];
+const related = all
+  .filter((other) => other.slug !== post.slug && other.category === post.category)
+  .slice(0, 3);
+
+const formatDate = (value: string) =>
+  new Date(`${value}T00:00:00Z`).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
+const url = new URL(`/insights/${post.slug}`, site.url).href;
+
+const schema: Record<string, unknown>[] = [
+  {
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.metaDescription,
+    articleSection: post.category,
+    datePublished: post.date,
+    dateModified: post.date,
+    author: { '@id': `${site.url}/#organization` },
+    publisher: { '@id': `${site.url}/#organization` },
+    mainEntityOfPage: url,
+    inLanguage: 'en-US',
+  },
+];
+
+if (post.faqs && post.faqs.length > 0) {
+  schema.push({
+    '@type': 'FAQPage',
+    mainEntity: post.faqs.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: { '@type': 'Answer', text: item.a },
+    })),
+  });
+}
+---
+
+<Base
+  title={post.title}
+  description={post.metaDescription}
+  type="article"
+  publishedTime={post.date}
+  modifiedTime={post.date}
+  author={brand.name}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Insights', href: '/insights' },
+    { name: post.title, href: `/insights/${post.slug}` },
+  ]}
+  schema={schema}
+>
+  <PageIntro variant={field} eyebrow={post.category} title={post.title} lede={post.dek} />
+
+  <section class="meta">
+    <div class="shell">
+      <p class="meta-line">
+        <time datetime={post.date}>{formatDate(post.date)}</time>
+        <span aria-hidden="true">·</span>
+        <span>{post.readTime}</span>
+        <span aria-hidden="true">·</span>
+        <span>{brand.name}</span>
+      </p>
+    </div>
+  </section>
+
+  {/* The answer block is deliberately the first prose on the page: it is the
+      passage AI answer engines lift, and the one a reader in a hurry needs. */}
+  <section class="answer">
+    <div class="shell">
+      <Reveal>
+        <p class="answer-label label">The short answer</p>
+        <p class="answer-text">{post.answer}</p>
+      </Reveal>
+    </div>
+  </section>
+
+  {post.takeaways && post.takeaways.length > 0 && (
+    <section class="takeaways">
+      <div class="shell">
+        <Reveal class="takeaways-box">
+          <h2 class="takeaways-title">Key takeaways</h2>
+          <ul class="takeaways-list">
+            {post.takeaways.map((takeaway) => (
+              <li class="takeaway">
+                <svg
+                  class="takeaway-tick"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.6"
+                  aria-hidden="true"
+                >
+                  <path d="M2 6.4 4.7 9 10 3.2" stroke-linecap="square" />
+                </svg>
+                <span set:html={takeaway} />
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      </div>
+    </section>
+  )}
+
+  <Prose blocks={post.body} />
+
+  {post.faqs && post.faqs.length > 0 && (
+    <Faq
+      items={post.faqs}
+      lead="Related questions."
+      trail="Short answers, in case that is all you needed."
+    />
+  )}
+
+  <section class="article-foot band-void">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="shell">
+      {related.length > 0 && (
+        <Reveal>
+          <h2 class="article-foot-title">More on {post.category}</h2>
+          <ul class="related">
+            {related.map((other) => (
+              <li>
+                <a href={`/insights/${other.slug}`}>{other.title}</a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      )}
+
+      <Reveal delay={80} class="article-foot-ctas">
+        {post.relatedHref && (
+          <Chip href={post.relatedHref} variant="onVoidSolid">
+            {post.relatedLabel ?? 'Related service'}
+          </Chip>
+        )}
+        <Chip href="/insights" variant="onVoid">All insights</Chip>
+        <Chip href="/contact" variant="onVoid">Book a diagnostic</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .meta {
+    padding-block-start: var(--space-xl);
+  }
+
+  .meta-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    color: var(--color-muted);
+  }
+
+  .answer {
+    padding-block: var(--space-xl);
+  }
+
+  .answer-label {
+    display: block;
+    margin-block-end: var(--space-sm);
+  }
+
+  .answer-text {
+    max-width: 68ch;
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    padding-inline-start: var(--space-lg);
+    border-inline-start: 2px solid var(--color-accent);
+  }
+
+  .takeaways {
+    padding-block-end: var(--space-2xl);
+  }
+
+  .takeaways-box {
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+    max-width: 72ch;
+  }
+
+  .takeaways-title {
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .takeaways-list {
+    display: grid;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-md);
+  }
+
+  .takeaway {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: var(--space-sm);
+    align-items: start;
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .takeaway-tick {
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-block-start: 0.45em;
+    color: var(--color-accent-ink);
+  }
+
+  .article-foot {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-3xl);
+  }
+
+  .article-foot-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .related {
+    display: grid;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-lg);
+  }
+
+  .related a {
+    font-size: var(--text-sm);
+    color: var(--color-void-neutral);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .related a:hover {
+    color: var(--color-void-ink);
+  }
+
+  .article-foot-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-xl);
+  }
+</style>
