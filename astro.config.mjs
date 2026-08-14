@@ -64,9 +64,17 @@ export default defineConfig({
   build: { format: 'file' },
   redirects: staticRedirects,
   integrations: [
-    sitemap({
-      filter: (page) => !page.includes('/privacy'),
-    }),
+    /**
+     * No filter. /privacy was previously excluded, which made it the one
+     * indexable page missing from the sitemap — an inconsistency with no
+     * purpose, since the page is index,follow either way.
+     *
+     * The homepage is emitted as a bare origin while its canonical carries a
+     * trailing slash. That is `trailingSlash: 'never'` above being applied
+     * consistently, and Google treats the two forms as the same URL, so it is
+     * left alone rather than special-cased.
+     */
+    sitemap(),
     emitHostRedirects(),
   ],
   vite: {
