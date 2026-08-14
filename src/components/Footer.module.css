@@ -66,10 +66,19 @@
   text-decoration-color: var(--color-accent);
 }
 
+/* Two columns on narrow screens, three once there is room. Three is a
+ * deliberate ceiling — four equal columns is the templated-footer tell this
+ * design avoids. */
 .columns {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-lg);
+}
+
+@media (width >= 48rem) {
+  .columns {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .column {

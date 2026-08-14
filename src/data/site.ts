@@ -65,9 +65,25 @@ export const footerLinks = [
     links: [
       { label: 'All services', href: '/services' },
       { label: 'Work', href: '/work' },
-      { label: 'Insights', href: '/insights' },
       { label: 'Areas we serve', href: '/areas-we-serve' },
       { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+  /**
+   * The reference section. This column is not decoration — /glossary (77
+   * terms), /solutions and /seo-myths had no inbound link from anywhere on the
+   * site, so 81 pages were reachable only through the sitemap. The footer is
+   * on every page, which makes it the one place that guarantees a crawler
+   * starting at the homepage can reach all of them.
+   */
+  {
+    heading: 'Resources',
+    links: [
+      { label: 'Insights', href: '/insights' },
+      { label: 'Glossary', href: '/glossary' },
+      { label: 'Solutions', href: '/solutions' },
+      { label: 'SEO myths', href: '/seo-myths' },
     ],
   },
 ] as const;
