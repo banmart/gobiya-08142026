@@ -152,6 +152,19 @@ export const redirects = {
   '/stuff': '/insights',
   '/seo-myths': '/insights',
   '/tools': '/services/technical-seo',
+  // The eight free lookup tools (DNS, SSL, domain reputation, email
+  // verification, IP geolocation, threat intel, categorisation, WHOIS). They
+  // were indexed pages backed by an API the static build does not carry, and
+  // the hub redirect above did not cover their children — so they were live
+  // 404s until this entry.
+  '/tools/[tool]': '/services/technical-seo',
+  // Founder bio. Indexed, and the /about redirect did not cover it.
+  '/about/steve-martin': '/about',
+  // Lead funnel tails. Low search value, but they were reachable URLs and a
+  // 404 is a worse answer than the page that replaced the funnel.
+  '/free-site-scan/thank-you': '/contact',
+  '/free-site-scan/report/[id]': '/contact',
+  '/lp/thank-you': '/contact',
   '/glossary': '/insights',
   '/glossary/[slug]': '/insights',
   '/solutions': '/services',

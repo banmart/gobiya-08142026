@@ -539,6 +539,31 @@
       "permanent": true
     },
     {
+      "source": "/tools/:tool",
+      "destination": "/services/technical-seo",
+      "permanent": true
+    },
+    {
+      "source": "/about/steve-martin",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/free-site-scan/thank-you",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/free-site-scan/report/:id",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/lp/thank-you",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
       "source": "/glossary",
       "destination": "/insights",
       "permanent": true
