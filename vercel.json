@@ -549,6 +549,16 @@
       "permanent": true
     },
     {
+      "source": "/about/approach",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/about/:page",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
       "source": "/free-site-scan/thank-you",
       "destination": "/contact",
       "permanent": true

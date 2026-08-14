@@ -158,8 +158,13 @@ export const redirects = {
   // the hub redirect above did not cover their children — so they were live
   // 404s until this entry.
   '/tools/[tool]': '/services/technical-seo',
-  // Founder bio. Indexed, and the /about redirect did not cover it.
+  // /about had two indexed children — the founder bio and an approach page —
+  // and neither was covered by the /about entry. Matched by shape rather than
+  // listed, since the old sitemap is the only record of what lived under here
+  // and it is no longer authoritative.
   '/about/steve-martin': '/about',
+  '/about/approach': '/about',
+  '/about/[page]': '/about',
   // Lead funnel tails. Low search value, but they were reachable URLs and a
   // 404 is a worse answer than the page that replaced the funnel.
   '/free-site-scan/thank-you': '/contact',
