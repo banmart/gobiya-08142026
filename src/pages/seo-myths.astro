@@ -1,0 +1,194 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import Reveal from '../components/Reveal.astro';
+import Chip from '../components/Chip.astro';
+import { MYTHS, TOPICS } from '../data/seoMyths.js';
+import { site } from '../data/site';
+
+type Myth = {
+  id: string;
+  topic: string;
+  claim: string;
+  answer: 'myth' | 'fact';
+  verdict: string;
+  detail: string;
+};
+type Topic = { label: string; focus: string; href: string };
+
+const myths = MYTHS as Myth[];
+const topics = TOPICS as Record<string, Topic>;
+
+const mythCount = myths.filter((m) => m.answer === 'myth').length;
+const factCount = myths.length - mythCount;
+
+/**
+ * Rendered as a flat list of claims with their verdicts rather than the
+ * original click-through quiz. Every claim and every answer is in the HTML,
+ * which is what makes the page quotable by an answer engine — a quiz hides
+ * its answers behind interaction, where nothing can read them.
+ */
+const schema = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: myths.map((m) => ({
+      '@type': 'Question',
+      name: m.claim,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: `${m.answer === 'myth' ? 'Myth' : 'Fact'}. ${m.verdict} ${m.detail}`,
+      },
+    })),
+  },
+];
+---
+
+<Base
+  title="SEO Myths — Which Ones Are Actually True?"
+  description={`${myths.length} claims people repeat about SEO, sorted into myth and fact, with the reasoning for each — and what to do instead.`}
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'SEO myths', href: '/seo-myths' }]}
+  schema={schema}
+>
+  <PageIntro
+    variant="ridge"
+    eyebrow={`${mythCount} myths · ${factCount} facts`}
+    title="Most of what you've been told is half right."
+    lede="Claims people repeat about search, sorted into what holds up and what does not — with the reasoning, so you can judge the next one yourself."
+  />
+
+  <section class="myths">
+    <div class="shell">
+      <ul class="myth-list">
+        {myths.map((myth, i) => {
+          const topic = topics[myth.topic];
+          return (
+            <Reveal as="li" delay={Math.min(i, 5) * 50} class="myth" data-answer={myth.answer}>
+              <div class="myth-head">
+                <span class="verdict" data-answer={myth.answer}>
+                  {myth.answer === 'myth' ? 'Myth' : 'Fact'}
+                </span>
+                {topic && <span class="topic">{topic.label}</span>}
+              </div>
+
+              <h2 class="claim">&ldquo;{myth.claim}&rdquo;</h2>
+              <p class="verdict-line">{myth.verdict}</p>
+              <p class="detail">{myth.detail}</p>
+
+              {topic && (
+                <p class="focus">
+                  <span class="focus-label">Do this instead:</span> {topic.focus}
+                  <a class="focus-link" href={topic.href}>See the service</a>
+                </p>
+              )}
+            </Reveal>
+          );
+        })}
+      </ul>
+
+      <Reveal class="myths-foot">
+        <Chip href="/contact" variant="solid">Get a straight answer on yours</Chip>
+        <Chip href="/insights">Read the field notes</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .myths {
+    padding-block: var(--space-3xl);
+  }
+
+  .myth-list {
+    display: grid;
+    gap: var(--space-lg);
+  }
+
+  .myth {
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+  }
+
+  .myth-head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+
+  .verdict {
+    padding: 0.15rem var(--space-sm);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .verdict[data-answer='myth'] {
+    background: var(--color-accent);
+    color: var(--color-void);
+  }
+
+  .verdict[data-answer='fact'] {
+    border: var(--rule-hairline) solid var(--color-rule);
+    color: var(--color-neutral);
+  }
+
+  .topic {
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .claim {
+    margin-block-start: var(--space-md);
+    max-width: 48ch;
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .verdict-line {
+    margin-block-start: var(--space-xs);
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    color: var(--color-accent-ink);
+  }
+
+  .detail {
+    margin-block-start: var(--space-sm);
+    max-width: 68ch;
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .focus {
+    margin-block-start: var(--space-md);
+    padding-block-start: var(--space-md);
+    border-block-start: var(--rule-hairline) solid var(--color-rule);
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .focus-label {
+    font-weight: 500;
+    color: var(--color-ink);
+  }
+
+  .focus-link {
+    margin-inline-start: var(--space-xs);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+    white-space: nowrap;
+  }
+
+  .myths-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-2xl);
+  }
+</style>

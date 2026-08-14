@@ -529,11 +529,6 @@
       "permanent": true
     },
     {
-      "source": "/seo-myths",
-      "destination": "/insights",
-      "permanent": true
-    },
-    {
       "source": "/tools",
       "destination": "/services/technical-seo",
       "permanent": true
@@ -571,26 +566,6 @@
     {
       "source": "/lp/thank-you",
       "destination": "/contact",
-      "permanent": true
-    },
-    {
-      "source": "/glossary",
-      "destination": "/insights",
-      "permanent": true
-    },
-    {
-      "source": "/glossary/:slug",
-      "destination": "/insights",
-      "permanent": true
-    },
-    {
-      "source": "/solutions",
-      "destination": "/services",
-      "permanent": true
-    },
-    {
-      "source": "/solutions/:slug",
-      "destination": "/services",
       "permanent": true
     },
     {

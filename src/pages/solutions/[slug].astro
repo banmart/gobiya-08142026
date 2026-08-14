@@ -1,0 +1,273 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Faq from '../../components/Faq.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import { SOLUTIONS, SOLUTION_SLUGS } from '../../data/solutions.js';
+import { SERVICE_LINKS } from '../../data/serviceIndex.js';
+import { site } from '../../data/site';
+
+type Solution = {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  painPoint: string;
+  diagnosis: {
+    title: string;
+    desc: string;
+    serviceLink?: { title: string; href: string };
+  }[];
+  recommendedServices?: string[];
+  faq?: { q: string; a: string }[];
+};
+
+export function getStaticPaths() {
+  return (SOLUTION_SLUGS as string[]).map((slug) => ({
+    params: { slug },
+    props: { solution: (SOLUTIONS as Record<string, Solution>)[slug] },
+  }));
+}
+
+const { slug } = Astro.params;
+const { solution } = Astro.props as { solution: Solution };
+
+const services = SERVICE_LINKS as { slug: string; href: string; title: string; desc: string }[];
+const recommended = (solution.recommendedServices ?? [])
+  .map((s) => services.find((svc) => svc.slug === s))
+  .filter(Boolean) as typeof services;
+
+const faqs = solution.faq ?? [];
+
+const schema: Record<string, unknown>[] = [
+  {
+    '@type': 'WebPage',
+    name: solution.title,
+    description: solution.subtitle,
+    about: solution.painPoint,
+    url: new URL(`/solutions/${slug}`, site.url).href,
+  },
+];
+
+if (faqs.length > 0) {
+  schema.push({
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  });
+}
+---
+
+<Base
+  title={solution.title}
+  description={solution.subtitle.slice(0, 160)}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Solutions', href: '/solutions' },
+    { name: solution.title, href: `/solutions/${slug}` },
+  ]}
+  schema={schema}
+>
+  <PageIntro
+    variant="warp"
+    eyebrow={solution.eyebrow}
+    title={solution.title}
+    lede={solution.subtitle}
+  />
+
+  <section class="pain">
+    <div class="shell">
+      <Reveal>
+        <h2 class="pain-label label">What it looks like</h2>
+        <p class="pain-text">{solution.painPoint}</p>
+      </Reveal>
+    </div>
+  </section>
+
+  <section class="diagnosis band-void">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="shell">
+      <Reveal>
+        <h2 class="diagnosis-title">Where it usually comes from</h2>
+      </Reveal>
+
+      <ol class="diagnosis-grid">
+        {solution.diagnosis.map((item, i) => (
+          <Reveal as="li" delay={i * 80} class="cause">
+            <span class="cause-index tnum">{String(i + 1).padStart(2, '0')}</span>
+            <h3 class="cause-title">{item.title}</h3>
+            <p class="cause-desc">{item.desc}</p>
+            {item.serviceLink && (
+              <a class="cause-link" href={item.serviceLink.href}>{item.serviceLink.title}</a>
+            )}
+          </Reveal>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  {recommended.length > 0 && (
+    <section class="recommended">
+      <div class="shell">
+        <Reveal>
+          <h2 class="recommended-title">What we would run</h2>
+        </Reveal>
+        <ul class="recommended-grid">
+          {recommended.map((svc, i) => (
+            <Reveal as="li" delay={i * 70} class="rec">
+              <a href={svc.href} class="rec-link">
+                <h3 class="rec-name">{svc.title}</h3>
+                <p class="rec-desc">{svc.desc}</p>
+              </a>
+            </Reveal>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  {faqs.length > 0 && (
+    <Faq items={faqs} lead="Questions this raises." trail="Answered before you ask." />
+  )}
+
+  <section class="solution-foot">
+    <div class="shell">
+      <Reveal class="solution-foot-ctas">
+        <Chip href="/contact" variant="solid">Book a diagnostic</Chip>
+        <Chip href="/solutions">Other symptoms</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .pain {
+    padding-block: var(--space-2xl);
+  }
+
+  .pain-label {
+    display: block;
+    margin-block-end: var(--space-sm);
+  }
+
+  .pain-text {
+    max-width: 64ch;
+    font-family: var(--font-display);
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.35;
+    padding-inline-start: var(--space-lg);
+    border-inline-start: 2px solid var(--color-accent);
+  }
+
+  .diagnosis {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-3xl);
+  }
+
+  .diagnosis-title,
+  .recommended-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .diagnosis-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-xl);
+    margin-block-start: var(--space-xl);
+  }
+
+  .cause-index {
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.12em;
+    color: var(--color-void-muted);
+  }
+
+  .cause-title {
+    margin-block-start: var(--space-sm);
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .cause-desc {
+    margin-block-start: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--color-void-neutral);
+    max-width: 44ch;
+  }
+
+  .cause-link {
+    display: inline-block;
+    margin-block-start: var(--space-md);
+    font-size: var(--text-sm);
+    color: var(--color-void-ink);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .cause-link:hover {
+    color: var(--color-accent);
+  }
+
+  .recommended {
+    padding-block: var(--space-3xl);
+  }
+
+  .recommended-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+    margin-block-start: var(--space-lg);
+  }
+
+  .rec-link {
+    display: block;
+    height: 100%;
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+  }
+
+  .rec-link:hover {
+    border-color: var(--color-accent);
+  }
+
+  .rec-name {
+    font-size: var(--text-md);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .rec-desc {
+    margin-block-start: var(--space-xs);
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .solution-foot {
+    padding-block-end: var(--space-3xl);
+  }
+
+  .solution-foot-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+  }
+
+  @media (width >= 60rem) {
+    .diagnosis-grid,
+    .recommended-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

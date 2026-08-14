@@ -1,0 +1,238 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import type { LineFieldVariant } from '../../lib/lineField';
+import { GLOSSARY } from '../../data/glossary.js';
+import { site } from '../../data/site';
+
+type Term = {
+  slug: string;
+  term: string;
+  category: string;
+  shortDefinition: string;
+  body: string;
+  relatedSlugs?: string[];
+  relatedHref?: string;
+  relatedLabel?: string;
+};
+
+export function getStaticPaths() {
+  return (GLOSSARY as Term[]).map((term) => ({
+    params: { slug: term.slug },
+    props: { term },
+  }));
+}
+
+const { term } = Astro.props as { term: Term };
+const all = GLOSSARY as Term[];
+
+const related = (term.relatedSlugs ?? [])
+  .map((slug) => all.find((t) => t.slug === slug))
+  .filter((t): t is Term => Boolean(t));
+
+// Fall back to same-category terms so no page is a dead end.
+const alsoIn = all
+  .filter((t) => t.category === term.category && t.slug !== term.slug)
+  .filter((t) => !related.some((r) => r.slug === t.slug))
+  .slice(0, 4);
+
+const FIELDS: LineFieldVariant[] = ['crest', 'trough', 'ridge', 'warp'];
+const field = FIELDS[term.slug.length % FIELDS.length];
+
+/**
+ * Definitions are written as one complete sentence, and most land just over
+ * the length a SERP will show. Cut on a word boundary rather than a character
+ * count so the snippet never ends mid-word.
+ */
+const description =
+  term.shortDefinition.length <= 160
+    ? term.shortDefinition
+    : term.shortDefinition.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+
+const schema = [
+  {
+    '@type': 'DefinedTerm',
+    '@id': new URL(`/glossary/${term.slug}`, site.url).href,
+    name: term.term,
+    description: term.shortDefinition,
+    inDefinedTermSet: {
+      '@type': 'DefinedTermSet',
+      '@id': `${site.url}/glossary#set`,
+      name: 'Gobiya SEO & AI Search Glossary',
+    },
+    termCode: term.slug,
+  },
+];
+---
+
+<Base
+  title={`${term.term} — Definition`}
+  description={description}
+  breadcrumbs={[
+    { name: 'Home', href: '/' },
+    { name: 'Glossary', href: '/glossary' },
+    { name: term.term, href: `/glossary/${term.slug}` },
+  ]}
+  schema={schema}
+>
+  <PageIntro variant={field} eyebrow={term.category} title={term.term} lede={term.shortDefinition} />
+
+  <section class="definition">
+    <div class="shell">
+      <Reveal>
+        {/* The short definition leads as the page's answer paragraph — it is
+            written to stand alone, which is what an answer engine lifts. */}
+        <h2 class="definition-label label">In practice</h2>
+        <p class="definition-body">{term.body}</p>
+      </Reveal>
+
+      {term.relatedHref && (
+        <Reveal delay={80} class="definition-cta">
+          <Chip href={term.relatedHref} variant="solid">
+            {term.relatedLabel ?? 'Related service'}
+          </Chip>
+        </Reveal>
+      )}
+    </div>
+  </section>
+
+  <section class="related band-void">
+    <div class="grain" aria-hidden="true"></div>
+    <div class="shell">
+      {related.length > 0 && (
+        <Reveal>
+          <h2 class="related-title">Related terms</h2>
+          <ul class="related-grid">
+            {related.map((r) => (
+              <li class="related-item">
+                <a href={`/glossary/${r.slug}`}>
+                  <span class="related-name">{r.term}</span>
+                  <span class="related-def">{r.shortDefinition}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Reveal>
+      )}
+
+      {alsoIn.length > 0 && (
+        <Reveal delay={60} class="also">
+          <h2 class="also-title">More in {term.category}</h2>
+          <ul class="also-list">
+            {alsoIn.map((r) => (
+              <li><a href={`/glossary/${r.slug}`}>{r.term}</a></li>
+            ))}
+          </ul>
+        </Reveal>
+      )}
+
+      <Reveal delay={120} class="related-ctas">
+        <Chip href="/glossary" variant="onVoid">All terms</Chip>
+        <Chip href="/contact" variant="onVoidSolid">Book a diagnostic</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .definition {
+    padding-block: var(--space-2xl) var(--space-3xl);
+  }
+
+  .definition-label {
+    display: block;
+    margin-block-end: var(--space-sm);
+  }
+
+  .definition-body {
+    max-width: 68ch;
+    font-size: var(--text-md);
+    color: var(--color-neutral);
+  }
+
+  .definition-cta {
+    margin-block-start: var(--space-xl);
+  }
+
+  .related {
+    position: relative;
+    isolation: isolate;
+    padding-block: var(--space-3xl);
+  }
+
+  .related-title,
+  .also-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .related-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+    margin-block-start: var(--space-lg);
+  }
+
+  .related-item a {
+    display: block;
+    height: 100%;
+    padding: var(--space-md);
+    border: var(--rule-hairline) solid var(--color-void-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-void-2);
+  }
+
+  .related-item a:hover {
+    border-color: var(--color-accent);
+  }
+
+  .related-name {
+    display: block;
+    font-weight: 500;
+  }
+
+  .related-def {
+    display: block;
+    margin-block-start: var(--space-2xs);
+    font-size: var(--text-sm);
+    color: var(--color-void-neutral);
+  }
+
+  .also {
+    margin-block-start: var(--space-2xl);
+  }
+
+  .also-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md) var(--space-lg);
+    margin-block-start: var(--space-md);
+  }
+
+  .also-list a {
+    font-size: var(--text-sm);
+    color: var(--color-void-neutral);
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
+
+  .also-list a:hover {
+    color: var(--color-void-ink);
+  }
+
+  .related-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-2xl);
+  }
+
+  @media (width >= 60rem) {
+    .related-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

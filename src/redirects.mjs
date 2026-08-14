@@ -150,7 +150,6 @@ export const redirects = {
   '/free-site-scan': '/contact',
   '/lp': '/contact',
   '/stuff': '/insights',
-  '/seo-myths': '/insights',
   '/tools': '/services/technical-seo',
   // The eight free lookup tools (DNS, SSL, domain reputation, email
   // verification, IP geolocation, threat intel, categorisation, WHOIS). They
@@ -170,10 +169,11 @@ export const redirects = {
   '/free-site-scan/thank-you': '/contact',
   '/free-site-scan/report/[id]': '/contact',
   '/lp/thank-you': '/contact',
-  '/glossary': '/insights',
-  '/glossary/[slug]': '/insights',
-  '/solutions': '/services',
-  '/solutions/[slug]': '/services',
+  // /glossary, /glossary/[slug], /solutions, /solutions/[slug] and /seo-myths
+  // are REAL PAGES again — they were briefly consolidated into /insights and
+  // /services, which threw away 77 definition pages that each answered a
+  // distinct query. Do not add redirects for them; a redirect here would
+  // shadow the page and the route would never be reached.
   '/process': '/about',
   '/pricing': '/contact',
   '/terms': '/privacy',

@@ -1,0 +1,138 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageIntro from '../../components/PageIntro.astro';
+import Reveal from '../../components/Reveal.astro';
+import Chip from '../../components/Chip.astro';
+import { SOLUTIONS, SOLUTION_SLUGS } from '../../data/solutions.js';
+import { site } from '../../data/site';
+
+type Solution = { title: string; subtitle: string; painPoint: string };
+
+const solutions = (SOLUTION_SLUGS as string[]).map((slug) => ({
+  slug,
+  ...(SOLUTIONS as Record<string, Solution>)[slug],
+}));
+
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    name: 'Solutions',
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: solutions.map((s, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: s.title,
+        url: new URL(`/solutions/${s.slug}`, site.url).href,
+      })),
+    },
+  },
+];
+---
+
+<Base
+  title="Solutions — Start From the Symptom"
+  description="Traffic dropped, not showing up in ChatGPT, or a slow site losing leads? Start from the symptom you can see and work back to the cause."
+  breadcrumbs={[{ name: 'Home', href: '/' }, { name: 'Solutions', href: '/solutions' }]}
+  schema={schema}
+>
+  <PageIntro
+    variant="trough"
+    eyebrow="Start from the symptom"
+    title="You know what it looks like. We work out why."
+    lede="Most people arrive knowing the symptom, not the cause — traffic fell, the phone went quiet, ChatGPT names a competitor. Start there, and work back."
+  />
+
+  <section class="solutions">
+    <div class="shell">
+      <ul class="solution-grid">
+        {solutions.map((solution, i) => (
+          <Reveal as="li" delay={i * 80} class="solution">
+            <a href={`/solutions/${solution.slug}`} class="solution-link">
+              <h2 class="solution-title">{solution.title}</h2>
+              <p class="solution-sub">{solution.subtitle}</p>
+              <p class="solution-pain">{solution.painPoint}</p>
+              <span class="solution-more">Work back to the cause</span>
+            </a>
+          </Reveal>
+        ))}
+      </ul>
+
+      <Reveal class="solutions-foot">
+        <Chip href="/services">All services</Chip>
+        <Chip href="/contact" variant="solid">Book a diagnostic</Chip>
+      </Reveal>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .solutions {
+    padding-block: var(--space-3xl);
+  }
+
+  .solution-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .solution-link {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    height: 100%;
+    padding: var(--space-lg);
+    border: var(--rule-hairline) solid var(--color-rule);
+    border-radius: var(--radius-lg);
+    background: var(--color-paper-2);
+    transition: border-color var(--dur-short) var(--ease-out);
+  }
+
+  .solution-link:hover {
+    border-color: var(--color-accent);
+  }
+
+  .solution-title {
+    font-size: var(--text-lg);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .solution-sub {
+    font-size: var(--text-sm);
+    color: var(--color-ink);
+  }
+
+  .solution-pain {
+    font-size: var(--text-sm);
+    color: var(--color-neutral);
+  }
+
+  .solution-more {
+    margin-block-start: auto;
+    padding-block-start: var(--space-md);
+    font-family: var(--font-outlier);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .solution-link:hover .solution-more {
+    color: var(--color-accent-ink);
+  }
+
+  .solutions-foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-block-start: var(--space-2xl);
+  }
+
+  @media (width >= 60rem) {
+    .solution-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>
