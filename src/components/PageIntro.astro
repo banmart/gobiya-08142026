@@ -28,12 +28,12 @@ const { title, lede, eyebrow, variant = 'warp' } = Astro.props;
 
   <div class:list={['shell', styles.grid]}>
     {eyebrow && (
-      <Reveal><span class="label">{eyebrow}</span></Reveal>
+      <Reveal immediate><span class="label">{eyebrow}</span></Reveal>
     )}
-    <Reveal delay={eyebrow ? 40 : 0}>
+    <Reveal immediate>
       <h1 class={styles.title}>{title}</h1>
     </Reveal>
-    <Reveal delay={80}>
+    <Reveal immediate>
       <p class={styles.lede}>{lede}</p>
     </Reveal>
   </div>

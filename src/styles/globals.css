@@ -11,6 +11,34 @@
 
 @import "tailwindcss";
 
+/* Cabinet Grotesk — the display face, self-hosted.
+ *
+ * This used to be a <link> to api.fontshare.com, which was render-blocking on
+ * a third-party origin: the browser had to resolve DNS, complete a TLS
+ * handshake and fetch a stylesheet from one host, then do it again against
+ * cdn.fontshare.com for the font itself, all before first paint. Served from
+ * our own origin the connection is already open and the 500 weight is
+ * preloaded in Base.astro.
+ *
+ * Fontshare fonts are free for commercial use, self-hosting included. Only
+ * woff2 is shipped — every browser that matters has supported it for years,
+ * and the woff/ttf fallbacks Fontshare serves were dead weight. */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/cabinet-grotesk-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/cabinet-grotesk-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ============================================================
    TOKENS
    ============================================================ */

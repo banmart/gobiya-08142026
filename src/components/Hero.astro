@@ -25,24 +25,24 @@ import styles from './Hero.module.css';
 
   <div class:list={['shell', styles.grid]}>
     <div class={styles.copy}>
-      <Reveal>
+      <Reveal immediate>
         <span class={styles.status}>
           <span class={styles.dot} aria-hidden="true"></span>
           {hero.status}
         </span>
       </Reveal>
 
-      <Reveal delay={60}>
+      <Reveal immediate>
         <h1 class={styles.headline}>
           {hero.headlineLead} <span class="dim">{hero.headlineTrail}</span>
         </h1>
       </Reveal>
 
-      <Reveal delay={120}>
+      <Reveal immediate>
         <p class={styles.lede}>{hero.lede}</p>
       </Reveal>
 
-      <Reveal delay={180} class={styles.ctas}>
+      <Reveal immediate class={styles.ctas}>
         <Chip href={hero.primaryCta.href} variant="onVoidSolid">{hero.primaryCta.label}</Chip>
         <Chip href={hero.secondaryCta.href} variant="onVoid">{hero.secondaryCta.label}</Chip>
       </Reveal>

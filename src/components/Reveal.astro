@@ -14,16 +14,30 @@ interface Props {
   /** stagger, in ms — keep under 240 total across a group */
   delay?: number;
   class?: string;
+  /**
+   * Opt out of the reveal entirely, for anything above the fold.
+   *
+   * The reveal starts at opacity 0, and Chrome does not treat an opacity-0
+   * element as painted — so gating the hero behind it meant Largest
+   * Contentful Paint could not fire until the observer script had run. On a
+   * throttled phone that was most of the measured LCP. Content in the first
+   * viewport renders immediately; the animation is for content you scroll to.
+   */
+  immediate?: boolean;
 }
 
-const { as: Tag = 'div', delay = 0, class: className } = Astro.props;
+const { as: Tag = 'div', delay = 0, class: className, immediate = false } = Astro.props;
 ---
 
-<Tag
-  class={className}
-  data-reveal
-  data-shown="false"
-  style={delay ? `--reveal-delay: ${delay}ms` : undefined}
->
-  <slot />
-</Tag>
+{immediate ? (
+  <Tag class={className}><slot /></Tag>
+) : (
+  <Tag
+    class={className}
+    data-reveal
+    data-shown="false"
+    style={delay ? `--reveal-delay: ${delay}ms` : undefined}
+  >
+    <slot />
+  </Tag>
+)}
