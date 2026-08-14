@@ -5,13 +5,15 @@ import Reveal from './Reveal.astro';
 import { hero } from '../data/content';
 import styles from './Hero.module.css';
 
-/** The four primary sources a forensic engagement reads. Not metrics — surfaces. */
-const SURFACES = [
-  { index: '01', name: 'Server logs', note: 'raw requests' },
-  { index: '02', name: 'Render output', note: 'parity diff' },
-  { index: '03', name: 'Index coverage', note: 'state history' },
-  { index: '04', name: 'AI citations', note: 'answer surfaces' },
-];
+/**
+ * Single column.
+ *
+ * The hero used to be a 7/5 diptych with a "proof column" on the right: a
+ * decorative field figure captioned "Displacement field", and a "What we read"
+ * panel listing the four surfaces a forensic engagement reads. Both are gone —
+ * the figure carried no information, and the panel was restating in a sidebar
+ * what the Capabilities and Method sections already say properly further down.
+ */
 ---
 
 <section class:list={['band-void', styles.hero]}>
@@ -45,30 +47,5 @@ const SURFACES = [
         <Chip href={hero.secondaryCta.href} variant="onVoid">{hero.secondaryCta.label}</Chip>
       </Reveal>
     </div>
-
-    <Reveal delay={240} class={styles.proof}>
-      <figure class={styles.art}>
-        <LineField variant="crest" accentAt={12} />
-        <figcaption class={styles.artCaption}>
-          <span class="label">Displacement field</span>
-          <span class="label tnum">{hero.stamp}</span>
-        </figcaption>
-      </figure>
-
-      <div class={styles.panel}>
-        <div class={styles.panelHead}>
-          <span class="label">What we read</span>
-        </div>
-        <ul>
-          {SURFACES.map((surface) => (
-            <li class={styles.row}>
-              <span class:list={[styles.rowIndex, 'tnum']}>{surface.index}</span>
-              <span>{surface.name}</span>
-              <span class={styles.rowNote}>{surface.note}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Reveal>
   </div>
 </section>
